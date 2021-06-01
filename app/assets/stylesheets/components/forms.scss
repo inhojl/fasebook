@@ -1,0 +1,75 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 39.6rem;
+  height: 35rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  padding: 1.6rem;
+
+  &__input {
+    font-size: 1.7rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid $input-border-color;
+    border-radius: 0.6rem;
+    margin-bottom: 1.2rem;
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    &:active {
+      border-color: $blue-primary;
+      box-shadow: 0 0 .4rem rgba($blue-primary, 0.25);
+    }
+  }
+
+  &__button--primary,
+  &__button--secondary {
+    height: 4.8rem;
+    text-align: center;
+    color: $white;
+    border-radius: 0.6rem;
+    font-weight: bold;
+  }
+
+  &__button--primary {
+    font-size: 2rem;
+    background-color: $blue-primary;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background-color: $blue-secondary;
+    }
+  }
+
+  &__button--secondary {
+    font-size: 1.7rem;
+    background-color: $green-primary;
+    align-self: center;
+    padding: 0 1.5rem 0 1.5rem;
+
+    &:hover {
+      background-color: $green-secondary;
+    }
+  }
+
+  &__demo-user {
+    font-size: 1.4rem;
+    margin-top: 1.8rem;
+    text-align: center;
+    color: $blue-primary;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__divider {
+    border-bottom: 1px solid $form-divider-color;
+    margin: 2.3rem 0 2.8rem 0;
+  }
+
+}
+

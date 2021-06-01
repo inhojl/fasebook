@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Poppins';
+  src: asset-url('Mulish-ExtraBold.ttf');
+}
+
+
+
+.splash-layout__main {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $splash-background-color;
+  height: 72rem;
+}
+
+.splash-layout__footer {
+  width: 98rem;
+  margin: 0 auto;
+}
+
+
+
+.splash-header {
+
+  min-width: 40rem;
+  max-width: 50rem;
+  padding: 2.8rem 0 0 0;
+  margin: 0 0 4rem 0;
+
+  &__logo {
+    text-align: center;
+    font-size: 6rem;
+    font-family: 'Poppins';
+    letter-spacing: -2px;
+    font-weight: bold;
+    color: $blue-primary;
+    margin-bottom: 1rem;
+  }
+
+  &__message-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__message {
+    font-size: 2.4rem;
+  }
+
+}
+
+
+.splash-footer {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  color: $blue-tertiary;
+
+
+  &__language-bar,
+  &__personal-sites {
+    display: flex;
+    padding: 1.1rem 0 1rem 0;
+  }
+
+  &__divider {
+    border-bottom: 1px solid $form-divider-color;
+  }
+
+  &__language-item,
+  &__copyright {
+    color: $gray-disabled-text;
+  }
+
+  &__site-item {
+    margin-right: 2rem;
+  }
+  
+  &__copyright {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+
+}
+
