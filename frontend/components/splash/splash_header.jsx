@@ -5,8 +5,9 @@ const SplashHeader = () => (
   <header className='splash-header'>
     <h1 className='splash-header__logo'>fasebook</h1>
     <div className='splash-header__message-box'>
-      <span className='splash-header__message'>Connect with friends and the world</span>
-      <span className='splash-header__message'>around you on Fasebook.</span>
+      <span className='splash-header__message'>
+        Connect with friends and the world around you on Fasebook.
+      </span>
     </div>
   </header>
 );

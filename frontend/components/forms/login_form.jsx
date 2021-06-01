@@ -30,7 +30,7 @@ const LoginForm = () => {
       <button className='login-form__button--primary' type='submit'>Log In</button>
       <span className='login-form__demo-user'>Demo User?</span>
       <div className='login-form__divider'></div>
-      <button className='login-form__button--secondary'>Create New Account</button>
+      <button type='button' className='login-form__button--secondary'>Create New Account</button>
     </form>
   );
 }
