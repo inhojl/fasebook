@@ -1,14 +1,14 @@
 import React from 'react';
 import { useCurrentTarget } from '../../hooks/useCurrentTarget';
 
-const LoginForm = () => {
+const LoginForm = ({ login }) => {
 
   const [ email, setEmail ] = useCurrentTarget('');
   const [ password, setPassword] = useCurrentTarget('');
 
   const onLogin = (event) => {
     event.preventDefault();
-    console.log({ email, password })
+    login({ email, password });
   }
   
   return (

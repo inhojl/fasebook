@@ -19,7 +19,8 @@
       color: $input-placeholder-color;
     }
 
-    &:active {
+    &:active,
+    &:focus {
       border-color: $blue-primary;
       box-shadow: 0 0 .4rem rgba($blue-primary, 0.25);
     }
@@ -73,3 +74,72 @@
 
 }
 
+
+.signup-form {
+  position: relative;
+  width: 43.2rem;
+  height: 49.6rem;
+  background-color: $white;
+  border-radius: .8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 10%), 0 8px 16px rgba(0, 0, 0, 10%);
+
+  &__exit-button {
+    position: absolute;
+  }
+
+  &__header {
+    padding: 1rem 1.6rem;
+  }
+
+  &__title {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: $black;
+    margin-bottom: .4rem;
+  }
+
+  &__message {
+    font-size: 1.5rem;
+    color: $gray-1;
+    margin-bottom: .3rem;
+  }
+
+  &__divider {
+    border-bottom: 1px solid $form-divider-color;
+  }
+
+  &__fields {
+    margin: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 1.2rem;
+  }
+
+  &__input,
+  &__select-group,
+  &__radio-group {
+    grid-column: span 2;
+    font-size: 1.5rem;
+  }
+  
+  &__input {
+    background: $gray-2;
+    padding: 1.1rem;
+    border-radius: .5rem;
+    
+    border: 1px solid $gray-3;
+  }
+
+  &__input:nth-child(1),
+  &__input:nth-child(2) {
+    grid-column: span 1;
+  }
+
+
+
+}
+
+body {
+    overflow: hidden;
+  
+}

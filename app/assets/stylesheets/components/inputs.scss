@@ -1,0 +1,33 @@
+.birthday-selection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.2rem;
+
+  &__arrow-wrapper {
+    &::before {
+      content: "x";
+      display: block;
+      position: absolute;
+      z-index: 3;
+      height: 1rem;
+      width: 1rem;
+      border-left: 2px solid black;
+      border-bottom: 2px solid black;
+      transform: rotate(90deg);
+    }
+  }
+  
+
+  &__select {
+    position: relative;
+    border-radius: 0.6rem;
+    padding: 0 2rem 0 .8rem;
+    border-radius: .4rem;
+    border: 1px solid $gray-3;
+    height: 3.6rem;
+    appearance: none;
+    width: 100%;
+
+
+  }
+}
