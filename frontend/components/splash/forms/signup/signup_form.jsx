@@ -1,17 +1,17 @@
 import React from "react";
-import { useCurrentTarget } from "../../hooks/useCurrentTarget";
-import BirthdaySelection from "./inputs/birthday_selection.jsx";
-import GenderRadioGroup from "./inputs/gender_radio_group.jsx";
+import { useTarget } from '../../../../hooks/event';
+import BirthdaySelection from "../inputs/birthday_selection.jsx";
+import GenderRadioGroup from "../inputs/gender_radio_group.jsx";
 
 const SignupForm = () => {
-  const [firstName, setFirstName] = useCurrentTarget("");
-  const [lastName, setLastName] = useCurrentTarget("");
-  const [email, setEmail] = useCurrentTarget("");
-  const [password, setPassword] = useCurrentTarget("");
-  const [gender, setGender] = useCurrentTarget("");
-  const [year, setYear] = useCurrentTarget((new Date()).getFullYear());
-  const [month, setMonth] = useCurrentTarget((new Date()).getMonth()+1);
-  const [day, setDay] = useCurrentTarget((new Date()).getDate());
+  const [firstName, setFirstName] = useTarget("");
+  const [lastName, setLastName] = useTarget("");
+  const [email, setEmail] = useTarget("");
+  const [password, setPassword] = useTarget("");
+  const [gender, setGender] = useTarget("");
+  const [year, setYear] = useTarget((new Date()).getFullYear());
+  const [month, setMonth] = useTarget((new Date()).getMonth()+1);
+  const [day, setDay] = useTarget((new Date()).getDate());
 
   const onSubmit = (event) => {
     event.preventDefault();

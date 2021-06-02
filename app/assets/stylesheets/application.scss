@@ -1,10 +1,10 @@
 
 @import "base/reset.scss";
 @import "base/base.scss";
-@import "abstracts/variables.scss";
+@import "base/variables.scss";
 
-@import "layouts/splash.scss";
+@import "components/splash/layout.scss";
 
-@import "components/splash.scss";
-@import "components/forms.scss";
-@import "components/inputs.scss";
+@import "components/splash/splash.scss";
+@import "components/splash/forms.scss";
+@import "components/splash/inputs.scss";

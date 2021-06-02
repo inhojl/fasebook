@@ -1,10 +1,10 @@
 import React from 'react';
-import { useCurrentTarget } from '../../hooks/useCurrentTarget';
+import { useTarget } from '../../../../hooks/event';
 
 const LoginForm = ({ login }) => {
 
-  const [ email, setEmail ] = useCurrentTarget('');
-  const [ password, setPassword] = useCurrentTarget('');
+  const [ email, setEmail ] = useTarget('');
+  const [ password, setPassword] = useTarget('');
 
   const onLogin = (event) => {
     event.preventDefault();

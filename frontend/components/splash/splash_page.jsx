@@ -1,8 +1,8 @@
 import React from 'react';
-import SplashHeader from '../../components/splash/splash_header';
-import LoginFormContainer from '../../components/forms/login_form_container';
-import SplashFooter from '../../components/splash/splash_footer';
-import SignupFormContainer from '../../components/forms/signup_form_container';
+import SplashHeader from './splash_header';
+import LoginFormContainer from './forms/login/login_form_container';
+import SplashFooter from './splash_footer';
+import SignupFormContainer from './forms/signup/signup_form_container';
 
 const SplashPage = () => (
   <div className='splash-layout'>
