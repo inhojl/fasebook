@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTarget } from '../../../../hooks/event';
 
-const LoginForm = ({ login }) => {
+const LoginForm = ({ login, setShowSignupModal }) => {
 
   const [ email, setEmail ] = useTarget('');
   const [ password, setPassword] = useTarget('');
+
+  useEffect(() => {
+    $('input[placeholder="Email"]').trigger('focus');
+  },[])
 
   const onLogin = (event) => {
     event.preventDefault();
     login({ email, password });
   }
+
+  const onCreateAccount = (event) => setShowSignupModal(true);
   
   return (
     <form onSubmit={onLogin} className='login-form' spellCheck={false}>
@@ -30,7 +36,11 @@ const LoginForm = ({ login }) => {
       <button className='login-form__button--primary' type='submit'>Log In</button>
       <span className='login-form__demo-user'>Demo User?</span>
       <div className='login-form__divider'></div>
-      <button type='button' className='login-form__button--secondary'>Create New Account</button>
+      <button 
+        type='button' 
+        className='login-form__button--secondary'
+        onClick={onCreateAccount}
+      >Create New Account</button>
     </form>
   );
 }

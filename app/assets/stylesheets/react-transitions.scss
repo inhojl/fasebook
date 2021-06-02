@@ -1,0 +1,14 @@
+.js-show-modal-enter {
+  opacity: 0;
+}
+.js-show-modal-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.js-show-modal-exit {
+  opacity: 1;
+}
+.js-show-modal-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}

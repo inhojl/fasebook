@@ -8,7 +8,6 @@ export const currentUserState = () => {
       }
     }
   }
-  console.log(window.currentUser)
   delete window.currentUser;
   return preloadedState;
 }
