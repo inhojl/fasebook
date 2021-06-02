@@ -13,7 +13,7 @@
     font-family: 'Poppins';
     letter-spacing: -2px;
     font-weight: bold;
-    color: $blue-primary;
+    color: $blue-1;
     margin-bottom: 1rem;
   }
 
@@ -58,7 +58,7 @@
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
-  color: $blue-tertiary;
+  color: $blue-3;
   width: 98rem;
 
   &__language-bar,
@@ -68,12 +68,12 @@
   }
 
   &__divider {
-    border-bottom: 1px solid $form-divider-color;
+    border-bottom: 1px solid $gray-8;
   }
 
   &__language-item,
   &__copyright {
-    color: $gray-disabled-text;
+    color: $gray-9;
   }
 
   &__site-item {

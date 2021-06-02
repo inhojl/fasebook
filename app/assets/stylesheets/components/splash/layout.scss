@@ -8,7 +8,7 @@
   }
 
   &__main-background {
-    background-color: $splash-background-color;
+    background-color: $gray-5;
     padding: 0 4rem 0 4rem;
   }
 
@@ -25,7 +25,7 @@
     bottom: 0;
     top: 0;
     z-index: 1;
-    background-color: $transparent-gray;
+    background-color: $transparent-gray-1;
   }
 
   &__modal {

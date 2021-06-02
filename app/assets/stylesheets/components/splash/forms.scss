@@ -1,7 +1,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: $white-1;
   width: 39.6rem;
   height: 35rem;
   border-radius: 0.8rem;
@@ -11,18 +11,18 @@
   &__input {
     font-size: 1.7rem;
     padding: 1.4rem 1.6rem;
-    border: 1px solid $input-border-color;
+    border: 1px solid $gray-6;
     border-radius: 0.6rem;
     margin-bottom: 1.2rem;
 
     &::placeholder {
-      color: $input-placeholder-color;
+      color: $gray-7;
     }
 
     &:active,
     &:focus {
-      border-color: $blue-primary;
-      box-shadow: 0 0 .4rem rgba($blue-primary, 0.25);
+      border-color: $blue-1;
+      box-shadow: 0 0 .4rem rgba($blue-1, 0.25);
     }
   }
 
@@ -30,29 +30,29 @@
   &__button--secondary {
     height: 4.8rem;
     text-align: center;
-    color: $white;
+    color: $white-1;
     border-radius: 0.6rem;
     font-weight: bold;
   }
 
   &__button--primary {
     font-size: 2rem;
-    background-color: $blue-primary;
+    background-color: $blue-1;
     margin-top: 0.5rem;
 
     &:hover {
-      background-color: $blue-secondary;
+      background-color: $blue-2;
     }
   }
 
   &__button--secondary {
     font-size: 1.7rem;
-    background-color: $green-primary;
+    background-color: $green-1;
     align-self: center;
     padding: 0 1.5rem 0 1.5rem;
 
     &:hover {
-      background-color: $green-secondary;
+      background-color: $green-2;
     }
   }
 
@@ -60,7 +60,7 @@
     font-size: 1.4rem;
     margin-top: 1.8rem;
     text-align: center;
-    color: $blue-primary;
+    color: $blue-1;
     cursor: pointer;
     &:hover {
       text-decoration: underline;
@@ -68,7 +68,7 @@
   }
 
   &__divider {
-    border-bottom: 1px solid $form-divider-color;
+    border-bottom: 1px solid $gray-8;
     margin: 2.3rem 0 2.8rem 0;
   }
 
@@ -79,7 +79,7 @@
   position: relative;
   width: 43.2rem;
   height: 49.6rem;
-  background-color: $white;
+  background-color: $white-1;
   border-radius: .8rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 10%), 0 8px 16px rgba(0, 0, 0, 10%);
 
@@ -94,7 +94,7 @@
   &__title {
     font-size: 3.2rem;
     font-weight: bold;
-    color: $black;
+    color: $black-1;
     margin-bottom: .4rem;
   }
 
@@ -105,7 +105,7 @@
   }
 
   &__divider {
-    border-bottom: 1px solid $form-divider-color;
+    border-bottom: 1px solid $gray-8;
   }
 
   &__fields {
@@ -145,7 +145,7 @@
     font-size: 1.1rem;
     color: $gray-4;
     span {
-      color: $blue-tertiary;
+      color: $blue-3;
     }
   }
 
@@ -162,7 +162,7 @@
     width: 19.4rem;
     font-size: 1.8rem;
     background-color: $green-3;
-    color: $white;
+    color: $white-1;
     font-weight: bold;
     border-radius: 0.6rem;
 
