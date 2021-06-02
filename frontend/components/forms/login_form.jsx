@@ -12,7 +12,7 @@ const LoginForm = ({ login }) => {
   }
   
   return (
-    <form onSubmit={onLogin} className='login-form'>
+    <form onSubmit={onLogin} className='login-form' spellCheck={false}>
       <input
         className='login-form__input'
         type='text'

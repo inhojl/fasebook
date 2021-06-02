@@ -19,14 +19,14 @@ const SplashPage = () => (
     <div className='splash-layout__footer'>
       <SplashFooter />
     </div>
-    {/* <div className='splash-layout__modal show'>
+    <div className='splash-layout__modal show'>
       <div className='splash-layout__modal-top-guard'>
         <div className='splash-layout__modal-center'>
           <SignupFormContainer />
         </div>
       </div>
       <div className='splash-layout__modal-background'></div>
-    </div> */}
+    </div>
     
   </div>
 );

@@ -135,7 +135,43 @@
     grid-column: span 1;
   }
 
+  &__select-group,
+  &__radio-group {
+    margin-top: .2rem;
+  }
 
+  &__disclaimer {
+    grid-column: span 2;
+    font-size: 1.1rem;
+    color: $gray-4;
+    span {
+      color: $blue-tertiary;
+    }
+  }
+
+  &__signup-button-wrapper {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.7rem;
+  }
+
+  &__signup-button {
+    text-align: center;
+    height: 3.6rem;
+    width: 19.4rem;
+    font-size: 1.8rem;
+    background-color: $green-3;
+    color: $white;
+    font-weight: bold;
+    border-radius: 0.6rem;
+
+    &:hover {
+      background: linear-gradient($green-4, $green-5);
+    }
+  }
+
+  
 
 }
 
