@@ -36,6 +36,9 @@ const LoginForm = ({ login, setShowSignupModal, errors }) => {
     } else if (animateEmail && !demoPassword.length) { 
       console.log({email, password})
       setTimeout(()=> login({ email, password }),400);
+      setAnimateEmail(false);
+      setDemoEmail('welcome@fasebook.com');
+      setDemoPassword('w3lcomeToFasebook');
     }
   }, [password])
 
