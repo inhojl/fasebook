@@ -55,7 +55,6 @@ const SignupForm = ({ signup, setShowSignupModal, errors, resetErrors }) => {
   }
 
   const renderError = (key) => {
-    console.log(errors)
     return (
     <>
       <span className='signup-form__error-icon'>

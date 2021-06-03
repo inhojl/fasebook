@@ -35,7 +35,6 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
       }, 40)
       setDemoPassword(demoPassword.slice(1))
     } else if (animateEmail && !demoPassword.length) { 
-      console.log({email, password})
       setTimeout(()=> login({ email, password }),400);
       setAnimateEmail(false);
       setDemoEmail('welcome@fasebook.com');
