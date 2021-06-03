@@ -37,16 +37,12 @@ const SignupForm = ({ signup, setShowSignupModal, errors, resetErrors }) => {
     setLoggingIn(true)
     $('.signup-form__signup-button').addClass('js-opaque-1')
     $('div[class^="signup-form__input-wrapper"]').addClass('js-opaque-1')
-
-    setTimeout(() => {
-      signup(user)
-        .always(() => {
-          setLoggingIn(false)
-          $('.signup-form__signup-button').removeClass('js-opaque-1')
-          $('div[class^="signup-form__input-wrapper"]').removeClass('js-opaque-1')
-        })
-
-    }, 3000)
+    signup(user)
+      .always(() => {
+        setLoggingIn(false)
+        $('.signup-form__signup-button').removeClass('js-opaque-1')
+        $('div[class^="signup-form__input-wrapper"]').removeClass('js-opaque-1')
+      })
   };
 
   const onExit = (event) => {

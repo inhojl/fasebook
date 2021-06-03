@@ -48,16 +48,12 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
     setLoggingIn(true)
     $('.login-form__button--primary').addClass('js-opaque-1')
     $('.login-form__input-wrapper').addClass('js-opaque-1')
-
-    setTimeout(() => {
-      login({ email, password })
-        .always(() => {
-          setLoggingIn(false)
-          $('.login-form__button--primary').removeClass('js-opaque-1')
-          $('.login-form__input-wrapper').removeClass('js-opaque-1')
-        })
-
-    }, 3000)
+    login({ email, password })
+      .always(() => {
+        setLoggingIn(false)
+        $('.login-form__button--primary').removeClass('js-opaque-1')
+        $('.login-form__input-wrapper').removeClass('js-opaque-1')
+      })
   }
 
   const onCreateAccount = (event) => {
