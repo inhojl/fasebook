@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GenderRadioGroup = ({ className, genderId, setGenderId, errors }) => {
+const GenderRadioGroup = ({ className, genderId, setGenderId, errors, disabled }) => {
 
   const onClick = (event) => {
     $(event.target).find('input[type="radio"]').trigger('click');
@@ -20,7 +20,9 @@ const GenderRadioGroup = ({ className, genderId, setGenderId, errors }) => {
             name='gender'
             checked={genderId === '2'}
             onChange={setGenderId}
-            value='2'></input>
+            value='2'
+            disabled={disabled}
+          />      
         </span>
         <span 
           className={`gender-radio-group__button${errors.length ? '--error' : ''}`}
@@ -32,7 +34,9 @@ const GenderRadioGroup = ({ className, genderId, setGenderId, errors }) => {
             name='gender'
             checked={genderId === '1'}
             onChange={setGenderId}
-            value='1'></input>
+            value='1'
+            disabled={disabled}
+          />
         </span>
         <span 
           className={`gender-radio-group__button${errors.length ? '--error' : ''}`}
@@ -44,7 +48,9 @@ const GenderRadioGroup = ({ className, genderId, setGenderId, errors }) => {
             name='gender'
             checked={genderId === '3'}
             onChange={setGenderId}
-            value='3'></input>
+            value='3'
+            disabled={disabled}
+          />
         </span>
       </div>
     </div>

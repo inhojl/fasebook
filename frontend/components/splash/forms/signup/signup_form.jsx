@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTarget } from '../../../../hooks/event';
 import BirthdaySelection from '../inputs/birthday_selection.jsx';
 import GenderRadioGroup from '../inputs/gender_radio_group.jsx';
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 
-const SignupForm = ({ signup, setShowSignupModal, errors }) => {
+const SignupForm = ({ signup, setShowSignupModal, errors, resetErrors }) => {
   const [firstName, setFirstName] = useTarget('');
   const [lastName, setLastName] = useTarget('');
   const [email, setEmail] = useTarget('');
@@ -15,9 +15,11 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
   const [year, setYear] = useTarget((new Date()).getFullYear());
   const [month, setMonth] = useTarget((new Date()).getMonth()+1);
   const [day, setDay] = useTarget((new Date()).getDate());
+  const [ loggingIn, setLoggingIn ] = useState(false);
 
   useEffect(() => {
     $('input[placeholder="First name"]').trigger('focus');
+    resetErrors();
   }, [])
 
   const onSubmit = (event) => {
@@ -31,7 +33,20 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
       password
     };
 
-    signup(user);
+    resetErrors();
+    setLoggingIn(true)
+    $('.signup-form__signup-button').addClass('js-opaque-1')
+    $('div[class^="signup-form__input-wrapper"]').addClass('js-opaque-1')
+
+    setTimeout(() => {
+      signup(user)
+        .always(() => {
+          setLoggingIn(false)
+          $('.signup-form__signup-button').removeClass('js-opaque-1')
+          $('div[class^="signup-form__input-wrapper"]').removeClass('js-opaque-1')
+        })
+
+    }, 3000)
   };
 
   const onExit = (event) => {
@@ -73,6 +88,7 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
             placeholder='First name'
             onChange={setFirstName}
             className={`signup-form__input${ errors.firstName.length ? '--error' : '' }`}
+            disabled={loggingIn}
           ></input>
         </div>
 
@@ -83,6 +99,7 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
             placeholder='Last name'
             onChange={setLastName}
             className={`signup-form__input${ errors.lastName.length ? '--error' : '' }`}
+            disabled={loggingIn}
           ></input>
         </div>
 
@@ -93,6 +110,7 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
             placeholder='Email'
             onChange={setEmail}
             className={`signup-form__input${ errors.email.length ? '--error' : '' }`}
+            disabled={loggingIn}
           ></input>
         </div>
 
@@ -103,6 +121,7 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
             placeholder='New password'
             onChange={setPassword}
             className={`signup-form__input${ errors.password.length ? '--error' : '' }`}
+            disabled={loggingIn}
           ></input>
         </div>
 
@@ -116,6 +135,7 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
             setMonth={setMonth}
             setDay={setDay}
             errors={errors.birthdate}
+            disabled={loggingIn}
           ></BirthdaySelection>
         </div>
 
@@ -126,6 +146,7 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
             genderId={genderId}
             setGenderId={setGenderId}
             errors={errors.genderId}
+            disabled={loggingIn}
           ></GenderRadioGroup>
         </div>
 

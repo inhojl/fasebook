@@ -4,6 +4,8 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_SIGNUP_ERRORS = 'RECEIVE_SIGNUP_ERRORS';
+export const RESET_SESSION_ERRORS = 'RESET_SESSION_ERRORS';
+export const RESET_SIGNUP_ERRORS = 'RESET_SIGNUP_ERRORS';
 
 export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
@@ -23,6 +25,7 @@ export const receiveSignupErrors = (errors) => ({
   type: RECEIVE_SIGNUP_ERRORS,
   errors
 });
+
 
 export const signup = (user) => (dispatch) => (
   APIUtil.signup(user)

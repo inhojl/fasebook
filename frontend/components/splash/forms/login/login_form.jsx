@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { useTarget } from '../../../../hooks/event';
 
-const LoginForm = ({ login, setShowSignupModal, errors }) => {
+
+const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
 
   const [email, setEmail] = useState('');
   const [demoEmail, setDemoEmail] = useState('welcome@fasebook.com');
   const [password, setPassword] = useState('');
   const [demoPassword, setDemoPassword] = useState('w3lcomeToFasebook');
   const [animateEmail, setAnimateEmail] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
 
   useEffect(() => {
     $('input[placeholder="Email"]').trigger('focus');
@@ -44,7 +45,20 @@ const LoginForm = ({ login, setShowSignupModal, errors }) => {
 
   const onLogin = (event) => {
     event.preventDefault();
-    login({ email, password });
+    resetErrors();
+    setLoggingIn(true)
+    $('.login-form__button--primary').addClass('js-opaque-1')
+    $('.login-form__input-wrapper').addClass('js-opaque-1')
+
+    setTimeout(() => {
+      login({ email, password })
+        .always(() => {
+          setLoggingIn(false)
+          $('.login-form__button--primary').removeClass('js-opaque-1')
+          $('.login-form__input-wrapper').removeClass('js-opaque-1')
+        })
+
+    }, 3000)
   }
 
   const onCreateAccount = (event) => {
@@ -86,6 +100,7 @@ const LoginForm = ({ login, setShowSignupModal, errors }) => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder='Email'
           value={email}
+          disabled={loggingIn}
         >
         </input>
       </div>
@@ -97,9 +112,14 @@ const LoginForm = ({ login, setShowSignupModal, errors }) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder='Password'
           value={password}
+          disabled={loggingIn}
         />
       </div>
-      <button className='login-form__button--primary' type='submit'>Log In</button>
+      <button 
+        className='login-form__button--primary' 
+        type='submit'
+        disabled={loggingIn}
+        >Log In</button>
       <span className='login-form__demo-user' onClick={onDemoUser}>Demo User?</span>
       <div className='login-form__divider'></div>
       <button

@@ -2,7 +2,7 @@ import React from 'react';
 
 const MONTHS = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, setDay, errors }) => {
+const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, setDay, errors, disabled }) => {
   
   const months = Array(12).fill(0);
   const days = Array(31).fill(0);
@@ -19,6 +19,7 @@ const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, set
             className={`birthday-selection__select${errors.length ? '--error' : ''}`}
             value={month} 
             onChange={setMonth}
+            disabled={disabled}
           >
           <option value=''>Month</option>
           { months.map((_, month) => 
@@ -35,6 +36,7 @@ const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, set
             className={`birthday-selection__select${errors.length ? '--error' : ''}`}
             value={day} 
             onChange={setDay}
+            disabled={disabled}
           >
             <option value=''>Day</option>
             { days.map((_, day) => 
@@ -51,6 +53,7 @@ const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, set
             className={`birthday-selection__select${errors.length ? '--error' : ''}`}
             value={year} 
             onChange={setYear}
+            disabled={disabled}
           >
             <option value=''>Year</option>
             
