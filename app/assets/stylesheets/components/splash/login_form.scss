@@ -1,0 +1,121 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  background-color: $white-1;
+  width: 39.6rem;
+  height: 35rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  padding: 1.6rem;
+
+  &__input-wrapper {
+    position: relative;
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    border-radius: 0.6rem;
+  }
+
+  &__error-icon {
+    
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    color: rgb(233, 47, 47);
+
+    &:hover + .login-form__error-message {
+      display: block;
+      color: $white-1;
+    }
+  }
+
+  &__error-message {
+    display: none;
+    position: absolute;
+    padding: 1.3rem;
+    background-color: rgb(233, 47, 47);
+    box-shadow: 0 0 0 1px rgba(202, 25, 22, 0.75), 0 1px 10px rgba(0, 0, 0, 35%);
+    color: $white-1;
+    font-size: 1.3rem;
+    border-radius: .2rem;
+    right: -0.3rem;;
+    top: -5.8rem;
+
+    &-arrow {
+      position: absolute;
+      font-size: 4rem;
+      color: rgb(233, 47, 47);
+      top: 2.2rem;
+      right: 1.5rem;
+    }
+
+  }
+
+  &__input,
+  &__input--error {
+    padding: 1.4rem 1.6rem;
+    border: 1px solid $gray-6;
+    border-radius: inherit;
+    width: 100%;
+    
+
+    &::placeholder {
+      color: $gray-7;
+    }
+
+    &:active,
+    &:focus {
+      border-color: $blue-1;
+      box-shadow: 0 0 .4rem rgba($blue-1, 0.25);
+    }
+  }
+
+  &__input--error {
+    border: 1px solid red;
+  }
+
+  &__button--primary,
+  &__button--secondary {
+    height: 4.8rem;
+    text-align: center;
+    color: $white-1;
+    border-radius: 0.6rem;
+    font-weight: bold;
+  }
+
+  &__button--primary {
+    font-size: 2rem;
+    background-color: $blue-1;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background-color: $blue-2;
+    }
+  }
+
+  &__button--secondary {
+    font-size: 1.7rem;
+    background-color: $green-1;
+    align-self: center;
+    padding: 0 1.5rem 0 1.5rem;
+
+    &:hover {
+      background-color: $green-2;
+    }
+  }
+
+  &__demo-user {
+    font-size: 1.4rem;
+    margin-top: 1.8rem;
+    text-align: center;
+    color: $blue-1;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__divider {
+    border-bottom: 1px solid $gray-8;
+    margin: 2.3rem 0 2.8rem 0;
+  }
+}

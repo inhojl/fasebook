@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
       login(@user)
       render "api/users/show"
     else
-      render json: @user.errors.full_messages, status: :unprocessable_entity
+      render "api/users/signup_errors", status: :unprocessable_entity
     end
   end
 

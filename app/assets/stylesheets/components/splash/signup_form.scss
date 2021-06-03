@@ -1,0 +1,183 @@
+.signup-form {
+  position: relative;
+  width: 43.2rem;
+  height: 49.6rem;
+  background-color: $white-1;
+  border-radius: .8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 10%), 0 8px 16px rgba(0, 0, 0, 10%);
+
+  &__input-wrapper,
+  &__input-wrapper--select-group,
+  &__input-wrapper--radio-group {
+    position: relative;
+  }
+  
+  &__error-icon {
+    position: absolute;
+    top: 1.3rem;
+    right: 1.3rem;
+    color: $red-2;
+  }
+  &__input-wrapper--select-group,
+  &__input-wrapper--radio-group {
+    .signup-form__error-icon {
+      top: -.6rem;
+      z-index: 1;
+    }
+
+    .signup-form__error-message {
+      top: -4.2rem;
+      right: 4rem;
+      z-index: 4;
+    }
+  }
+
+  &__error-icon {
+    &:hover + .signup-form__error-message {
+      display: block;
+    }
+  }
+  
+  
+  &__error-message {
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    padding: 1.3rem;
+    background-color: $red-2;
+    box-shadow: 0 0 0 1px rgba(139, 3, 0, 75%), 0 1px 10px rgba(0, 0, 0, 35%);
+    color: $white-1;
+    font-size: 1.3rem;
+    border-radius: .2rem;
+    right: -0.3rem;;
+    top: -5.8rem;
+
+    &-arrow {
+      position: absolute;
+      font-size: 4rem;
+      color: $red-2;
+      top: 2.2rem;
+      right: 1.5rem;
+    }
+
+  }
+
+  
+
+
+  &__exit-button {
+      position: absolute;
+      color: $gray-10;
+      top: 1rem;
+      right: 1rem;
+      font-weight: 400;
+      font-size: 3.4rem;
+      height: 2.4rem;
+      width: 2.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
+  }
+
+  &__header {
+    padding: 1rem 1.6rem;
+  }
+
+  &__title {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: $black-1;
+    margin-bottom: .4rem;
+  }
+
+  &__message {
+    font-size: 1.5rem;
+    color: $gray-1;
+    margin-bottom: .3rem;
+  }
+
+  &__divider {
+    border-bottom: 1px solid $gray-8;
+  }
+
+
+  &__fields {
+    margin: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 1.2rem;
+  }
+
+
+
+
+  &__input-wrapper,
+  &__input-wrapper--select-group,
+  &__input-wrapper--radio-group {
+    grid-column: span 2;
+    font-size: 1.5rem;
+  }
+  
+  &__input,
+  &__input--error {
+    background: $gray-2;
+    padding: 1.1rem;
+    border-radius: .5rem;
+    border: 1px solid $gray-3;
+    width: 100%;
+  }
+
+  &__input--error {
+    border-color: red;
+  }
+
+  &__input--error:focus {
+    border-color: $gray-3;
+  }
+
+  &__input-wrapper:nth-child(1),
+  &__input-wrapper:nth-child(2) {
+    grid-column: span 1;
+  }
+
+  &__input-wrapper--select-group,
+  &__input-wrapper--radio-group {
+    margin-top: .2rem;
+  }
+
+
+
+  &__disclaimer {
+    grid-column: span 2;
+    font-size: 1.1rem;
+    color: $gray-4;
+    span {
+      color: $blue-3;
+    }
+  }
+
+  &__signup-button-wrapper {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.7rem;
+  }
+
+  &__signup-button {
+    text-align: center;
+    height: 3.6rem;
+    width: 19.4rem;
+    font-size: 1.8rem;
+    background-color: $green-3;
+    color: $white-1;
+    font-weight: bold;
+    border-radius: 0.6rem;
+
+    &:hover {
+      background: linear-gradient($green-4, $green-5);
+    }
+  }
+
+  
+}

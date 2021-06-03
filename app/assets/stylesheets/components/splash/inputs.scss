@@ -34,7 +34,8 @@
     }
   }
 
-  &__select {
+  &__select,
+  &__select--error {
     position: relative;
     border-radius: 0.6rem;
     padding: 0 2rem 0 .8rem;
@@ -43,6 +44,14 @@
     height: 3.6rem;
     appearance: none;
     width: 100%;
+  }
+
+  &__select--error {
+    border-color: red;
+  }
+
+  &__select--error:focus {
+    border-color: $gray-3;
   }
 }
 
@@ -61,7 +70,8 @@
     grid-gap: 1rem;
   }
 
-  &__button {
+  &__button,
+  &__button--error {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,5 +79,13 @@
     border-radius: .4rem;
     border: 1px solid $gray-3;
     height: 3.6rem;
+  }
+
+  &__button--error {
+    border-color: red;
+  }
+
+  &__button--error:active {
+    border-color: $gray-3;
   }
 }

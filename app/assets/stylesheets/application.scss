@@ -1,14 +1,19 @@
+/*
+*= require_self
+*/
 
+// Setup
 @import "base/reset.scss";
 @import "base/base.scss";
 @import "base/variables.scss";
 
-@import "components/splash/layout.scss";
-
-@import "components/splash/splash.scss";
-@import "components/splash/forms.scss";
+// Splash
+@import "components/splash/splash_layout.scss";
+@import "components/splash/splash_header.scss";
+@import "components/splash/splash_footer.scss";
+@import "components/splash/login_form.scss";
+@import "components/splash/signup_form.scss";
 @import "components/splash/inputs.scss";
 
-
-
+// Animations through React
 @import "react-transitions.scss"

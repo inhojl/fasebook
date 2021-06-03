@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useTarget } from '../../../../hooks/event';
-import { signup } from '../../../../redux/actions/session';
 import BirthdaySelection from '../inputs/birthday_selection.jsx';
 import GenderRadioGroup from '../inputs/gender_radio_group.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-const SignupForm = ({ signup, setShowSignupModal }) => {
+
+const SignupForm = ({ signup, setShowSignupModal, errors }) => {
   const [firstName, setFirstName] = useTarget('');
   const [lastName, setLastName] = useTarget('');
   const [email, setEmail] = useTarget('');
   const [password, setPassword] = useTarget('');
-  const [gender, setGender] = useTarget('');
+  const [genderId, setGenderId] = useTarget('');
   const [year, setYear] = useTarget((new Date()).getFullYear());
   const [month, setMonth] = useTarget((new Date()).getMonth()+1);
   const [day, setDay] = useTarget((new Date()).getDate());
@@ -23,8 +25,8 @@ const SignupForm = ({ signup, setShowSignupModal }) => {
     const user = {
       first_name: firstName,
       last_name: lastName,
-      gender_id: gender,
       birthdate: `${year}-${month}-${day}`,
+      gender_id: genderId,
       email,
       password
     };
@@ -33,6 +35,23 @@ const SignupForm = ({ signup, setShowSignupModal }) => {
   };
 
   const onExit = (event) => setShowSignupModal(false);
+
+  const renderError = (key) => {
+    console.log(errors)
+    return (
+    <>
+      <span className='signup-form__error-icon'>
+        <FontAwesomeIcon icon={faExclamationCircle} />
+      </span>
+      <span className='signup-form__error-message'>
+        { errors[key].map((error) => error).join(' ') }
+        <span className='signup-form__error-message-arrow'>
+          <FontAwesomeIcon icon={faCaretDown} />
+        </span>
+      </span>
+    </>
+    )
+  };
 
   return (
     <form onSubmit={onSubmit} className='signup-form' spellCheck={false}>
@@ -43,44 +62,70 @@ const SignupForm = ({ signup, setShowSignupModal }) => {
       </header>
       <div className='signup-form__divider'></div>
       <div className='signup-form__fields'>
-        <input
-          type='text'
-          placeholder='First name'
-          onChange={setFirstName}
-          className='signup-form__input'
-        ></input>
-        <input
-          type='text'
-          placeholder='Last name'
-          onChange={setLastName}
-          className='signup-form__input'
-        ></input>
-        <input
-          type='text'
-          placeholder='Email'
-          onChange={setEmail}
-          className='signup-form__input'
-        ></input>
-        <input
-          type='password'
-          placeholder='New password'
-          onChange={setPassword}
-          className='signup-form__input'
-        ></input>
-        <BirthdaySelection 
-          className='signup-form__select-group' 
-          year={year}
-          month={month}
-          day={day}
-          setYear={setYear}
-          setMonth={setMonth}
-          setDay={setDay}
-        ></BirthdaySelection>
-        <GenderRadioGroup 
-          className='signup-form__radio-group'
-          gender={gender}
-          setGender={setGender}
-        ></GenderRadioGroup>
+
+        <div className='signup-form__input-wrapper'>
+          { errors.firstName.length ? renderError('firstName') : null }
+          <input
+            type='text'
+            placeholder='First name'
+            onChange={setFirstName}
+            className={`signup-form__input${ errors.firstName.length ? '--error' : '' }`}
+          ></input>
+        </div>
+
+        <div className='signup-form__input-wrapper'>
+          { errors.lastName.length ? renderError('lastName') : null }
+          <input
+            type='text'
+            placeholder='Last name'
+            onChange={setLastName}
+            className={`signup-form__input${ errors.lastName.length ? '--error' : '' }`}
+          ></input>
+        </div>
+
+        <div className='signup-form__input-wrapper'>
+          { errors.email.length ? renderError('email') : null }
+          <input
+            type='text'
+            placeholder='Email'
+            onChange={setEmail}
+            className={`signup-form__input${ errors.email.length ? '--error' : '' }`}
+          ></input>
+        </div>
+
+        <div className='signup-form__input-wrapper'>
+          { errors.password.length ? renderError('password') : null }
+          <input
+            type='password'
+            placeholder='New password'
+            onChange={setPassword}
+            className={`signup-form__input${ errors.password.length ? '--error' : '' }`}
+          ></input>
+        </div>
+
+        <div className='signup-form__input-wrapper--select-group'>
+          { errors.birthdate.length ? renderError('birthdate') : null }
+          <BirthdaySelection
+            year={year}
+            month={month}
+            day={day}
+            setYear={setYear}
+            setMonth={setMonth}
+            setDay={setDay}
+            errors={errors.birthdate}
+          ></BirthdaySelection>
+        </div>
+
+        <div className='signup-form__input-wrapper--radio-group'>
+          { errors.genderId.length ? renderError('genderId') : null }
+          <GenderRadioGroup 
+            className='signup-form__radio-group'
+            genderId={genderId}
+            setGenderId={setGenderId}
+            errors={errors.genderId}
+          ></GenderRadioGroup>
+        </div>
+
         <p className='signup-form__disclaimer'>
           By clicking Sign Up, you agree to our <span>Terms</span>, <span>Data Policy</span> and <span>Cookies Policy</span>. You may receive SMS Notifications from us and can opt out any time.
         </p>

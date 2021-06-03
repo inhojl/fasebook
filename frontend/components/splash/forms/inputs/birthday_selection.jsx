@@ -2,7 +2,7 @@ import React from 'react';
 
 const MONTHS = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, setDay }) => {
+const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, setDay, errors }) => {
   
   const months = Array(12).fill(0);
   const days = Array(31).fill(0);
@@ -15,7 +15,12 @@ const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, set
       <label className='birthday-selection__label'>Birthday</label>
       <div className='birthday-selection__select-group'>
         <div className='birthday-selection__arrow-wrapper'>
-          <select className='birthday-selection__select' value={month} onChange={setMonth}>
+          <select 
+            className={`birthday-selection__select${errors.length ? '--error' : ''}`}
+            value={month} 
+            onChange={setMonth}
+          >
+          <option value=''>Month</option>
           { months.map((_, month) => 
               <option 
                 key={`month-${month}`} 
@@ -26,7 +31,12 @@ const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, set
           </select>
         </div>
         <div className='birthday-selection__arrow-wrapper'>
-          <select className='birthday-selection__select' value={day} onChange={setDay}>
+          <select 
+            className={`birthday-selection__select${errors.length ? '--error' : ''}`}
+            value={day} 
+            onChange={setDay}
+          >
+            <option value=''>Day</option>
             { days.map((_, day) => 
               <option 
                 key={`day-${day}`} 
@@ -37,7 +47,13 @@ const BirthdaySelection = ({ className, year, month, day, setYear, setMonth, set
           </select>
         </div>
         <div className='birthday-selection__arrow-wrapper'>
-          <select className='birthday-selection__select' value={year} onChange={setYear}>
+          <select 
+            className={`birthday-selection__select${errors.length ? '--error' : ''}`}
+            value={year} 
+            onChange={setYear}
+          >
+            <option value=''>Year</option>
+            
             { years.map((_, year) => 
               <option 
                 key={`year-${year}`} 

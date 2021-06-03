@@ -4,9 +4,16 @@ class User < ApplicationRecord
 
   belongs_to :gender
 
-  validates :email, :session_token, presence: true, uniqueness: true
-  validates :password_digest, :first_name, :last_name, :birthdate, presence: true
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :email, presence: { message: "What's your email?" }, uniqueness: { message: "This email has already been taken." }
+  validates :session_token, presence: true, uniqueness: true
+  validates :password_digest, presence: true
+  validates :first_name, presence: { message: "What's your first name?" }
+  validates :last_name, presence: { message: "What's your last name?" }
+  validates :birthdate, presence: { message: "When's your birthday?" }
+  validates :gender_id, presence: { message: "What's your gender?" }
+
+
+  validates :password, presence: { message: "What's your password?"}, length: { minimum: 6, message: "Password must contain at least 6 characters." }, allow_nil: true
 
   after_initialize :ensure_session_token
 
