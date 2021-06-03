@@ -9,7 +9,7 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
   const [demoEmail, setDemoEmail] = useState('welcome@fasebook.com');
   const [password, setPassword] = useState('');
   const [demoPassword, setDemoPassword] = useState('w3lcomeToFasebook');
-  const [animateEmail, setAnimateEmail] = useState(false);
+  const [animateDemoLogin, setAnimateDemoLogin] = useState(false);
   const [loggingIn, setLoggingIn] = useState(false);
 
   useEffect(() => {
@@ -17,26 +17,28 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
   }, [])
 
   useEffect(() => {
-    if (animateEmail && demoEmail.length) {
+    if (animateDemoLogin && demoEmail.length) {
       setTimeout(() => {
         setEmail(email + demoEmail[0])
       }, 40)
       setDemoEmail(demoEmail.slice(1))
-    } else if (animateEmail && !demoEmail.length) { 
+    } else if (animateDemoLogin && !demoEmail.length) { 
       setPassword(demoPassword[0])
       setDemoPassword(demoPassword.slice(1))
     }
   }, [email])
 
   useEffect(() => {
-    if (animateEmail && demoPassword.length) {
+    if (animateDemoLogin && demoPassword.length) {
       setTimeout(() => {
         setPassword(password + demoPassword[0])
       }, 40)
       setDemoPassword(demoPassword.slice(1))
-    } else if (animateEmail && !demoPassword.length) { 
-      setTimeout(()=> login({ email, password }),400);
-      setAnimateEmail(false);
+    } else if (animateDemoLogin && !demoPassword.length) { 
+      setTimeout(()=>  {
+        login({ email, password })
+        setAnimateDemoLogin(false);
+      },400);
       setDemoEmail('welcome@fasebook.com');
       setDemoPassword('w3lcomeToFasebook');
     }
@@ -63,7 +65,7 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
 
 
   const onDemoUser = (event) => {
-    setAnimateEmail(true);
+    setAnimateDemoLogin(true);
     setEmail(demoEmail[0])
     setDemoEmail(demoEmail.slice(1))
   }
@@ -95,7 +97,7 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder='Email'
           value={email}
-          disabled={loggingIn}
+          disabled={loggingIn || animateDemoLogin}
         >
         </input>
       </div>
@@ -107,7 +109,7 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder='Password'
           value={password}
-          disabled={loggingIn}
+          disabled={loggingIn || animateDemoLogin}
         />
       </div>
       <button 
@@ -115,7 +117,7 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
         type='submit'
         disabled={loggingIn}
         >Log In</button>
-      <span className='login-form__demo-user' onClick={onDemoUser}>Demo User?</span>
+      <button type='button' className='login-form__demo-user' onClick={onDemoUser} disabled={animateDemoLogin}>Demo User?</button>
       <div className='login-form__divider'></div>
       <button
         type='button'
