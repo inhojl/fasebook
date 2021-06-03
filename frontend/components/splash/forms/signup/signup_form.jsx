@@ -34,7 +34,10 @@ const SignupForm = ({ signup, setShowSignupModal, errors }) => {
     signup(user);
   };
 
-  const onExit = (event) => setShowSignupModal(false);
+  const onExit = (event) => {
+    setShowSignupModal(false);
+    $('body').css('overflow', 'visible');
+  }
 
   const renderError = (key) => {
     console.log(errors)

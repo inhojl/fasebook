@@ -44,7 +44,10 @@ const LoginForm = ({ login, setShowSignupModal, errors }) => {
     login({ email, password });
   }
 
-  const onCreateAccount = (event) => setShowSignupModal(true);
+  const onCreateAccount = (event) => {
+    setShowSignupModal(true);
+    $('body').css('overflow', 'hidden');
+  }
 
 
   const onDemoUser = (event) => {

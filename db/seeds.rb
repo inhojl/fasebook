@@ -26,3 +26,12 @@ User.create!(
   gender_id: 1,
   password: '123456'
 )
+
+User.create!(
+  email: 'welcome@fasebook.com',
+  first_name: 'Bruce',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: 'w3lcomeToFasebook'
+)
