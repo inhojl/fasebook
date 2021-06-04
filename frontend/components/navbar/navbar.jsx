@@ -25,8 +25,6 @@ const Navbar = ({
 
   const [selected, setSelected] = useState('');
 
-
-
   const onSelect = (type) => {
     return (e) => {
       setSelected(type === selected ? '' : type);
@@ -73,7 +71,7 @@ const Navbar = ({
         </li>
         <li>
           <NavbarSettingsItem selected={selected} setSelected={onSelect(ItemType.SETTINGS)} />
-          {selected === ItemType.SETTINGS ? <NavbarSettingsMenu logout={logout}/> : null }
+          {selected === ItemType.SETTINGS ? <NavbarSettingsMenu setSelected={setSelected} logout={logout}/> : null }
         </li>
       </ul>
     </nav>

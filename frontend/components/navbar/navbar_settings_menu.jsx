@@ -2,10 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
-const NavbarSettingsMenu = ({ logout }) => {
+const NavbarSettingsMenu = ({ setSelected, logout }) => {
 
-  const onLogout = () => logout();
-
+  const onLogout = () => {
+    logout();
+    setSelected('');
+  }
   return (
     <ul className='navbar-settings-menu'>
       <li className='navbar-settings-menu__header'>
