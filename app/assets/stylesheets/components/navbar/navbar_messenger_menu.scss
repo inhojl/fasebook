@@ -1,0 +1,9 @@
+.navbar-messenger-menu {
+  @include navbar-menu;
+
+  h1 {
+    @include navbar-menu-header;
+  }
+
+
+}

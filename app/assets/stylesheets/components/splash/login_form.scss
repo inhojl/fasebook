@@ -87,6 +87,7 @@
     font-size: 2rem;
     background-color: $blue-1;
     margin-top: 0.5rem;
+    transition: background-color .2s linear;
 
     &:hover {
       background-color: $blue-2;
@@ -98,6 +99,8 @@
     background-color: $green-1;
     align-self: center;
     padding: 0 1.5rem 0 1.5rem;
+    transition: background-color .2s linear;
+
 
     &:hover {
       background-color: $green-2;

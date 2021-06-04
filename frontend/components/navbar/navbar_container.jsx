@@ -3,7 +3,8 @@ import Navbar from './navbar';
 import { logout } from '../../redux/actions/session';
 
 const mapStateToProps = (state) => ({
-  loggedIn: Boolean(state.session.id)
+  loggedIn: Boolean(state.session.id),
+  currentUserId: state.session.id
 })
 
 const mapDispatchToProps = (dispatch) => ({

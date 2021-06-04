@@ -2,10 +2,10 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const NavbarCreateItem = ({ setSelected }) => {
+const NavbarCreateItem = ({ id, active, setSelected }) => {
 
   return (
-    <button type="button" className='navbar-create-item' onClick={setSelected}>
+    <button id={id} type="button" className={`navbar-create-item${active ? '--active' : ''}`} onClick={setSelected}>
       <FontAwesomeIcon icon={faPlus} />
     </button>
   )

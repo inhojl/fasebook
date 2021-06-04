@@ -44,6 +44,8 @@
   &__tab-item {
     flex-grow: 1;
     display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: calc(15vw - 5.5rem);
     min-width: 5rem;
     height: 100%;

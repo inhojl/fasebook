@@ -6,6 +6,7 @@
 @import "base/reset.scss";
 @import "base/base.scss";
 @import "base/variables.scss";
+@import "base/mixins.scss";
 
 // App
 @import "components/app.scss";
@@ -26,6 +27,10 @@
 @import "components/navbar/navbar_tab_item.scss";
 @import "components/navbar/navbar_user_item.scss";
 @import "components/navbar/navbar_settings_menu";
+@import "components/navbar/navbar_notifications_menu";
+@import "components/navbar/navbar_messenger_menu";
+@import "components/navbar/navbar_create_menu";
+
 
 // Animations through React
 @import "react-transitions.scss"

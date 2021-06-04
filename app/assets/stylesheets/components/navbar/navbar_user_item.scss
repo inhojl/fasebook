@@ -1,17 +1,24 @@
+
 .navbar-create-item,
 .navbar-messenger-item,
 .navbar-notifications-item,
-.navbar-settings-item {
+.navbar-settings-item,
+.navbar-create-item--active,
+.navbar-messenger-item--active,
+.navbar-notifications-item--active,
+.navbar-settings-item--active {
   width: 4rem;
   height: 4rem;
   border-radius: 5rem;
-  background-color: $gray-14;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $black-2;
   transition: all .1s linear; 
-
+  
+  & > * {
+    pointer-events: none;
+  }
+  
   &:hover {
     filter: brightness(95%);
   }
@@ -19,18 +26,38 @@
     transform: scale(0.95);
     filter: brightness(90%);
   }
+  
 }
 
-.navbar-create-item {
+.navbar-create-item,
+.navbar-messenger-item,
+.navbar-notifications-item,
+.navbar-settings-item {
+  background-color: $gray-14;
+  color: $black-2;
+}
+
+.navbar-create-item--active,
+.navbar-messenger-item--active,
+.navbar-notifications-item--active,
+.navbar-settings-item--active {
+  color: $blue-4;
+  background-color: $blue-5;
+}
+
+.navbar-create-item,
+.navbar-create-item--active {
   font-size: 1.5rem;
-  position: relative;
 }
 
-.navbar-messenger-item {
+.navbar-messenger-item,
+.navbar-messenger-item--active {
   font-size: 1.8rem;
 }
 
-.navbar-notifications-item {
+.navbar-notifications-item,
+.navbar-notifications-item--active  {
   font-size: 1.8rem;
   transform: rotate(-15deg);
+
 }

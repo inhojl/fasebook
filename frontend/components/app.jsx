@@ -1,10 +1,13 @@
 import React from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import HomePageContainer from './home/home_page_container';
-import NavbarContainer from './navbar/navbar_container';;
+import NavbarContainer from './navbar/navbar_container';
+import FriendsPage from './friends/friends_page';
+import ProfilePage from './profile/profile_page';
 import { AuthRoute, ProtectedRoute } from '../util/route';
 
 const App = () => (
@@ -12,6 +15,9 @@ const App = () => (
     <NavbarContainer />
     <Switch>
       <Route exact path="/" component={HomePageContainer} />
+      <ProtectedRoute exact path="/friends" component={FriendsPage} />
+      <ProtectedRoute exact path="/:userId" component={ProfilePage} />
+      <Redirect to="/" />
     </Switch>
   </div>
 );

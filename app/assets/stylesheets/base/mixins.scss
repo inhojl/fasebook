@@ -1,0 +1,52 @@
+@mixin navbar-menu {
+  position: absolute;
+  top: 5.3rem;
+  right: 1.6rem;
+  width: 36rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.8rem;
+  box-shadow: $user-item-menu-shadow;
+  padding: 0.8rem;
+}
+
+@mixin navbar-menu-header {
+  font-size: 2.4rem;
+  color: $black-2;
+  padding: 0.7rem 0.8rem;
+  font-weight: bold;
+}
+
+@mixin navbar-menu-item {
+  cursor: pointer;
+  width: 34.4rem;
+  height: 5.2rem;
+  display: flex;
+  padding: 0 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.8rem;
+  transition: background-color 0.2s linear;
+  &:hover {
+    background-color: $gray-18;
+  }
+}
+
+@mixin navbar-menu-icon {
+  width: 3.6rem;
+  height: 3.6rem;
+  background-color: $gray-14;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: $black-3;
+}
+
+@mixin navbar-menu-divider {
+  margin: 0.8rem 0.8rem;
+  border-bottom: 1px solid $gray-16;
+}

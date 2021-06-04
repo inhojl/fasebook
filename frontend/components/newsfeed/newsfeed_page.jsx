@@ -1,8 +1,8 @@
 import React from 'react';
 
 const NewsfeedPage = () => (
-  <div>
-    {/* Newsfeed Page */}
+  <div style={{fontSize:30}}>
+    Newsfeed Page
   </div>
 )
 

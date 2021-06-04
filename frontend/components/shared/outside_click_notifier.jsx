@@ -5,13 +5,15 @@ const OutsideClickNotifier = (props) => {
   
   useEffect(() => {
     const onOutsideClick = (event) => {
-      if (notifierRef.current && !notifierRef.current.contains(event.target)) {
+      if (notifierRef.current 
+          && !notifierRef.current.contains(event.target)
+          && !props.excludeIds.includes(event.target.id)) {
         props.sideEffect();
       }
     }
 
-    document.addEventListener('mousedown', onOutsideClick);
-    return () => document.removeEventListener('mousedown', onOutsideClick)
+    document.addEventListener('mouseup', onOutsideClick);
+    return () => document.removeEventListener('mouseup', onOutsideClick)
   }, [notifierRef])
 
   return (

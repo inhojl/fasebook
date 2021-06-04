@@ -1,0 +1,32 @@
+.navbar-create-menu {
+  @include navbar-menu;
+
+  &__header {
+    @include navbar-menu-header;
+  }
+
+  &__post-item {
+    @include navbar-menu-item;
+  }
+
+  &__post-icon {
+    @include navbar-menu-icon;
+  }
+
+  &__post-label {
+    display: flex;
+    flex-direction: column;
+    width: 28rem;
+  }
+
+  &__post-heading {
+    font-size: 1.5rem;
+    color: $black-2;
+  }
+
+  &__post-description {
+    font-size: 1.3rem;
+    color: $gray-15;
+  }
+
+}
