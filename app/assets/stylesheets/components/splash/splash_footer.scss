@@ -23,6 +23,10 @@
 
   &__site-item {
     margin-right: 2rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
   
   &__copyright {

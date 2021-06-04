@@ -1,5 +1,11 @@
 .splash-layout {
 
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
   &__main {
     display: flex;
     flex-direction: column;
@@ -16,6 +22,8 @@
     display: flex;
     justify-content: center;
     padding: 0 1.2rem 0 1.2rem;
+    background-color: $white-1;
+    height: 100%;
   }
 
   &__modal-background {
