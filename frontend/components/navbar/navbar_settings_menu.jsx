@@ -1,12 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarSettingsMenu = ({ setSelected, logout }) => {
 
+  let history = useHistory();
+
   const onLogout = () => {
     logout();
     setSelected('');
+    history.push('/');
   }
   return (
     <ul className='navbar-settings-menu'>

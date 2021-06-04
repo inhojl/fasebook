@@ -8,6 +8,7 @@ import NavbarMessengerItem from './navbar_messenger_item';
 import NavbarNotificationsItem from './navbar_notifications_item';
 import NavbarSettingsItem from './navbar_settings_item';
 import NavbarSettingsMenu from './navbar_settings_menu';
+import OutsideClickNotifier from '../shared/outside_click_notifier';
 
 
 
@@ -70,8 +71,14 @@ const Navbar = ({
           {selected === ItemType.NOTIFICATIONS ? console.log('notifications') : null }
         </li>
         <li>
-          <NavbarSettingsItem selected={selected} setSelected={onSelect(ItemType.SETTINGS)} />
-          {selected === ItemType.SETTINGS ? <NavbarSettingsMenu setSelected={setSelected} logout={logout}/> : null }
+          <OutsideClickNotifier sideEffect={() => {setSelected('')}}>
+            <NavbarSettingsItem selected={selected} setSelected={onSelect(ItemType.SETTINGS)} />
+            {
+              selected === ItemType.SETTINGS ? 
+                <NavbarSettingsMenu setSelected={setSelected} logout={logout}/>
+              : null 
+            }
+          </OutsideClickNotifier>
         </li>
       </ul>
     </nav>
