@@ -14,9 +14,9 @@ const App = () => (
   <div className='app'>
     <NavbarContainer />
     <Switch>
-      <Route exact path="/" component={HomePageContainer} />
       <ProtectedRoute exact path="/friends" component={FriendsPage} />
       <ProtectedRoute exact path="/:userId" component={ProfilePage} />
+      <Route exact path="/" component={HomePageContainer} />
       <Redirect to="/" />
     </Switch>
   </div>
