@@ -1,0 +1,35 @@
+.navbar-create-item,
+.navbar-messenger-item,
+.navbar-notifications-item,
+.navbar-settings-item {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5rem;
+  background-color: $gray-14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $black-2;
+  transition: all .1s linear; 
+
+  &:hover {
+    filter: brightness(95%);
+  }
+  &:active {
+    transform: scale(0.95);
+    filter: brightness(90%);
+  }
+}
+
+.navbar-create-item {
+  font-size: 2.8rem;
+}
+
+.navbar-messenger-item {
+  font-size: 1.8rem;
+}
+
+.navbar-notifications-item {
+  font-size: 1.8rem;
+  transform: rotate(-15deg);
+}

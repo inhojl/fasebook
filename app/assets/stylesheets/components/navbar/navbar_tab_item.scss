@@ -1,0 +1,42 @@
+.navbar-tab-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.6rem;
+  color: $gray-13;
+ 
+  flex-basis: inherit;
+  flex-grow: inherit;
+  flex-shrink: inherit;
+  height: inherit;
+  width: inherit;
+  max-width: inherit;
+  min-width: inherit;
+  border-bottom: 3px solid transparent;
+  padding-top: 3px;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s linear;
+  }
+
+  &:hover .navbar-tab-item__icon {
+    height: 4.8rem;
+    width: 100%;
+    background: $gray-18;
+    border-radius: 1rem;
+  }
+
+  &--active {
+    color: $blue-1;
+    border-bottom: 3px solid $blue-1;
+    &:hover .navbar-tab-item__icon{
+      background: transparent;
+    }
+  }
+
+}
+

@@ -7,6 +7,10 @@
 @import "base/base.scss";
 @import "base/variables.scss";
 
+// App
+@import "components/app.scss";
+
+
 // Splash
 @import "components/splash/splash_layout.scss";
 @import "components/splash/splash_header.scss";
@@ -14,6 +18,14 @@
 @import "components/splash/login_form.scss";
 @import "components/splash/signup_form.scss";
 @import "components/splash/inputs.scss";
+
+// Navbar
+@import "components/navbar/navbar_layout.scss";
+@import "components/navbar/logo.scss";
+@import "components/navbar/search_bar.scss";
+@import "components/navbar/navbar_tab_item.scss";
+@import "components/navbar/navbar_user_item.scss";
+@import "components/navbar/navbar_settings_menu";
 
 // Animations through React
 @import "react-transitions.scss"

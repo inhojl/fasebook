@@ -8,7 +8,7 @@ import NavbarContainer from './navbar/navbar_container';;
 import { AuthRoute, ProtectedRoute } from '../util/route';
 
 const App = () => (
-  <div>
+  <div className='app'>
     <NavbarContainer />
     <Switch>
       <Route exact path="/" component={HomePageContainer} />

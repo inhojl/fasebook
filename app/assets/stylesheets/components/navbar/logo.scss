@@ -1,0 +1,23 @@
+.logo {
+  position: relative;
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  background-image: linear-gradient(to top, #0064E1, #29b4ff);
+
+  &::after {
+    position: absolute;
+    content: "f";
+    font-family: 'Poppins';
+    font-size: 4.7rem;
+    color: $white-1;
+    top: 61%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// dark blue #0064E1
+// light blue #19ACFE

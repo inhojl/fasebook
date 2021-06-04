@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsfeedPage = () => (
   <div>
-    Newsfeed Page
+    {/* Newsfeed Page */}
   </div>
 )
 

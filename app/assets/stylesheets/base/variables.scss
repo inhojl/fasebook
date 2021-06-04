@@ -3,6 +3,7 @@ $white-1: #FFFFFF;
 
 $black-1: #1c1e21;
 $black-2: #050505;
+$black-3: #1C1D21;
 
 $gray-1: #606770;
 $gray-2: #f5f6f7;
@@ -14,6 +15,14 @@ $gray-7: #949699;
 $gray-8: #dadde1;
 $gray-9: #737373;
 $gray-10: #606771;
+$gray-11: #757575;
+$gray-12: #717c88;
+$gray-13: #b3b9c5;
+$gray-14: #E2E5EA;
+$gray-15: #65676B;
+$gray-16: #CED0D4;
+$gray-17: #F2F2F2;
+$gray-18: #F2F3F5;
 
 $transparent-gray-1: rgba(255, 255, 255, .8);
 
@@ -33,9 +42,15 @@ $red-2: #be4b49;
 // Breakpoints
 $medium-width: 901px;
 $medium-large-width: 1075px;
+$medium-large-width-2: 1100px;
+$large-transition: 1259px;
+$large: 1260px;
 
+$shadow-1: rgba(0, 0, 0, 0.1);
+$shadow-2: rgba(0, 0, 0, 0.2);
+$shadow-inset: rgba(255, 255, 255, 0.5);
 
-
+$user-item-menu-shadow: 0 12px 28px 0 $shadow-2,0 2px 4px 0 $shadow-1,inset 0 0 0 1px $shadow-inset;
 
 
 
