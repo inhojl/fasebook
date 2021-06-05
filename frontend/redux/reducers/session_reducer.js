@@ -1,7 +1,7 @@
 import {
   RECEIVE_CURRENT_USER,
   LOGOUT_CURRENT_USER
-} from '../../actions/session'
+} from '../actions/user'
 
 const _nullUser = {
   id: null
@@ -10,7 +10,7 @@ const _nullUser = {
 export default (state = _nullUser, action) => {
   Object.freeze(state)
   switch (action.type) {
-    case RECEIVE_CURRENT_USER: return { id: action.currentUser.id };
+    case RECEIVE_CURRENT_USER: return { id: action.currentUser.user.id };
     case LOGOUT_CURRENT_USER: return _nullUser;
     default: return state;
   }

@@ -1,0 +1,159 @@
+.profile-header {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: $white-1;
+  
+  &__picture-banner {
+    position: relative;
+    width: 100%;
+    max-width: 94rem;
+    max-height: 34.81rem;
+  }
+  
+  &__cover-photo {
+    display: block;
+    background-color: #F0F2F5;
+    padding-top: 37.037%;
+    border-radius: 0 0 0.8rem 0.8rem; 
+    background: linear-gradient(to top, $gray-19 0%, $gray-5 20%, $gray-5 80%);
+  }
+
+  &__upload-cover-photo {
+    position: absolute;
+    width: 16.85rem;
+    height: 3.6rem;
+    background-color: $white-1;
+    padding: 1.2rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.6rem;
+    right: 3.2rem;
+    bottom: 1.6rem;
+    font-weight: bold;
+    @include button-click-animation;
+  }
+
+  &__profile-picture {
+    position: absolute;
+    width: 17.6rem;
+    height: 17.6rem;
+    padding: 0.4rem;
+    background-color: $white-1;
+    border-radius: 50%;
+    left: 50%;
+    bottom: -1.7rem;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__profile-image {
+    background-color: $gray-13;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__upload-profile-picture {
+    position: absolute;
+    cursor: pointer;
+    bottom: 1.3rem;
+    right: 1rem;
+    @include navbar-menu-icon;
+    @include button-click-animation;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    margin-top: 2.5rem;
+  }
+
+  &__user-name {
+    font-size: 3.2rem;
+    font-weight: bold;
+  }
+
+  &__biography {
+    padding-top: 1.6rem;
+    font-size: 1.7rem;
+    color: $gray-15;
+  }
+
+  &__edit {
+    color: $blue-6;
+    font-size: 1.5rem;
+    margin: 0.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+
+  &__divider-wrapper {
+    width: 100%;
+    padding: 0 1.6rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+  &__divider {
+    border-bottom: 1px solid $gray-16;
+    width: 87.6rem;
+  }
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1.6rem;
+    max-width: 90.8rem;
+    
+
+    
+  }
+
+  &__tab-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $gray-15;
+    height: 6rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+
+  &__button {
+    width: 12.518rem;
+    height: 3.6rem;
+    padding: 0 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: auto;
+    background-color: $gray-20;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    @include button-click-animation;
+  }
+
+  
+
+
+}

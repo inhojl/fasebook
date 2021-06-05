@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SignupForm from './signup_form';
-import { signup } from '../../../../redux/actions/session';
-import { RESET_SIGNUP_ERRORS } from '../../../../redux/actions/session'
+import { signup } from '../../../../redux/actions/user';
+import { RESET_SIGNUP_ERRORS } from '../../../../redux/actions/user'
 
 const mapStateToProps = (state) => ({
   errors: state.errors.signup

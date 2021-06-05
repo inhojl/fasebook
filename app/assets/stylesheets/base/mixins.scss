@@ -50,3 +50,61 @@
   margin: 0.8rem 0.8rem;
   border-bottom: 1px solid $gray-16;
 }
+
+
+@mixin tab-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $gray-15;
+ 
+  flex-basis: inherit;
+  flex-grow: inherit;
+  flex-shrink: inherit;
+  height: inherit;
+  width: inherit;
+  max-width: inherit;
+  min-width: inherit;
+  border-bottom: 3px solid transparent;
+  padding-top: 3px;
+  background-color: transparent;
+
+  &__inner-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.6rem;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.2s linear;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    height: 5.2rem;
+  }
+
+  &:hover > div[class$="__inner-frame"] {
+    width: 100%;
+    background-color: $gray-18;
+  }
+
+  &--active {
+    color: $blue-1;
+    border-bottom: 3px solid $blue-1;
+    &:hover > div[class$="__inner-frame"]{
+      background-color: transparent;
+    }
+  }
+}
+
+
+@mixin button-click-animation {
+  &:hover {
+    filter: brightness(95%);
+  }
+  &:active {
+    transform: scale(0.95);
+    filter: brightness(90%);
+  }
+}

@@ -2,7 +2,7 @@ import {
   RECEIVE_SIGNUP_ERRORS,
   RECEIVE_CURRENT_USER,
   RESET_SIGNUP_ERRORS
-} from '../../actions/session';
+} from '../../actions/user';
 
 
 const INITIAL_STATE = {

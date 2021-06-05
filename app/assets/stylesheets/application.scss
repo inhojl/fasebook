@@ -32,5 +32,9 @@
 @import "components/navbar/navbar_create_menu";
 
 
+// Profile
+@import "components/profile/profile_header.scss";
+@import "components/profile/profile_tab_item.scss";
+
 // Animations through React
 @import "react-transitions.scss"

@@ -7,6 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+RelationshipStatus.create!(label: "Single")
+RelationshipStatus.create!(label: "In a relationship")
+RelationshipStatus.create!(label: "Engaged")
+RelationshipStatus.create!(label: "Married")
+RelationshipStatus.create!(label: "In a civil union")
+RelationshipStatus.create!(label: "In a domestic partnership")
+RelationshipStatus.create!(label: "In an open relationship")
+RelationshipStatus.create!(label: "It's complicated")
+RelationshipStatus.create!(label: "Separated")
+RelationshipStatus.create!(label: "Divorced")
+RelationshipStatus.create!(label: "Widowed")
+
+
 Gender.create!(label: "Male", parent_id: nil)
 Gender.create(label: "Female", parent_id: nil)
 Gender.create(label: "Custom", parent_id: nil)
@@ -18,7 +31,7 @@ Gender.create(label: "Cis", parent_id: 3)
 Gender.create(label: "Cis Female", parent_id: 3)
 Gender.create(label: "Cis Male", parent_id: 3)
 
-User.create!(
+user1 = User.create!(
   email: 'joe@email.com',
   first_name: 'Joe',
   last_name: 'Johnson',
@@ -27,7 +40,8 @@ User.create!(
   password: '123456'
 )
 
-User.create!(
+
+user2 = User.create!(
   email: 'welcome@fasebook.com',
   first_name: 'Bruce',
   last_name: 'Wayne',

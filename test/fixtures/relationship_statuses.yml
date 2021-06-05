@@ -1,10 +1,9 @@
 # == Schema Information
 #
-# Table name: genders
+# Table name: relationship_statuses
 #
-#  id        :bigint           not null, primary key
-#  label     :string
-#  parent_id :bigint
+#  id    :bigint           not null, primary key
+#  label :string           not null
 #
 
 # This model initially had no columns defined. If you add columns to the

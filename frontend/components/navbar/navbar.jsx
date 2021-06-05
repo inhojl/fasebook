@@ -25,7 +25,8 @@ const ItemType = {
 const Navbar = ({ 
   loggedIn,
   logout,
-  currentUserId
+  currentUserId,
+  currentUser
 }) => {
 
   const [selected, setSelected] = useState('');
@@ -112,7 +113,7 @@ const Navbar = ({
             {
               selected === ItemType.SETTINGS ? 
                 <OutsideClickNotifier excludeIds={['navbar-settings-item']} sideEffect={() => { setSelected('')}}>
-                  <NavbarSettingsMenu currentUserId={currentUserId} setSelected={setSelected} logout={logout}/>
+                  <NavbarSettingsMenu currentUser={currentUser} currentUserId={currentUserId} setSelected={setSelected} logout={logout}/>
                 </OutsideClickNotifier>
                 : null 
             }

@@ -1,8 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  email           :string           not null
+#  username        :string
+#  session_token   :string           not null
+#  password_digest :string           not null
+#  first_name      :string           not null
+#  last_name       :string           not null
+#  birthdate       :date             not null
+#  gender_id       :bigint           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
 
   attr_reader :password
 
   belongs_to :gender
+
+  has_one :profile
 
   validates :email, presence: { message: "What's your email?" }, uniqueness: { message: "This email has already been taken." }
   validates :session_token, presence: true, uniqueness: true
@@ -15,7 +33,7 @@ class User < ApplicationRecord
 
   validates :password, presence: { message: "What's your password?"}, length: { minimum: 6, message: "Password must contain at least 6 characters." }, allow_nil: true
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_profile
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -40,6 +58,10 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
+  end
+
+  def ensure_profile
+    self.build_profile if !self.profile
   end
 
 end

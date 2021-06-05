@@ -2,7 +2,7 @@ import {
   RECEIVE_SESSION_ERRORS,
   RECEIVE_CURRENT_USER,
   RESET_SESSION_ERRORS
-} from '../../actions/session';
+} from '../../actions/user';
 
 const INITIAL_STATE = {
   email: [],
