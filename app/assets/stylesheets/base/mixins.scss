@@ -108,3 +108,38 @@
     filter: brightness(90%);
   }
 }
+
+
+@mixin button {
+  width: 12.518rem;
+  height: 3.6rem;
+  padding: 0 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: $gray-20;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+@mixin button--link {
+  font-size: 1.7rem;
+  color: $blue-7;
+  
+}
+
+@mixin container-block {
+  background: $white-1;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 2px $shadow-2;
+  color: $black-2;
+  padding: 2rem 1.6rem;
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: -0.3rem;
+  }
+}

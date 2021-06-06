@@ -4,7 +4,7 @@ const FriendsPage = () => {
 
 
   return (
-    <div style={{fontSize: 30}}>
+    <div className='friends-layout'>
       Friends Page
     </div>
   );

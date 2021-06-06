@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NewsfeedPage = () => (
-  <div style={{fontSize:30}}>
+  <div className='friends-layout'>
     Newsfeed Page
   </div>
 )

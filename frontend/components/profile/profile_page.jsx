@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../../util/route'
 import ProfileHeader from './profile_header';
-import ProfileWall from './profile_wall';
+import ProfilePosts from './profile_posts';
+import ProfileAbout from './profile_about';
+import ProfileFriends from './profile_friends';
+
 // should get user state
 const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
 
@@ -21,7 +26,11 @@ const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
         <ProfileHeader user={user} profile={profile} /> 
       </header>
       <main className='profile-layout__main'>
-        <ProfileWall />
+        <Switch>
+          <ProtectedRoute exact path={match.path} component={ProfilePosts} />
+          <ProtectedRoute exact path={`${match.path}/about`} component={ProfileAbout} />
+          <ProtectedRoute exact path={`${match.path}/friends`} component={ProfileFriends} />
+        </Switch>
       </main>
     </div>
   ) : null;

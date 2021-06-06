@@ -38,8 +38,8 @@ const SignupForm = ({ signup, setShowSignupModal, errors, resetErrors }) => {
     $('.signup-form__signup-button').addClass('js-opaque-1')
     $('div[class^="signup-form__input-wrapper"]').addClass('js-opaque-1')
     signup(user)
+      .fail(() => setLoggingIn(false))
       .always(() => {
-        setLoggingIn(false)
         $('.signup-form__signup-button').removeClass('js-opaque-1')
         $('div[class^="signup-form__input-wrapper"]').removeClass('js-opaque-1')
       })
@@ -47,7 +47,10 @@ const SignupForm = ({ signup, setShowSignupModal, errors, resetErrors }) => {
 
   const onExit = (event) => {
     setShowSignupModal(false);
-    $('body').css('overflow', 'visible');
+    $('body').css({
+      'position': 'static'
+    })
+            
   }
 
   const renderError = (key) => {

@@ -60,7 +60,9 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
 
   const onCreateAccount = (event) => {
     setShowSignupModal(true);
-    $('body').css('overflow', 'hidden');
+    $('body').css({
+      'position': 'fixed'
+    })
   }
 
 

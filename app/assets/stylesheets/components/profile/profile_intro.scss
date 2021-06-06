@@ -1,0 +1,50 @@
+.profile-intro {
+  background: $white-1;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 2px $shadow-2;
+  color: $black-2;
+  padding: 2rem 1.6rem;
+  &__heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: -0.3rem;
+
+  }
+  & > * {
+    padding-bottom: 1.6rem;
+  }
+
+  &__edit-details {
+    @include button;
+    @include button-click-animation;
+    width: 100%;
+  }
+  
+  
+}
+
+.profile-intro-item {
+  
+  display: flex;
+  align-items: center;
+
+  font-size: 1.5rem;
+
+  &__icon {
+    color: $gray-21;
+    font-size: 1.9rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__description {
+    margin-left: 12px;
+  }
+
+  &__value {
+    font-weight: bold;
+  }
+}

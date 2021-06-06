@@ -1,0 +1,47 @@
+.profile-friends-summary {
+  @include container-block;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  
+
+
+  &__see-all-wrapper {
+    position: relative;
+    margin-left: auto;
+    margin-top: -0.3rem;
+  }
+
+  &__heading {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__see-all {
+    @include button--link;
+    
+    position: relative;
+    
+    &-background {
+      position: absolute;
+      width: 113%;
+      height: 100%;
+      pointer-events: none;
+      padding: 0 1.2rem;
+      height: 3.6rem;
+      top: 50%;
+      left: 50%;
+      background-color: transparent;
+      transform: translate(-50%, -50%);
+      border-radius: 0.6rem;
+      transition: background-color .2s linear;
+    }
+    
+  }
+
+  &:hover .profile-friends-summary__see-all-background {
+    background-color: $gray-18;
+  }
+}
