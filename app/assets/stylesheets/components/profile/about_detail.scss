@@ -1,0 +1,52 @@
+.about-contact-and-basic-info-detail,
+.about-overview-detail,
+.about-places-detail,
+.about-relationships-detail {
+  background-color: $white-1;
+  height: 100%;
+  width: 100%;
+  padding: 1.6rem 3.2rem 1.6rem 1.6rem;
+
+
+  &__heading {
+    font-size: 1.7rem;
+    color: $black-2;
+    font-weight: bold;
+    margin-top: .2rem;
+    margin-bottom: 1.4rem;
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.6rem;
+    width: 100%;
+
+    &:hover > span[class$="__add-button-message"] {
+      text-decoration: underline;
+    }
+  }
+
+  &__add-button-icon {
+    color: $blue-8;
+  }
+  &__add-button-message {
+    color: $blue-6;
+    padding: 0.6rem;
+  }
+
+  &__add-button-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    padding: 0.6rem;
+    font-size: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__add-button-message {
+    font-size: 1.5rem;
+  }
+}
+

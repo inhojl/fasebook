@@ -1,0 +1,32 @@
+.profile-about-layout {
+
+  background-color: $white-1;
+  display: flex;
+  justify-content: center;
+  background-color: $gray-5;
+  padding: 1.6rem;
+
+  
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 87.6rem;
+    box-shadow: 0 1px 2px $shadow-2;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+    
+}
+
+@media (min-width: $medium-small) {
+  .profile-about-layout {
+    &__container {
+
+      flex-direction: row;
+      & > *:first-child {
+        max-width: 28.7rem;
+      }
+    }
+  }
+}

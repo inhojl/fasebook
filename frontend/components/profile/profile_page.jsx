@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route'
 import ProfileHeader from './profile_header';
 import ProfilePosts from './profile_posts';
-import ProfileAbout from './profile_about';
+import ProfileAboutContainer from './profile_about_container';
+import AboutPlacesDetail from './about/about_places_detail'
 import ProfileFriends from './profile_friends';
 
 // should get user state
 const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
+
+  console.log('profile page', match.path)
+
 
   useEffect(() => {
     // check for user
@@ -27,9 +31,10 @@ const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
       </header>
       <main className='profile-layout__main'>
         <Switch>
-          <ProtectedRoute exact path={match.path} component={ProfilePosts} />
-          <ProtectedRoute exact path={`${match.path}/about`} component={ProfileAbout} />
           <ProtectedRoute exact path={`${match.path}/friends`} component={ProfileFriends} />
+          <ProtectedRoute exact path={`${match.path}/about`} component={ProfileAboutContainer} />
+          <ProtectedRoute exact path={match.path} component={ProfilePosts} />
+          <Redirect exact to={match.path} />
         </Switch>
       </main>
     </div>

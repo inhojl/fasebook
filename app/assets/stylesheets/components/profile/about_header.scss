@@ -1,0 +1,68 @@
+.about-header {
+
+  @include container-block;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid $gray-16;
+
+  &__heading {
+    margin-left: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+
+  &__overview,
+  &__places,
+  &__contact-and-basic-info,
+  &__relationships,
+  &__overview--active,
+  &__places--active,
+  &__contact-and-basic-info--active,
+  &__relationships--active
+  {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 0.6rem;
+    color: $gray-15;
+    font-weight: bold;
+    transition: all .1s linear;
+    height: 3.433rem;
+    margin-bottom: 0.8rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background-color: $gray-18;
+    }
+
+    &:active {
+      filter: brightness(93%);
+    }
+  }
+
+  &__overview--active,
+  &__places--active,
+  &__contact-and-basic-info--active,
+  &__relationships--active {
+    color: $blue-4;
+    background-color: $blue-5;
+  }
+
+}
+
+
+@media (min-width: $medium-small) {
+  .about-header {
+    border-bottom: none; 
+    border-right: 1px solid $gray-16;
+  }
+}
