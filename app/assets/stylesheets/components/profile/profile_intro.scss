@@ -8,11 +8,12 @@
     font-size: 2rem;
     font-weight: bold;
     margin-top: -0.3rem;
+    margin-bottom: 2rem;
+  }
+  & > .profile-intro-item {
+    padding-bottom: 2rem;
+  }
 
-  }
-  & > * {
-    padding-bottom: 1.6rem;
-  }
 
   &__edit-details {
     @include button;
@@ -24,6 +25,7 @@
 }
 
 .profile-intro-item {
+
   
   display: flex;
   align-items: center;
@@ -47,4 +49,6 @@
   &__value {
     font-weight: bold;
   }
+
+
 }

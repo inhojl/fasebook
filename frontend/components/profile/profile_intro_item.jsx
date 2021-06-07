@@ -5,6 +5,7 @@ import { faHouseUser, faMapMarkerAlt, faHeart  } from '@fortawesome/free-solid-s
 
 const ProfileIntroItem = ({ type, prefix, value }) => {
 
+
   let icon;
   switch(type) {
     case 'currentCity':

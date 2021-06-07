@@ -5,13 +5,13 @@ import ProfileCreatePost from './profile_create_post';
 import ProfilePostFilter from './profile_post_filter';
 import ProfilePostList from './profile_post_list';
 
-const ProfilePosts = () => {
+const ProfilePosts = ({ profile, relationshipStatuses }) => {
 
   return (
     <section className='profile-posts-layout'>
       <div className='profile-posts-layout__container'>
         <section className='profile-posts-layout__summary'>
-          <ProfileIntro />
+          <ProfileIntro relationshipStatuses={relationshipStatuses} profile={profile} />
           <ProfileFriendsSummary />
         </section>
         <section className='profile-posts-layout__wall'>

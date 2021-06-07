@@ -5,9 +5,18 @@ import ProfileHeader from './profile_header';
 import ProfilePosts from './profile_posts';
 import ProfileAboutContainer from './profile_about_container';
 import ProfileFriends from './profile_friends';
+import { fetchRelationshipStatuses } from '../../redux/actions/relationship_status';
 
 // should get user state
-const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
+const ProfilePage = ({ 
+  user, 
+  profile, 
+  fetchUser, 
+  currentUserId, 
+  match, 
+  relationshipStatuses, 
+  fetchRelationshipStatuses 
+}) => {
 
   console.log('profile page', match.path)
 
@@ -18,6 +27,7 @@ const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
         // pull all user information
       // else
       // history.push("/")
+      fetchRelationshipStatuses()
       fetchUser(match.params.userId)
         .fail(() => history.push('/'))
   }, [])
@@ -32,7 +42,7 @@ const ProfilePage = ({ user, profile, fetchUser, currentUserId, match }) => {
         <Switch>
           <ProtectedRoute exact path={`${match.path}/friends`} component={ProfileFriends} />
           <ProtectedRoute exact path={`${match.path}/about`} component={ProfileAboutContainer} />
-          <ProtectedRoute exact path={match.path} component={ProfilePosts} />
+          <ProtectedRoute relationshipStatuses={relationshipStatuses} profile={profile} exact path={match.path} component={ProfilePosts} />
           <Redirect exact to={match.path} />
         </Switch>
       </main>
