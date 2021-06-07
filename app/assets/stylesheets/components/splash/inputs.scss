@@ -34,8 +34,25 @@
     }
   }
 
+  &__arrow-wrapper--profile {
+    position: relative
+  }
+
+  &__dropdown-icon--profile {
+    position: absolute;
+    display: block;
+    z-index: 3;
+    top: 0.7rem;
+    right: 1rem;
+    pointer-events: none;
+    font-size: 1.7rem;
+    color: $black-2;
+  }
+
+
   &__select,
-  &__select--error {
+  &__select--error,
+  &__select--profile {
     position: relative;
     border-radius: 0.6rem;
     padding: 0 2rem 0 .8rem;
@@ -44,6 +61,22 @@
     height: 3.6rem;
     appearance: none;
     width: 100%;
+  }
+
+  &__select--profile {
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: none;
+    padding: 1rem 1.2rem;
+    background-color: $gray-20;
+
+    &:active {
+      filter: brightness(90%);
+    }
+    option {
+      background-color: $white-1;
+      font-weight: 400;
+    }
   }
 
   &__select--error {

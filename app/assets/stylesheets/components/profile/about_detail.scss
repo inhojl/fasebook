@@ -6,14 +6,24 @@
   height: 100%;
   width: 100%;
   padding: 1.6rem 3.2rem 1.6rem 1.6rem;
-
+  border-radius: 0 0 0.8rem 0.8rem;
 
   &__heading {
     font-size: 1.7rem;
     color: $black-2;
     font-weight: bold;
-    margin-top: .2rem;
+    margin-top: 0.2rem;
     margin-bottom: 1.4rem;
+  }
+
+  &__input-form,
+  &__input-display {
+    margin-bottom: 2rem;
+  }
+
+  &__input-form:last-child,
+  &__input-display:last-child {
+    margin-bottom: 0;
   }
 
   &__add-button {
@@ -27,18 +37,16 @@
     }
   }
 
-  &__add-button-icon {
-    color: $blue-8;
-  }
   &__add-button-message {
     color: $blue-6;
     padding: 0.6rem;
   }
 
   &__add-button-icon {
-    width: 3.6rem;
-    height: 3.6rem;
-    padding: 0.6rem;
+    color: $blue-8;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.6rem 0.6rem 0.6rem 0;
     font-size: 2.4rem;
     display: flex;
     align-items: center;
@@ -50,3 +58,11 @@
   }
 }
 
+@media (min-width: $medium-small) {
+  .about-contact-and-basic-info-detail,
+  .about-overview-detail,
+  .about-places-detail,
+  .about-relationships-detail {
+    border-radius: 0 0.8rem 0.8rem 0;
+  }
+}

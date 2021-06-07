@@ -20,7 +20,16 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-
+    @user = User.find_by(id: params[:id])
+    if @user
+      if @user.update(user_params)
+        render "api/users/show"
+      else
+        render status: :unprocessable_entity
+      end
+    else
+      render status: :unprocessable_entity
+    end
   end
 
   private
@@ -32,7 +41,7 @@ class Api::UsersController < ApplicationController
       :first_name, 
       :last_name, 
       :birthdate, 
-      :gender_id
+      :gender_id,
     )
   end
 

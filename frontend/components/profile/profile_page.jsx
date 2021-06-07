@@ -4,7 +4,6 @@ import { AuthRoute, ProtectedRoute } from '../../util/route'
 import ProfileHeader from './profile_header';
 import ProfilePosts from './profile_posts';
 import ProfileAboutContainer from './profile_about_container';
-import AboutPlacesDetail from './about/about_places_detail'
 import ProfileFriends from './profile_friends';
 
 // should get user state
