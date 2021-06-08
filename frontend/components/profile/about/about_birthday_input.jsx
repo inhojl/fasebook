@@ -15,7 +15,8 @@ const AboutBirthdayInput = ({ user, name, updateUser, onCancel }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     updateUser({ id: user.id, [snakeCase(name)]: `${year}-${month}-${day}` })
-    onCancel();
+      .always(() => onCancel())
+  
   }
 
   

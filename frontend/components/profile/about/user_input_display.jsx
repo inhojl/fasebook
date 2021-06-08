@@ -17,7 +17,6 @@ const UserInputDisplay = ({ user, name, value, label, icon, updateUser, setShow,
 
   const onDelete = () => {
     updateUser({ id: user.id, [snakeCase(name)]: '' })
-    setShowMenu(false);
   }
 
   //   <OutsideClickNotifier excludeIds={['navbar-messenger-item']} sideEffect={() => {setSelected('')}}>

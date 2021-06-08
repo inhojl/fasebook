@@ -9,7 +9,7 @@ const UserInputForm = ({ name, placeholder, updateUser, onCancel, user }) => {
   const onInputFormSubmit = (event) => {
     event.preventDefault();
     updateUser({ id: user.id, [snakeCase(name)]: value })
-    onCancel();
+      .always(() => onCancel())
   }
 
   return (

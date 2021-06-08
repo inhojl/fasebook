@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileIntroItem from './profile_intro_item';
 
-const ProfileIntro = ({ relationshipStatuses, profile }) => {
+const ProfileIntro = ({ relationshipStatuses, profile, setShowEditDetailsForm }) => {
 
   console.log(relationshipStatuses)
   console.log(profile)
@@ -32,7 +32,7 @@ const ProfileIntro = ({ relationshipStatuses, profile }) => {
             prefix={relationshipStatuses[profile.relationshipStatusId].label} />
           : null
       }
-      <button type='button' className='profile-intro__edit-details'>Edit Details</button>
+      <button type='button' onClick={() => setShowEditDetailsForm(true)} className='profile-intro__edit-details'>Edit Details</button>
     </div>
   )
 

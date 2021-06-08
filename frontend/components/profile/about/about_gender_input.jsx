@@ -11,7 +11,8 @@ const AboutGenderInput = ({ user, name, updateUser, onCancel }) => {
     event.preventDefault();
     console.log(genderId)
     updateUser({ id: user.id, [snakeCase(name)]: genderId })
-    onCancel();
+      .always(() => onCancel())
+  
   }
   
   return (

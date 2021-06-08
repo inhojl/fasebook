@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH, faPencilAlt, faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { snakeCase } from 'snake-case';
@@ -10,6 +10,7 @@ const ProfileInputDisplay = ({ profile, name, value, label, icon, updateProfile,
 
   const [ showMenu, setShowMenu ] = useState(false);
 
+
   const onEdit = () => {
     setShow(true)
     setShowMenu(false);
@@ -17,7 +18,6 @@ const ProfileInputDisplay = ({ profile, name, value, label, icon, updateProfile,
 
   const onDelete = () => {
     updateProfile({ id: profile.id, [snakeCase(name)]: '' })
-    setShowMenu(false);
   }
 
 //   <OutsideClickNotifier excludeIds={['navbar-messenger-item']} sideEffect={() => {setSelected('')}}>

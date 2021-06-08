@@ -40,6 +40,9 @@ const SignupForm = ({ signup, setShowSignupModal, errors, resetErrors }) => {
     signup(user)
       .fail(() => setLoggingIn(false))
       .always(() => {
+        $('body').css({
+          'position': 'static'
+        })
         $('.signup-form__signup-button').removeClass('js-opaque-1')
         $('div[class^="signup-form__input-wrapper"]').removeClass('js-opaque-1')
       })

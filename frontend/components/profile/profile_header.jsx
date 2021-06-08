@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import ProfileTabItem from './profile_tab_item';
+import ProfileBiographyForm from './profile_biography_form';
 
-const ProfileHeader = ({ user, profile }) => {
+const ProfileHeader = ({ user, profile, updateProfile, loading, isLoaded, isLoading }) => {
+
+  const [ showBiographyForm, setShowBiographyForm ] = useState(false)
+
 
   return (
     <div className='profile-header'>
@@ -23,8 +27,17 @@ const ProfileHeader = ({ user, profile }) => {
       </div>
       <div className='profile-header__heading'>
         <h1 className='profile-header__user-name'>{`${user.firstName} ${user.lastName}`}</h1>
-        <p className='profile-header__biography'>{profile.biography}</p>
-        <span className='profile-header__edit'>Edit</span>
+        {
+          profile.biography && !showBiographyForm ?
+          <p className='profile-header__biography'>{profile.biography}</p>
+          : null
+        }
+        
+        {
+          showBiographyForm ?
+          <ProfileBiographyForm isLoaded={isLoaded} isLoading={isLoading} setShowBiographyForm={setShowBiographyForm} profile={profile} updateProfile={updateProfile} />
+          : <span onClick={() => setShowBiographyForm(true)} className={`profile-header__${profile.biography ? 'edit': 'add'}`} >{profile.biography ? 'Edit' : 'Add Bio'}</span>
+        }
       </div>
       <div className='profile-header__divider-wrapper'>
         <div className='profile-header__divider '></div>

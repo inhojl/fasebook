@@ -7,10 +7,12 @@ const AboutRelationshipStatusInput = ({ profile, name, updateProfile, onCancel, 
 
   const [relationshipStatusId, setRelationshipStatusId] = useState(profile.relationshipStatusId || '')
 
+  
+
   const onSubmit = (event) => {
     event.preventDefault();
     updateProfile({ id: profile.id, [snakeCase(name)]: relationshipStatusId })
-    onCancel();
+      .always(() => onCancel());
   }
 
   return (

@@ -1,0 +1,46 @@
+.profile-biography-form {
+  margin-top: 0.6rem;
+
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    background-color: $gray-5;
+    width: 30rem;
+    height: 7rem;
+    border-radius: 0.6rem;
+    border: 1px solid $gray-16;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.5rem;
+    resize: none;
+  }
+
+  &__options {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
+  &__cancel,
+  &__save {
+    @include button;
+    @include button-click-animation;
+    width: auto;
+  }
+
+  &__save {
+    background-color: $blue-1;
+    color: $white-1;
+    margin-left: 0.5rem;
+
+    &:hover {
+      filter: brightness(90%);
+    }
+
+    &:active {
+      filter: brightness(85%);
+    }
+  }
+
+}

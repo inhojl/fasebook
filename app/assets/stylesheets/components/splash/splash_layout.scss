@@ -27,7 +27,7 @@
     right: 0;
     bottom: 0;
     top: 0;
-    z-index: 1;
+    z-index: 1000;
     background-color: $transparent-gray-1;
   }
   
@@ -37,11 +37,12 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1003;
     
     &-top-guard {
       overflow-y: scroll;
       position: absolute;
-      z-index: 100000;
+      z-index: 1002;
       top: 0;
       left: 0;
 

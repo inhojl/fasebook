@@ -25,7 +25,8 @@ class Api::ProfilesController < ApplicationController
     params.require(:profile).permit(
       :relationship_status_id,
       :current_city,
-      :hometown
+      :hometown,
+      :biography
     )
   end
 end

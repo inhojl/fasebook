@@ -94,7 +94,8 @@
     color: $gray-15;
   }
 
-  &__edit {
+  &__edit,
+  &__add {
     color: $blue-6;
     font-size: 1.5rem;
     margin: 0.2rem;
@@ -103,6 +104,10 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__add {
+    margin-top: 0.8rem;
   }
 
 
@@ -160,3 +165,5 @@
 
 
 }
+
+

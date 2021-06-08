@@ -9,7 +9,8 @@ const ProfileInputForm = ({ name, placeholder, updateProfile, onCancel, profile 
   const onInputFormSubmit = (event) => {
     event.preventDefault();
     updateProfile({ id: profile.id, [snakeCase(name)]: value })
-    onCancel();
+      .always(() => onCancel());
+  
   }
 
   return (
