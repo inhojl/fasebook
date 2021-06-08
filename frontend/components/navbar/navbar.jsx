@@ -29,6 +29,9 @@ const Navbar = ({
   currentUser
 }) => {
 
+  console.log(currentUserId)
+  console.log(currentUser)
+
   const [selected, setSelected] = useState('');
 
   const onSelect = (type) => {

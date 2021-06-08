@@ -1,10 +1,20 @@
 import React from 'react';
 import ProfileIntroItem from './profile_intro_item';
+import CurrentUserItem from '../util/current_user_item_container';
+
 
 const ProfileIntro = ({ relationshipStatuses, profile, setShowEditDetailsForm }) => {
 
   console.log(relationshipStatuses)
   console.log(profile)
+
+  const onClick = () => {
+    setShowEditDetailsForm(true)
+    $('body').css({
+      'position': 'fixed'
+    })
+  }
+
 
   return (
     <div className='profile-intro'>
@@ -29,10 +39,12 @@ const ProfileIntro = ({ relationshipStatuses, profile, setShowEditDetailsForm })
         relationshipStatuses && profile.relationshipStatusId ?
           <ProfileIntroItem
             type='relationshipStatus'
-            prefix={relationshipStatuses[profile.relationshipStatusId].label} />
+            prefix={relationshipStatuses[profile.relationshipStatusId] ? relationshipStatuses[profile.relationshipStatusId].label : ''} />
           : null
       }
-      <button type='button' onClick={() => setShowEditDetailsForm(true)} className='profile-intro__edit-details'>Edit Details</button>
+      <CurrentUserItem>
+        <button type='button' onClick={onClick} className='profile-intro__edit-details'>Edit Details</button>
+      </CurrentUserItem>
     </div>
   )
 

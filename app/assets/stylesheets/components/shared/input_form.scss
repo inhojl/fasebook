@@ -9,6 +9,7 @@
   &__placeholder,
   &__input {
     font-size: 1.5rem;
+    
   }
 
   &__input-wrapper {
@@ -46,6 +47,7 @@
     border: 1px solid $gray-16;
     border-radius: 0.6rem;
     padding: 2.6rem 1.6rem 1rem;
+    text-align: justify;
     
     &:focus + div[class$="__placeholder"] {
       color: $blue-8;

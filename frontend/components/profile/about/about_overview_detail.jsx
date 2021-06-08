@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PlusCircleIcon from '../../icons/plus_circle';
 import ProfileInputForm from './profile_input_form';
 import ProfileInputDisplay from './profile_input_display'
+import CurrentUserItem from '../../util/current_user_item_container';
 import { faHouseUser, faMapMarkerAlt, faHeart  } from '@fortawesome/free-solid-svg-icons';
 import AboutRelationshipStatusInput from './about_relationship_status_input';
 
@@ -23,12 +24,14 @@ const AboutOverviewDetail = ({
   const [ showRelationshipStatus, setShowRelationshipStatus ] = useState(false);
 
   const AddButton = ({ message, onClick }) => (
-    <button onClick={onClick}type='button' className='about-overview-detail__add-button'>
-      <span className='about-overview-detail__add-button-icon'>
-        <PlusCircleIcon />
-      </span>
-      <span className='about-overview-detail__add-button-message'>{message}</span>
-    </button>
+    <CurrentUserItem>
+      <button onClick={onClick}type='button' className='about-overview-detail__add-button'>
+        <span className='about-overview-detail__add-button-icon'>
+          <PlusCircleIcon />
+        </span>
+        <span className='about-overview-detail__add-button-message'>{message}</span>
+      </button>
+    </CurrentUserItem>
   )
 
   const showInput = (profile, value, name, label, placeholder, icon, show, setShow) => {

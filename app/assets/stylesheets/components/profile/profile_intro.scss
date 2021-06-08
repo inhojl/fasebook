@@ -8,12 +8,22 @@
     font-size: 2rem;
     font-weight: bold;
     margin-top: -0.3rem;
-    margin-bottom: 2rem;
-  }
-  & > .profile-intro-item {
-    padding-bottom: 2rem;
   }
 
+  & > *:nth-child(2) {
+    margin-top: 2rem;
+  }
+
+  
+  & > .profile-intro-item {
+    padding-bottom: 2rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+ 
+  
 
   &__edit-details {
     @include button;

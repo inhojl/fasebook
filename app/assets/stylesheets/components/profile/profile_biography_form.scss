@@ -13,6 +13,9 @@
     padding: 0.8rem 1.2rem;
     font-size: 1.5rem;
     resize: none;
+
+    text-align: center;
+  
   }
 
   &__options {
@@ -42,5 +45,7 @@
       filter: brightness(85%);
     }
   }
+  
+
 
 }

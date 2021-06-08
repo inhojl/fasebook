@@ -13,10 +13,18 @@ const EditDetailsForm = ({
 }) => {
 
 
+  const onClick = () => {
+    setShowEditDetailsForm(false)
+    $('body').css({
+      'position': 'static'
+    })
+  }
+
+
 
   return (
     <div className='edit-details'>
-      <button onClick={() => setShowEditDetailsForm(false)} type='button' className='edit-details__exit-button'>
+      <button onClick={onClick} type='button' className='edit-details__exit-button'>
         <FontAwesomeIcon icon={faTimes} />
       </button>
       <h1 className='edit-details__heading'>Edit Details</h1>

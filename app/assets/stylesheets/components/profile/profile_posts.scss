@@ -31,6 +31,7 @@
   .profile-posts-layout {
     &__container {
       flex-direction: row;
+      align-items: flex-start;
     }
     
     &__summary {

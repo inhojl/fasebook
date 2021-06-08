@@ -3,6 +3,7 @@ import PlusCircleIcon from '../../icons/plus_circle';
 import ProfileInputForm from './profile_input_form';
 import ProfileInputDisplay from './profile_input_display'
 import { faHouseUser, faMapMarkerAlt  } from '@fortawesome/free-solid-svg-icons';
+import CurrentUserItem from '../../util/current_user_item_container';
 
 
 
@@ -17,12 +18,14 @@ const AboutPlacesDetail = ({
   const [ showHometown, setShowHometown ] = useState(false);
 
   const AddButton = ({ message, onClick }) => (
-    <button onClick={onClick}type='button' className='about-places-detail__add-button'>
-      <span className='about-places-detail__add-button-icon'>
-        <PlusCircleIcon />
-      </span>
-      <span className='about-places-detail__add-button-message'>{message}</span>
-    </button>
+    <CurrentUserItem>
+      <button onClick={onClick}type='button' className='about-places-detail__add-button'>
+        <span className='about-places-detail__add-button-icon'>
+          <PlusCircleIcon />
+        </span>
+        <span className='about-places-detail__add-button-message'>{message}</span>
+      </button>
+    </CurrentUserItem>
   )
 
   const showInput = (profile, name, label, placeholder, icon, show, setShow) => {

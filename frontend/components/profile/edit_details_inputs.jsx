@@ -95,6 +95,8 @@ const EditDetailsInputs = ({
     )
   }
 
+  
+
   return (
     <div className='about-overview-detail'>
       <h1 className='about-overview-detail__heading'>Current City</h1>

@@ -20,7 +20,7 @@ const ProfileBiographyForm = ({ profile, updateProfile, showForm, setShowBiograp
 
   return (
     <form onSubmit={onSave} className='profile-biography-form'>
-      <textarea onChange={(e) => setBiography(e.target.value)} className='profile-biography-form__input' value={biography || ''}></textarea>
+      <textarea placeholder='Describe who you are' onChange={(e) => setBiography(e.target.value)} className='profile-biography-form__input' value={biography || ''}></textarea>
       <div className='profile-biography-form__options'>
         <button className='profile-biography-form__cancel' onClick={onCancel} type='button'>Cancel</button>
         <button className='profile-biography-form__save' type='submit'>Save</button>

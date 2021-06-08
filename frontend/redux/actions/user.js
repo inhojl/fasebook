@@ -2,6 +2,7 @@ import * as SessionAPIUtil from '../../util/api/session';
 import * as UserAPIUtil from '../../util/api/user';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
@@ -13,6 +14,12 @@ export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
+
+export const receiveUser = (user) => ({
+  type: RECEIVE_USER,
+  user
+});
+
 
 export const receiveProfile = (profile) => ({
   type: RECEIVE_PROFILE,
@@ -60,13 +67,12 @@ export const logout = () => dispatch => (
 
 export const fetchUser = (userId) => (dispatch) => (
   UserAPIUtil.fetchUser(userId)
-    .then((user) => dispatch(receiveCurrentUser(user)))
-    .fail((error) => dispatch(receiveSignupErrors(error.responseJSON)))
+    .then((user) => dispatch(receiveUser(user)))
 );
 
 export const updateUser = (user) => (dispatch) => (
   UserAPIUtil.updateUser(user)
-    .then((user) => dispatch(receiveCurrentUser(user)))
+    .then((user) => dispatch(receiveUser(user)))
     .fail((error) => dispatch(receiveSignupErrors(error.responseJSON)))
 );
 
