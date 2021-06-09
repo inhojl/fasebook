@@ -6,6 +6,8 @@ export const fetchUser = (id) => (
   })
 )
 
+
+
 export const updateUser = (user) => (
   $.ajax({
     method: 'PATCH',

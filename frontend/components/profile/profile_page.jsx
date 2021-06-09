@@ -21,11 +21,13 @@ const ProfilePage = ({
   fetchRelationshipStatuses,
   history,
   updateProfile,
-  updateProfileFormData
+  updateProfileFormData,
+  fetchFriends
 }) => {
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
+
 
   useEffect(() => {
     // setLoading(true)

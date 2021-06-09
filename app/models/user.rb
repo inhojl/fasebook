@@ -20,7 +20,16 @@ class User < ApplicationRecord
 
   belongs_to :gender
 
-  has_one :profile
+  has_one :profile, :dependent => :destroy
+
+  # has_many :pending_sent_friendships, -> { where(friendship: { status: "PENDING_SENT"}) }
+  # has_many :pending_received_friendships, -> { where(friendship: { status: "RECEIVED"}) }
+  # has_many :friend_friendships, -> { where(friendship: { status: "FRIENDS"}) }, class_name: :Friendship, foreign_key: :user_id
+
+  has_many :friendships, :dependent => :destroy
+  has_many :friends, -> { where(friendships: { status: "FRIENDS" }) }, through: :friendships, source: :friend
+  has_many :friend_request_senders, -> { where(friendships: { status: "PENDING_RECEIVED" }) }, through: :friendships, source: :friend
+  has_many :friend_request_receivers, -> { where(friendships: { status: "PENDING_SENT" }) }, through: :friendships, source: :friend
 
   validates :email, presence: { message: "What's your email?" }, uniqueness: { message: "This email has already been taken." }
   validates :session_token, presence: true, uniqueness: true

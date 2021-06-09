@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUser, fetchProfile, updateProfile, updateProfileFormData } from '../../redux/actions/user';
+import { fetchFriends } from '../../redux/actions/friendship';
 import { fetchRelationshipStatuses } from '../../redux/actions/relationship_status';
 import ProfilePage from './profile_page';
 
@@ -18,7 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   fetchRelationshipStatuses: () => dispatch(fetchRelationshipStatuses()),
   updateProfile: (profile) => dispatch(updateProfile(profile)),
-  updateProfileFormData: (profileId, formData) => dispatch(updateProfileFormData(profileId, formData))
+  updateProfileFormData: (profileId, formData) => dispatch(updateProfileFormData(profileId, formData)),
+  fetchFriends: (userId) => dispatch(fetchFriends(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)

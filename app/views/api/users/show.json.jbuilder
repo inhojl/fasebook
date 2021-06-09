@@ -5,3 +5,4 @@ end
 json.profile do
   json.partial! "api/profiles/profile", profile: @user.profile
 end
+

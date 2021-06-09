@@ -49,3 +49,42 @@ user2 = User.create!(
   gender_id: 1,
   password: 'w3lcomeToFasebook'
 )
+
+user3 = User.create!(
+  email: 'user1@fasebook.com',
+  first_name: 'Royce',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: 'w3lcomeToFasebook'
+)
+
+
+user4 = User.create!(
+  email: 'user2@fasebook.com',
+  first_name: 'Bob',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: 'w3lcomeToFasebook'
+)
+
+
+user5 = User.create!(
+  email: 'user3@fasebook.com',
+  first_name: 'Dillan',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: 'w3lcomeToFasebook'
+)
+
+
+Friendship.create!(user_id: 1, friend_id: 2, status: "PENDING_SENT")
+Friendship.create!(user_id: 2, friend_id: 1, status: "PENDING_RECEIVED")
+
+Friendship.create!(user_id: 1, friend_id: 4, status: "PENDING_SENT")
+Friendship.create!(user_id: 4, friend_id: 1, status: "PENDING_RECEIVED")
+
+Friendship.create!(user_id: 2, friend_id: 3, status: "FRIENDS")
+Friendship.create!(user_id: 3, friend_id: 2, status: "FRIENDS")
