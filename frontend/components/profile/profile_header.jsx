@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera, faPencilAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCamera, faPencilAlt, faUser, faUserCheck, faUserPlus, faUserMinus, faUserTimes } from '@fortawesome/free-solid-svg-icons';
 import ProfileTabItem from './profile_tab_item';
 import ProfileBiographyForm from './profile_biography_form';
 import CurrentUserItem from '../util/current_user_item_container';
@@ -15,12 +15,15 @@ const ProfileHeader = ({
   isLoaded,
   isLoading,
   setShowEditProfileForm,
-  updateProfileFormData
+  updateProfileFormData,
+  createFriendRequest,
+  updateFriendRequest,
+  deleteFriendRequest
 }) => {
 
   const [showBiographyForm, setShowBiographyForm] = useState(false);
-  const [ profilePicFile, setProfilePicFile ] = useState(null);
-  const [ coverPhotoFile, setCoverPhotoFile ] = useState(null);
+  const [profilePicFile, setProfilePicFile] = useState(null);
+  const [coverPhotoFile, setCoverPhotoFile] = useState(null);
 
   useEffect(() => {
     if (profilePicFile) {
@@ -68,20 +71,63 @@ const ProfileHeader = ({
     setProfilePicFile(event.currentTarget.files[0]);
   }
 
+  let FriendButton = () => null;
+  if (user && user.id != currentUserId) {
+    let label = ''
+    let icon;
+    let style;
+    let onFriendClick = () => {}
+    if (user.friendshipStatus === 'PENDING_SENT') {
+      label = 'Cancel Request'
+      icon = faUserTimes
+      style = '--sent'
+      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: user.id });
+    } else if (user.friendshipStatus === 'PENDING_RECEIVED') {
+      label = 'Respond'
+      icon = faUserCheck
+      style = '--received'
+      onFriendClick = () => updateFriendRequest({ user_id: currentUserId, friend_id: user.id });
+
+    } else if (user.friendshipStatus === 'FRIENDS') {
+      label = 'Friends'
+      icon = faUserCheck
+      style = '--friends'
+     // onFriendClick = () => deleteFriendRequest(user.id)
+    }
+    else {
+      label = 'Add Friend'
+      icon = faUserPlus
+      style='--add'
+      onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: user.id });
+    }
+
+    console.log(user.friendshipStatus)
+
+    FriendButton = () => {
+      return (
+        <li className={`profile-header__button${style}`} onClick={onFriendClick}>
+          <span><FontAwesomeIcon icon={icon} /></span>
+          <button type="button">{label}</button>
+        </li>
+      )
+    }
+  }
+
+
   return (
-    
+
     <div className='profile-header'>
-      
+
       <div className='profile-header__picture-banner'>
-        <div 
+        <div
           className='profile-header__cover-photo-wrapper'
-          style={{backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})`}}>
+          style={{ backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})` }}>
 
           <CurrentUserItem >
             <div className='profile-header__upload-cover-photo' onClick={onCoverPhotoClick}>
               <FontAwesomeIcon icon={faCamera} />
-              <input 
-                type="file" 
+              <input
+                type="file"
                 className='profile-header__cover-photo-upload'
                 onChange={onChangeCoverPhoto} />
               {profile.coverPhotoUrl ? 'Edit' : 'Add'} Cover Photo
@@ -93,18 +139,18 @@ const ProfileHeader = ({
           <div className='profile-header__profile-image-wrapper'>
             {
               profile.profilePicUrl ?
-              <div 
-                className='profile-header__profile-image'
-                style={{backgroundImage: `url(${window.location.origin + profile.profilePicUrl})`}}
-              ></div>
-              : <div className='profile-header__no-img'><FontAwesomeIcon icon={faUser} /></div>
+                <div
+                  className='profile-header__profile-image'
+                  style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
+                ></div>
+                : <div className='profile-header__no-img'><FontAwesomeIcon icon={faUser} /></div>
             }
           </div>
           <CurrentUserItem>
             <span className='profile-header__upload-profile-picture' onClick={onProfilePhotoClick}>
               <FontAwesomeIcon icon={faCamera} />
-              <input 
-                type="file" 
+              <input
+                type="file"
                 className='profile-header__profile-pic-upload'
                 onChange={onChangeProfilePhoto} />
             </span>
@@ -146,6 +192,7 @@ const ProfileHeader = ({
         <li className='profile-header__tab-item'>
           <ProfileTabItem path={`/${user.id}/friends`} label='Friends' />
         </li>
+        <FriendButton />
         <CurrentUserItem>
           <li onClick={onClick} className='profile-header__button'>
             <span><FontAwesomeIcon icon={faPencilAlt} /></span>

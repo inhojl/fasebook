@@ -29,3 +29,4 @@ export const fetchFriends = (userId) => (
     url: `/api/users/${userId}/friends`
   })
 )
+

@@ -11,6 +11,7 @@ import EditProfileForm from './edit_profile_form';
 import OutsideClickNotifier from '../shared/outside_click_notifier';
 
 // should get user state
+
 const ProfilePage = ({
   user,
   profile,
@@ -22,7 +23,10 @@ const ProfilePage = ({
   history,
   updateProfile,
   updateProfileFormData,
-  fetchFriends
+  fetchFriends,
+  createFriendRequest,
+  updateFriendRequest,
+  deleteFriendRequest
 }) => {
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
@@ -63,7 +67,10 @@ const ProfilePage = ({
           profile={profile}
           currentUserId={currentUserId}
           setShowEditProfileForm={setShowEditProfileForm}
-          updateProfileFormData={updateProfileFormData} />
+          updateProfileFormData={updateProfileFormData}
+          createFriendRequest={createFriendRequest}
+          updateFriendRequest={updateFriendRequest}
+          deleteFriendRequest={deleteFriendRequest} />
       </header>
 
       <main className='profile-layout__main'>

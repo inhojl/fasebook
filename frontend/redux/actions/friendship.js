@@ -1,5 +1,5 @@
 import * as FriendshipAPIUtil from '../../util/api/friendship';
-import { RECEIVE_USERS } from './user';
+import { RECEIVE_USERS, RECEIVE_USER } from './user';
 
 
 const receiveUsers = (users) => ({
@@ -7,7 +7,40 @@ const receiveUsers = (users) => ({
   users
 })
 
+const receiveUser = (user) => ({
+  type: RECEIVE_USER,
+  user
+})
+
+
 export const fetchFriends = (userId) => (dispatch) => (
   FriendshipAPIUtil.fetchFriends(userId)
-    .then((friends) => dispatch(receiveUsers(friends)))
+    .then((user) => dispatch(receiveUsers(user)))
 )
+
+export const createFriendRequest = (userId) => (dispatch) => (
+  FriendshipAPIUtil.createFriendRequest(userId)
+    .then((user) => {
+      console.log('here',user)
+      dispatch(receiveUser(user))
+    })
+)
+
+
+export const updateFriendRequest = (userId) => (dispatch) => (
+  FriendshipAPIUtil.updateFriendRequest(userId)
+    .then((user) => dispatch(receiveUser(user)))
+)
+
+
+export const deleteFriendRequest = (userId) => (dispatch) => (
+  FriendshipAPIUtil.deleteFriendRequest(userId)
+    .then((user) => dispatch(receiveUser(user)))
+)
+
+
+
+
+// createFriendRequest
+// updateFriendRequest
+// deleteFriendRequest

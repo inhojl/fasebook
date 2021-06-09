@@ -178,8 +178,11 @@
   }
 
 
-  &__button {
-    width: 12.518rem;
+  &__button,
+  &__button--sent,
+  &__button--received,
+  &__button--add,
+  &__button--friends {
     height: 3.6rem;
     padding: 0 1.2rem;
     display: flex;
@@ -192,7 +195,19 @@
     border-radius: 0.6rem;
     cursor: pointer;
     @include button-click-animation;
+    button {
+      margin-left: 0.8rem;
+    }
   }
+
+  &__button--add,
+  &__button--received,
+  &__button--sent {
+    background-color: $blue-1;
+    color: $white-1;
+  }
+
+ 
 
   
 

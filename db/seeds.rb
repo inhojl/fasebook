@@ -56,7 +56,7 @@ user3 = User.create!(
   last_name: 'Wayne',
   birthdate: Date.new(2000, 12, 25),
   gender_id: 1,
-  password: 'w3lcomeToFasebook'
+  password: '123456'
 )
 
 
@@ -66,7 +66,7 @@ user4 = User.create!(
   last_name: 'Wayne',
   birthdate: Date.new(2000, 12, 25),
   gender_id: 1,
-  password: 'w3lcomeToFasebook'
+  password: '123456'
 )
 
 
@@ -76,7 +76,7 @@ user5 = User.create!(
   last_name: 'Wayne',
   birthdate: Date.new(2000, 12, 25),
   gender_id: 1,
-  password: 'w3lcomeToFasebook'
+  password: '123456'
 )
 
 

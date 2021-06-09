@@ -9,6 +9,8 @@ import {
 
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
+
+  console.log(action)
   switch (action.type) {
     case RECEIVE_CURRENT_USER: return { ...state, [action.currentUser.user.id]: action.currentUser.user };
     case RECEIVE_USER: return { ...state, [action.user.user.id ]: action.user.user}

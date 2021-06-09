@@ -12,6 +12,8 @@ class Api::FriendshipsController < ApplicationController
         [ friendship_params[:friend_id], friendship_params[:user_id], "PENDING_RECEIVED" ]
       ]
       Friendship.import columns, values, validate: true
+      @user = User.find_by(id: friendship_params[:friend_id])
+      render "api/users/show"
     else
       render json: ["Invalid credentials"], status: :unauthorized
     end
@@ -31,6 +33,8 @@ class Api::FriendshipsController < ApplicationController
                       friendship_params[:friend_id],
                       friendship_params[:user_id] )
                     .update_all(status: 'FRIENDS')
+          @user = @user_friendship.friend
+          render "api/users/show"
         else
           render json: ["Invalid credentials"], status: :unauthorized
         end
@@ -49,6 +53,9 @@ class Api::FriendshipsController < ApplicationController
       @friend_friendship = Friendship.find_by(user_id: friendship_params[:friend_id], friend_id: friendship_params[:user_id])
       @user_friendship.destroy! if @user_friendship
       @friend_friendship.destroy! if @friend_friendship
+
+      @user = @user_friendship.friend
+      render "api/users/show"
     end
   end
 
