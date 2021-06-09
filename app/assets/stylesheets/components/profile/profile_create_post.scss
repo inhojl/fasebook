@@ -13,6 +13,9 @@
     min-height: 4rem;
     border-radius: 50%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__profile-image {
@@ -21,6 +24,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+ 
   }
 
   &__button {
@@ -49,7 +53,7 @@
     justify-content: center;
     align-items: center;
     color: $black-2;
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
 
 }
