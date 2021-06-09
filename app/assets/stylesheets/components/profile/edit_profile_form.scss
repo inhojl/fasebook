@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-width: 70rem;
+  max-width:70rem;
   background-color: $white-1;
   border-radius: 0.8rem;
   box-shadow: 0 12px 28px 0 $shadow-2,0 2px 4px 0 $shadow-1,inset 0 0 0 1px $shadow-inset;
@@ -12,7 +12,7 @@
   &__container {
     margin-top: -0.7rem;
     padding: 2rem 0;
-    width: 70rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
 
@@ -57,7 +57,7 @@
   }
 
   &__subheading {
-    font-size: 1.7rem;
+    font-size: 2rem;
     color: $black-2;
     font-weight: bold;
     
@@ -123,5 +123,38 @@
     background-color: $blue-5;
     color: $blue-1;
     width: 100%;
+  }
+
+  &__profile-picture-container,
+  &__cover-photo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4rem;
+  }
+
+  &__profile-image {
+    background-color: $gray-5;
+    border-radius: 50%;
+    width: 16.8rem;
+    height: 16.8rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &__cover-photo-image {
+    background-color: $gray-5;
+    width: 51.2rem;
+    height: 19.7rem;
+    border-radius: 0.8rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &__cover-photo-upload,
+  &__profile-pic-upload {
+    display: none;
   }
 }

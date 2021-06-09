@@ -10,7 +10,6 @@ const receiveRelationshipStatuses = (relationshipStatuses) => ({
 export const fetchRelationshipStatuses = () => (dispatch) => (
   RelationshipStatusAPIUtil.fetchRelationshipStatuses()
     .then(relationshipStatuses => {
-      console.log('here')
       dispatch(receiveRelationshipStatuses(relationshipStatuses))
     })
 )

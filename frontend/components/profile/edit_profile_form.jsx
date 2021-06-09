@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileBiographyForm from './profile_biography_form';
 import ProfileIntroItem from './profile_intro_item'
@@ -6,10 +6,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
-const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile, relationshipStatuses }) => {
+const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile, relationshipStatuses, updateProfileFormData }) => {
 
 
   const [showBiographyForm, setShowBiographyForm] = useState(false);
+  const [ profilePicFile, setProfilePicFile ] = useState(null);
+  const [ coverPhotoFile, setCoverPhotoFile ] = useState(null);
+
+
+  useEffect(() => {
+    if (profilePicFile) {
+      const formData = new FormData();
+      formData.append('profile[profile_picture]', profilePicFile)
+      updateProfileFormData(profile.id, formData)
+        .then(() => setProfilePicFile(null))
+        .fail((error) => console.log(error))
+    }
+  }, [profilePicFile])
+
+  useEffect(() => {
+    if (coverPhotoFile) {
+      const formData = new FormData();
+      formData.append('profile[cover_photo]', coverPhotoFile)
+      updateProfileFormData(profile.id, formData)
+        .then(() => setCoverPhotoFile(null))
+        .fail((error) => console.log(error))
+    }
+  }, [coverPhotoFile])
+
+  const onCoverPhotoClick = () => {
+    $('.profile-header__cover-photo-upload').trigger('click');
+  }
+
+  const onChangeCoverPhoto = (event) => {
+    setCoverPhotoFile(event.currentTarget.files[0]);
+  }
+
+  const onProfilePhotoClick = () => {
+    $('.profile-header__profile-pic-upload').trigger('click');
+  }
+
+  const onChangeProfilePhoto = (event) => {
+    setProfilePicFile(event.currentTarget.files[0]);
+  }
 
   const onExitModal = () => setShowEditProfileForm(false);
 
@@ -23,11 +62,29 @@ const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile,
       <div className='edit-profile__container'>
         <div className='edit-profile__subheading-wrapper'>
           <h2 className='edit-profile__subheading'>Profile Picture</h2>
-          <span className='edit-profile__button'>Edit</span>
+          <span className='edit-profile__button' onClick={onProfilePhotoClick}>
+            {profile.profilePicUrl ? 'Edit' : 'Add'}
+            <input type="file" className='edit-profile__profile-pic-upload' onChange={onChangeProfilePhoto} />
+          </span>
+        </div>
+        <div className='edit-profile__profile-picture-container'>
+          <div 
+            className='edit-profile__profile-image'
+            style={{backgroundImage: `url(${window.location.origin + profile.profilePicUrl})`}}>
+          </div>
         </div>
         <div className='edit-profile__subheading-wrapper'>
           <h2 className='edit-profile__subheading'>Cover Photo</h2>
-          <span className='edit-profile__button'>Edit</span>
+          <span className='edit-profile__button' onClick={onCoverPhotoClick}>
+            {profile.coverPhotoUrl ? 'Edit' : 'Add'}
+            <input type="file" className='edit-profile__cover-photo-upload' onChange={onChangeCoverPhoto} />
+          </span>
+        </div>
+        <div className='edit-profile__cover-photo-container'>
+          <div 
+            className='edit-profile__cover-photo-image'
+            style={{backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})`}}>
+          </div>
         </div>
         <div className='edit-profile__subheading-wrapper'>
           <h2 className='edit-profile__subheading'>Bio</h2>
@@ -53,7 +110,11 @@ const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile,
         <div className='edit-profile__subheading-wrapper'>
           <h2 className='edit-profile__subheading'>Customize Your Intro</h2>
           <Link to={`/${user.id}/about`} onClick={onExitModal}>
-            <span className='edit-profile__button'>Edit</span>
+            <span className='edit-profile__button'>
+              {
+                profile.currentCity || profile.hometown || profile.relationshipStatusId ? 'Edit' : 'Add'
+              }
+            </span>
           </Link>
         </div>
         <div className='edit-profile__intro-content'>

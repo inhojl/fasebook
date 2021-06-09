@@ -5,13 +5,22 @@
   
   align-items: center;
 
-  &__profile-picture {
-    background-color: $gray-13;
+  &__profile-image-wrapper {
+    background-color: $gray-5;
     height: 4rem;
     width: 4rem;
     min-width: 4rem;
     min-height: 4rem;
     border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__profile-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   &__button {
@@ -33,6 +42,14 @@
     &:active {
       filter: brightness(90%);
     }
+  }
+
+  &__no-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $black-2;
+    font-size: 3rem;
   }
 
 }

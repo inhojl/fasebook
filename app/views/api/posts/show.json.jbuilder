@@ -1,0 +1,1 @@
+json.imageUrl url_for(@post.photo)

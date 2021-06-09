@@ -21,16 +21,21 @@ const ProfilePage = ({
   fetchRelationshipStatuses,
   history,
   updateProfile,
+  updateProfileFormData
 }) => {
+  const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
 
   useEffect(() => {
+    // setLoading(true)
     fetchRelationshipStatuses()
     fetchUser(match.params.userId)
       .then((res) => console.log(res))
       .fail(() => history.push('/'))
+      // .always(() => setLoading(false))
   }, [match.params.userId])
+
 
   const onEditDetailsExit = () => {
     setShowEditDetailsForm(false)
@@ -55,7 +60,8 @@ const ProfilePage = ({
           user={user}
           profile={profile}
           currentUserId={currentUserId}
-          setShowEditProfileForm={setShowEditProfileForm} />
+          setShowEditProfileForm={setShowEditProfileForm}
+          updateProfileFormData={updateProfileFormData} />
       </header>
 
       <main className='profile-layout__main'>
@@ -112,6 +118,7 @@ const ProfilePage = ({
               <OutsideClickNotifier excludeIds={[]} sideEffect={() => setShowEditProfileForm(false)}>
                 <EditProfileForm
                   user={user}
+                  updateProfileFormData={updateProfileFormData}
                   setShowEditProfileForm={setShowEditProfileForm}
                   profile={profile}
                   updateProfile={updateProfile}
@@ -124,7 +131,7 @@ const ProfilePage = ({
         </div>
       </CSSTransition>
     </div>
-  ) : null;
+  ) : <div>Loading...</div>;
 
 }
 

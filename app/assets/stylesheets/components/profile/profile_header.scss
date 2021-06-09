@@ -16,12 +16,15 @@
     max-height: 34.81rem;
   }
   
-  &__cover-photo {
+  &__cover-photo-wrapper {
     display: block;
     background-color: #F0F2F5;
     padding-top: 37.037%;
     border-radius: 0 0 0.8rem 0.8rem; 
-    background: linear-gradient(to top, $gray-19 0%, $gray-5 20%, $gray-5 80%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    //background: linear-gradient(to top, $gray-19 0%, $gray-5 20%, $gray-5 80%);
   }
 
   &__upload-cover-photo {
@@ -41,6 +44,15 @@
     @include button-click-animation;
   }
 
+  &__cover-photo-upload {
+    display: none;
+  }
+
+  &__profile-pic-upload {
+    display: none;
+    
+  }
+
   &__profile-picture {
     position: absolute;
     width: 17.6rem;
@@ -56,15 +68,39 @@
     align-items: center;
   }
 
-  &__profile-image {
-    background-color: $gray-13;
+  &__profile-image-wrapper {
+    background-color: $gray-5;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
+
+  &__profile-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+  }
+
+  &__no-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $black-2;
+    font-size: 9rem;
+  }
+
+  &__cover-photo-overflow-guard {
+    width: 100%;
+    height: 100%;
+  }
+
 
   &__upload-profile-picture {
     position: absolute;
@@ -129,9 +165,6 @@
     align-items: center;
     padding: 0 1.6rem;
     max-width: 90.8rem;
-    
-
-    
   }
 
   &__tab-item {
@@ -165,5 +198,3 @@
 
 
 }
-
-

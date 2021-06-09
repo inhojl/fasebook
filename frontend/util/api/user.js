@@ -31,3 +31,14 @@ export const updateProfile = (profile) => (
     data: { profile }
   })
 )
+
+
+export const updateProfileFormData = (profileId, formData) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/profiles/${profileId}`,
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+)

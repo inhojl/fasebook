@@ -18,12 +18,28 @@
     }
   }
 
-  &__profile-picture {
-    display: block;
+  &__profile-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     height: 6rem;
     width: 6rem;
     border-radius: 50%;
-    background-color: $gray-12;
+    background-color: $gray-5;
+    position:relative;
+  }
+
+  &__no-img {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $black-2;
+    font-size: 3rem;
   }
 
   &__user-profile {
@@ -64,4 +80,15 @@
     margin: 0.8rem 0.8rem;
     border-bottom: 1px solid $gray-16;
   }
+
+
+  &__profile-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
 }

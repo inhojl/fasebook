@@ -8,6 +8,7 @@ import HomePageContainer from './home/home_page_container';
 import NavbarContainer from './navbar/navbar_container';
 import FriendsPage from './friends/friends_page';
 import ProfilePageContainer from './profile/profile_page_container';
+
 import { AuthRoute, ProtectedRoute } from '../util/route';
 
 const App = () => (

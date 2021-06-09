@@ -18,7 +18,7 @@ const ProfilePosts = ({ profile, relationshipStatuses, setShowEditDetailsForm })
           <ProfileFriendsSummary />
         </section>
         <section className='profile-posts-layout__wall'>
-          <ProfileCreatePost />
+          <ProfileCreatePost profile={profile} />
           <ProfilePostFilter />
           <ProfilePostList />
         </section>

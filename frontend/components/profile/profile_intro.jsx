@@ -5,8 +5,6 @@ import CurrentUserItem from '../util/current_user_item_container';
 
 const ProfileIntro = ({ relationshipStatuses, profile, setShowEditDetailsForm }) => {
 
-  console.log(relationshipStatuses)
-  console.log(profile)
 
   const onClick = () => {
     setShowEditDetailsForm(true)

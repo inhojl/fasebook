@@ -9,7 +9,6 @@ const AboutGenderInput = ({ user, name, updateUser, onCancel }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(genderId)
     updateUser({ id: user.id, [snakeCase(name)]: genderId })
       .always(() => onCancel())
   

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCamera, faPencilAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import ProfileTabItem from './profile_tab_item';
 import ProfileBiographyForm from './profile_biography_form';
 import CurrentUserItem from '../util/current_user_item_container';
@@ -14,10 +14,36 @@ const ProfileHeader = ({
   loading,
   isLoaded,
   isLoading,
-  setShowEditProfileForm
+  setShowEditProfileForm,
+  updateProfileFormData
 }) => {
 
   const [showBiographyForm, setShowBiographyForm] = useState(false);
+  const [ profilePicFile, setProfilePicFile ] = useState(null);
+  const [ coverPhotoFile, setCoverPhotoFile ] = useState(null);
+
+  useEffect(() => {
+    if (profilePicFile) {
+      const formData = new FormData();
+      formData.append('profile[profile_picture]', profilePicFile)
+      updateProfileFormData(profile.id, formData)
+        .then(() => setProfilePicFile(null))
+        .fail((error) => console.log(error))
+    }
+  }, [profilePicFile])
+
+  useEffect(() => {
+    if (coverPhotoFile) {
+      const formData = new FormData();
+      formData.append('profile[cover_photo]', coverPhotoFile)
+      updateProfileFormData(profile.id, formData)
+        .then(() => setCoverPhotoFile(null))
+        .fail((error) => console.log(error))
+    }
+  }, [coverPhotoFile])
+
+
+
 
   const onClick = () => {
     setShowEditProfileForm(true)
@@ -26,24 +52,62 @@ const ProfileHeader = ({
     })
   }
 
+  const onCoverPhotoClick = () => {
+    $('.profile-header__cover-photo-upload').trigger('click');
+  }
+
+  const onChangeCoverPhoto = (event) => {
+    setCoverPhotoFile(event.currentTarget.files[0]);
+  }
+
+  const onProfilePhotoClick = () => {
+    $('.profile-header__profile-pic-upload').trigger('click');
+  }
+
+  const onChangeProfilePhoto = (event) => {
+    setProfilePicFile(event.currentTarget.files[0]);
+  }
 
   return (
+    
     <div className='profile-header'>
+      
       <div className='profile-header__picture-banner'>
-        <span className='profile-header__cover-photo'>
-          <img></img>
+        <div 
+          className='profile-header__cover-photo-wrapper'
+          style={{backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})`}}>
+
           <CurrentUserItem >
-            <button type='button' className='profile-header__upload-cover-photo'>
+            <div className='profile-header__upload-cover-photo' onClick={onCoverPhotoClick}>
               <FontAwesomeIcon icon={faCamera} />
-              Add Cover Photo
-            </button>
+              <input 
+                type="file" 
+                className='profile-header__cover-photo-upload'
+                onChange={onChangeCoverPhoto} />
+              {profile.coverPhotoUrl ? 'Edit' : 'Add'} Cover Photo
+            </div>
           </CurrentUserItem>
 
-        </span>
+        </div>
         <span className='profile-header__profile-picture'>
-          <div className='profile-header__profile-image'>img</div>
+          <div className='profile-header__profile-image-wrapper'>
+            {
+              profile.profilePicUrl ?
+              <div 
+                className='profile-header__profile-image'
+                style={{backgroundImage: `url(${window.location.origin + profile.profilePicUrl})`}}
+              ></div>
+              : <div className='profile-header__no-img'><FontAwesomeIcon icon={faUser} /></div>
+            }
+          </div>
           <CurrentUserItem>
-            <span className='profile-header__upload-profile-picture'><FontAwesomeIcon icon={faCamera} /></span>
+            <span className='profile-header__upload-profile-picture' onClick={onProfilePhotoClick}>
+              <FontAwesomeIcon icon={faCamera} />
+              <input 
+                type="file" 
+                className='profile-header__profile-pic-upload'
+                onChange={onChangeProfilePhoto} />
+            </span>
           </CurrentUserItem>
         </span>
       </div>

@@ -26,7 +26,9 @@ class Api::ProfilesController < ApplicationController
       :relationship_status_id,
       :current_city,
       :hometown,
-      :biography
+      :biography,
+      :profile_picture,
+      :cover_photo
     )
   end
 end

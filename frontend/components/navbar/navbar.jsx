@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './logo';
 import SearchBar from './search_bar';
@@ -22,17 +22,23 @@ const ItemType = {
   SETTINGS: 'SETTINGS'
 }
 
-const Navbar = ({ 
+const Navbar = ({
   loggedIn,
   logout,
   currentUserId,
-  currentUser
+  currentUser,
+  currentProfile,
+  fetchProfile
 }) => {
 
-  console.log(currentUserId)
-  console.log(currentUser)
-
   const [selected, setSelected] = useState('');
+
+  useEffect(() => {
+    if (currentUserId) {
+      fetchProfile(currentUserId)
+    }
+  }, [])
+
 
   const onSelect = (type) => {
     return (e) => {
@@ -67,60 +73,61 @@ const Navbar = ({
       </ul>
       <ul className='navbar-layout__user-section'>
         <li>
-          <NavbarCreateItem 
+          <NavbarCreateItem
             id='navbar-create-item'
             active={selected === ItemType.CREATE}
             setSelected={onSelect(ItemType.CREATE)}
           />
           {
             selected === ItemType.CREATE ?
-              <OutsideClickNotifier excludeIds={['navbar-create-item']} sideEffect={() => {setSelected('')}}>
+              <OutsideClickNotifier excludeIds={['navbar-create-item']} sideEffect={() => { setSelected('') }}>
                 <NavbarCreateMenu />
               </OutsideClickNotifier>
-            : null 
+              : null
           }
         </li>
         <li>
-            <NavbarMessengerItem 
-              id='navbar-messenger-item'
-              active={selected === ItemType.MESSENGER}
-              setSelected={onSelect(ItemType.MESSENGER)} 
-            />
-            {
-              selected === ItemType.MESSENGER ? 
-                <OutsideClickNotifier excludeIds={['navbar-messenger-item']} sideEffect={() => {setSelected('')}}>
-                  <NavbarMessengerMenu /> 
-                </OutsideClickNotifier>   
-              : null }
+          <NavbarMessengerItem
+            id='navbar-messenger-item'
+            active={selected === ItemType.MESSENGER}
+            setSelected={onSelect(ItemType.MESSENGER)}
+          />
+          {
+            selected === ItemType.MESSENGER ?
+              <OutsideClickNotifier excludeIds={['navbar-messenger-item']} sideEffect={() => { setSelected('') }}>
+                <NavbarMessengerMenu />
+              </OutsideClickNotifier>
+              : null}
         </li>
         <li>
-            <NavbarNotificationsItem 
-              id='navbar-notifications-item'
-              active={selected === ItemType.NOTIFICATIONS}
-              setSelected={onSelect(ItemType.NOTIFICATIONS)} />
-            {
-              selected === ItemType.NOTIFICATIONS ? 
-                <OutsideClickNotifier excludeIds={['navbar-notifications-item']} sideEffect={() => {setSelected('')}}>
-                  <NavbarNotificationsMenu /> 
-                </OutsideClickNotifier> 
-              : null 
-            }
+          <NavbarNotificationsItem
+            id='navbar-notifications-item'
+            active={selected === ItemType.NOTIFICATIONS}
+            setSelected={onSelect(ItemType.NOTIFICATIONS)} />
+          {
+            selected === ItemType.NOTIFICATIONS ?
+              <OutsideClickNotifier excludeIds={['navbar-notifications-item']} sideEffect={() => { setSelected('') }}>
+                <NavbarNotificationsMenu />
+              </OutsideClickNotifier>
+              : null
+          }
         </li>
         <li>
 
-            <NavbarSettingsItem 
-              id='navbar-settings-item' 
-              active={selected === ItemType.SETTINGS}
-              setSelected={onSelect(ItemType.SETTINGS)}
-            />
-            {
-              selected === ItemType.SETTINGS ? 
-                <OutsideClickNotifier excludeIds={['navbar-settings-item']} sideEffect={() => { setSelected('')}}>
-                  <NavbarSettingsMenu currentUser={currentUser} currentUserId={currentUserId} setSelected={setSelected} logout={logout}/>
-                </OutsideClickNotifier>
-                : null 
-            }
-          
+          <NavbarSettingsItem
+            id='navbar-settings-item'
+            active={selected === ItemType.SETTINGS}
+            setSelected={onSelect(ItemType.SETTINGS)}
+            currentProfile={currentProfile}
+          />
+          {
+            selected === ItemType.SETTINGS ?
+              <OutsideClickNotifier excludeIds={['navbar-settings-item']} sideEffect={() => { setSelected('') }}>
+                <NavbarSettingsMenu currentProfile={currentProfile} currentUser={currentUser} currentUserId={currentUserId} setSelected={setSelected} logout={logout} />
+              </OutsideClickNotifier>
+              : null
+          }
+
         </li>
       </ul>
     </nav>

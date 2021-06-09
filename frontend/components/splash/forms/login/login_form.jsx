@@ -37,7 +37,6 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
     } else if (animateDemoLogin && !demoPassword.length) { 
       setTimeout(()=>  {
         login({ email, password })
-        setAnimateDemoLogin(false);
       },400);
       setDemoEmail('welcome@fasebook.com');
       setDemoPassword('w3lcomeToFasebook');
@@ -52,7 +51,6 @@ const LoginForm = ({ login, setShowSignupModal, errors, resetErrors }) => {
     $('.login-form__input-wrapper').addClass('js-opaque-1')
     login({ email, password })
       .always(() => {
-        setLoggingIn(false)
         $('.login-form__button--primary').removeClass('js-opaque-1')
         $('.login-form__input-wrapper').removeClass('js-opaque-1')
       })

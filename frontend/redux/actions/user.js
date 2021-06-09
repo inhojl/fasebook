@@ -87,3 +87,9 @@ export const updateProfile = (profile) => (dispatch) => (
   UserAPIUtil.updateProfile(profile)
     .then((profile) => dispatch(receiveProfile(profile)))
 );
+
+
+export const updateProfileFormData = (profileId, formData) => (dispatch) => (
+  UserAPIUtil.updateProfileFormData(profileId, formData)
+    .then((profile) => dispatch(receiveProfile(profile)))
+);

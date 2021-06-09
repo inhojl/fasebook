@@ -15,4 +15,7 @@ class Profile < ApplicationRecord
   belongs_to :user
   belongs_to :relationship_status, optional: true
 
+  has_one_attached :cover_photo
+  has_one_attached :profile_picture
+
 end

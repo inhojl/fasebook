@@ -11,7 +11,6 @@ const ProfileBiographyForm = ({ profile, updateProfile, showForm, setShowBiograp
 
   const onSave = (event) => {
     event.preventDefault();
-    console.log(biography)
     updateProfile({ id: profile.id, biography })
       .always(() => (
         setShowBiographyForm(false)

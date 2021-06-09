@@ -18,7 +18,8 @@ const SplashPage = () => {
             <SplashHeader />
           </div>
           <div className='splash-layout__main-item'>
-            <LoginFormContainer setShowSignupModal={setShowSignupModal} />
+            <LoginFormContainer 
+              setShowSignupModal={setShowSignupModal} />
           </div>
         </div>
       </div>

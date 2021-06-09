@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :relationship_statuses, only: [:index]
   end
-
+  
 end

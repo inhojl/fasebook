@@ -7,6 +7,7 @@
 .navbar-messenger-item--active,
 .navbar-notifications-item--active,
 .navbar-settings-item--active {
+  overflow: hidden;
   width: 4rem;
   height: 4rem;
   border-radius: 5rem;
@@ -60,4 +61,27 @@
   font-size: 1.8rem;
   transform: rotate(-15deg);
 
+}
+
+.navbar-settings-item {
+  &__profile-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+  }
+
+  &__no-img {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $black-2;
+    font-size: 1.8rem;
+  }
 }
