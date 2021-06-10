@@ -1,5 +1,5 @@
-.friends-sidebar-item {
-
+.friends-sidebar-item-wrapper,
+.friends-sidebar-item-wrapper--active {
   display: flex;
   align-items: center;
   height: 8.4rem;
@@ -8,12 +8,32 @@
   transition: background-color 0.1s linear;
   cursor: pointer;
 
+
+  &:active {
+    filter: brightness(95%);
+  }
+}
+.friends-sidebar-item-wrapper {
   &:hover {
     background-color: $gray-18;
   }
-  &:active {
-    background-color: $blue-9;
+}
+
+.friends-sidebar-item-wrapper--active {
+  background-color: $blue-9;
+  &:hover {
+  background-color: $blue-9;
+    
   }
+}
+
+.friends-sidebar-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+
 
   &__profile-image {
     min-width: 6rem;
@@ -28,6 +48,8 @@
   &__name {
     font-size: 1.5rem;
     padding-left: 1.2rem;
+    font-weight: bold;
+    margin-top: -0.2rem;
 
   }
 

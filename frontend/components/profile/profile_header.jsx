@@ -6,6 +6,7 @@ import ProfileTabItem from './profile_tab_item';
 import ProfileBiographyForm from './profile_biography_form';
 import CurrentUserItem from '../util/current_user_item_container';
 import OutsideClickNotifier from '../shared/outside_click_notifier';
+import { fetchUser } from '../../util/api/user';
 
 const ProfileHeader = ({
   user,
@@ -19,7 +20,8 @@ const ProfileHeader = ({
   updateProfileFormData,
   createFriendRequest,
   updateFriendRequest,
-  deleteFriendRequest
+  deleteFriendRequest,
+  match
 }) => {
 
   const [showBiographyForm, setShowBiographyForm] = useState(false);
@@ -73,37 +75,8 @@ const ProfileHeader = ({
     setProfilePicFile(event.currentTarget.files[0]);
   }
 
-
-
-  //   <OutsideClickNotifier excludeIds={[`input-display__${name}-button`]} sideEffect={() => setShowMenu(false)} >
-  //   <div className={`input-display__option-menu${showMenu ? '--show' : ''}`}>
-  //     {
-  //       showEdit ?
-  //         <div className='input-display__menu-item' onClick={onEdit}>
-  //           <span className='input-display__menu-icon'>
-  //             <FontAwesomeIcon icon={faPencilAlt} />
-  //           </span>
-  //           <div className='input-display__menu-edit'>
-  //             Edit {label.toLowerCase()}
-  //           </div>
-  //         </div>
-  //         : null
-  //     }
-  //     {
-  //       showDelete ?
-  //         <div className='input-display__menu-item' onClick={onDelete}>
-  //           <div className='input-display__menu-icon'>
-  //             <FontAwesomeIcon icon={faTrashAlt} />
-  //           </div>
-  //           <div className='input-display__menu-delete'>
-  //             Delete {label.toLowerCase()}
-  //           </div>
-  //         </div>
-  //         : null
-  //     }
-  //   </div>
-  // </OutsideClickNotifier>
   let currentStyle = '';
+
 
   let FriendButton = () => null;
   if (user && user.id != currentUserId) {
@@ -115,24 +88,27 @@ const ProfileHeader = ({
       label = 'Cancel Request'
       icon = faUserTimes
       style = '--sent'
-      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: user.id });
+      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: user.id })
+        .then(() => fetchUser(user.id))
     } else if (user.friendshipStatus === 'PENDING_RECEIVED') {
       label = 'Respond'
       icon = faUserCheck
       style = '--received'
-      onFriendClick = () => updateFriendRequest({ user_id: currentUserId, friend_id: user.id });
+      onFriendClick = () => setShowFriendOptions(true)
 
     } else if (user.friendshipStatus === 'FRIENDS') {
       label = 'Friends'
       icon = faUserCheck
       style = '--friends'
       onFriendClick = () => setShowFriendOptions(true)
+      
     }
     else {
       label = 'Add Friend'
       icon = faUserPlus
       style = '--add'
-      onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: user.id });
+      onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: user.id })
+      .then(() => fetchUser(user.id))
     }
 
     currentStyle = style;
@@ -151,8 +127,18 @@ const ProfileHeader = ({
 
   const onDeleteFriend = () => {
     deleteFriendRequest({ user_id: currentUserId, friend_id: user.id })
-      .then(setShowFriendOptions(false))
+      .then(() => fetchUser(user.id))
+      .then(() => setShowFriendOptions(false))
   }
+
+  const onConfirmFriend = () => {
+    updateFriendRequest({ user_id: currentUserId, friend_id: user.id })
+    .then(() => fetchUser(user.id))
+    .then(() => setShowFriendOptions(false))
+  }
+
+
+  console.log('profile header', match)
 
   return (
 
@@ -224,19 +210,33 @@ const ProfileHeader = ({
       </div>
       <ul className='profile-header__nav'>
         <li className='profile-header__tab-item'>
-          <ProfileTabItem path={`/${user.id}`} label='Posts' />
+          <ProfileTabItem path={`${match.path.replace(":userId", user.id)}`} label='Posts' />
         </li>
         <li className='profile-header__tab-item'>
-          <ProfileTabItem path={`/${user.id}/about`} label='About' />
+          <ProfileTabItem path={`${match.path.replace(":userId", user.id)}/about`} label='About' />
         </li>
         <li className='profile-header__tab-item'>
-          <ProfileTabItem path={`/${user.id}/friends`} label='Friends' />
+          <ProfileTabItem path={`${match.path.replace(":userId", user.id)}/friends`} label='Friends' />
         </li>
 
         <div className='profile-header__friend-container'>
           <FriendButton />
           <OutsideClickNotifier excludeIds={[`profile-header__button${currentStyle}`]} sideEffect={() => setShowFriendOptions(false)} >
             <div className={`profile-header__option-menu${showFriendOptions ? '--show' : ''}`}>
+              {
+                user.friendshipStatus === 'PENDING_RECEIVED' ? 
+                  <div 
+                    className='profile-header__menu-item' 
+                    onClick={onConfirmFriend}>
+                    <span className='profile-header__menu-icon'>
+                      <FontAwesomeIcon icon={faUserPlus} />
+                    </span>
+                    <div className='profile-header__menu-edit'>
+                      Confirm Request
+                    </div>
+                  </div>
+                  : null
+              }
               <div 
                 className='profile-header__menu-item' 
                 onClick={onDeleteFriend}>
@@ -244,7 +244,10 @@ const ProfileHeader = ({
                   <FontAwesomeIcon icon={faUserMinus} />
                 </span>
                 <div className='profile-header__menu-edit'>
-                  Unfriend
+                {
+                  user.friendshipStatus === 'PENDING_RECEIVED' ?
+                    'Delete Request' : 'Unfriend'
+                }
                 </div>
               </div>
             </div>

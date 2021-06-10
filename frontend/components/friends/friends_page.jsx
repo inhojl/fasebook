@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import {Switch } from 'react-router-dom';
+import { ProtectedRoute } from '../../util/route'
+import ProfilePageContainer from '../profile/profile_page_container'
 import FriendsSidebar from './friends_sidebar'
 
 const FriendsPage = ({
@@ -8,7 +11,8 @@ const FriendsPage = ({
   fetchFriendRequesters,
   createFriendRequest,
   updateFriendRequest,
-  deleteFriendRequest
+  deleteFriendRequest,
+  match
 }) => {
   console.log(currentUserId)
 
@@ -26,8 +30,10 @@ const FriendsPage = ({
           deleteFriendRequest={deleteFriendRequest}
         />
       </div>
-      <div className='profile-page'>
-
+      <div className='friends-layout__profile'>
+        <Switch>
+          <ProtectedRoute path={`/friends/:userId`} component={ProfilePageContainer}></ProtectedRoute>
+        </Switch>
       </div>
     </div>
   );

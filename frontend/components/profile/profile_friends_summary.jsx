@@ -14,7 +14,7 @@ const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriend
   }, [userId])
 
   const user = users[userId]
-console.log(profiles)
+  console.log({ user })
   return loaded && user.friendIds ? (
     <div className='profile-friends-summary'>
       <div className='profile-friends-summary__header'>
@@ -29,38 +29,43 @@ console.log(profiles)
           </Link>
         </div>
       </div>
-      <div className='profile-friends-summary__num'>{ user.friendIds.length } friends</div>
-      <div className='profile-friends-summary__preview'>
-        <ul className='profile-friends-summary__grid'>
-          {
-            user.friendIds.map((friendId, index) => {
-              const friend = users[friendId];
-              console.log(friend)
-              
-              if (!profiles || !friend) return null;
+      <div className='profile-friends-summary__num'>{ user.friendIds.length } { user.friendIds.length === 1 ? 'friend' : 'friends' }</div>
 
-              const friendProfile = profiles[friend.profileId]
-              return index < 9 ? (
-                <Link to={`/${friend.id}`} key={`friend-${index}`}>
-                  <li className='profile-friends-summary__item'>
-                    {
-                      friendProfile && friendProfile.profilePicUrl ?
-                        <div
-                          className='profile-friends-summary__profile-image'
-                          style={{ backgroundImage: `url(${window.location.origin + friendProfile.profilePicUrl})` }}
-                        ></div>
-                        : 
-                        <div className='profile-friends-summary__no-img'><FontAwesomeIcon icon={faUser} /></div>
-                       
-                    }
-                    <span className='profile-friends-summary__name'>{friend.firstName} {friend.lastName}</span>  
-                  </li>
-                </Link>
-              ) : null;
-            })
-          }
-        </ul>
-      </div>
+      {
+        user.friendIds.length > 0 ? 
+          <div className='profile-friends-summary__preview'>
+            <ul className='profile-friends-summary__grid'>
+              {
+                user.friendIds.map((friendId, index) => {
+                  const friend = users[friendId];
+                  console.log(friend)
+                  
+                  if (!profiles || !friend) return null;
+
+                  const friendProfile = profiles[friend.profileId]
+                  return index < 9 ? (
+                    <Link to={`/${friend.id}`} key={`friend-${index}`}>
+                      <li className='profile-friends-summary__item'>
+                        {
+                          friendProfile && friendProfile.profilePicUrl ?
+                            <div
+                              className='profile-friends-summary__profile-image'
+                              style={{ backgroundImage: `url(${window.location.origin + friendProfile.profilePicUrl})` }}
+                            ></div>
+                            : 
+                            <div className='profile-friends-summary__no-img'><FontAwesomeIcon icon={faUser} /></div>
+                          
+                        }
+                        <span className='profile-friends-summary__name'>{friend.firstName} {friend.lastName}</span>  
+                      </li>
+                    </Link>
+                  ) : null;
+                })
+              }
+            </ul>
+          </div>
+        : null
+      }
 
     </div>
   ) : null

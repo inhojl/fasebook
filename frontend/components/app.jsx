@@ -15,7 +15,7 @@ const App = () => (
   <div className='app'>
     <NavbarContainer />
     <Switch>
-      <ProtectedRoute exact path="/friends" component={FriendsPageContainer} />
+      <ProtectedRoute path="/friends" component={FriendsPageContainer} />
       <ProtectedRoute path="/:userId" component={ProfilePageContainer} />
       <Route exact path="/" component={HomePageContainer} />
       <Redirect to="/" />

@@ -38,9 +38,12 @@ const ProfilePage = ({
   useEffect(() => {
     // setLoading(true)
     fetchRelationshipStatuses()
+    console.log({ history, match })
     fetchUser(match.params.userId)
       .then((res) => console.log(res))
-      .fail(() => history.push('/'))
+      .fail(() => {
+        if (match.path !== '/friends') history.push('/')
+      })
       // .always(() => setLoading(false))
   }, [match.params.userId])
 
@@ -59,20 +62,24 @@ const ProfilePage = ({
     })
   }
 
+  console.log('match path', match);
+
   return user && profile ? (
     <div className='profile-layout'>
 
       <header className='profile-layout__header'>
         <ProfileHeader
+          match={match}
           updateProfile={updateProfile}
           user={user}
           profile={profile}
           currentUserId={currentUserId}
           setShowEditProfileForm={setShowEditProfileForm}
-        updateProfileFormData={updateProfileFormData}
+          updateProfileFormData={updateProfileFormData}
           createFriendRequest={createFriendRequest}
           updateFriendRequest={updateFriendRequest}
-          deleteFriendRequest={deleteFriendRequest} />
+          deleteFriendRequest={deleteFriendRequest}
+          fetchUser={fetchUser} />
       </header>
 
       <main className='profile-layout__main'>
@@ -88,7 +95,7 @@ const ProfilePage = ({
             profiles={profiles} 
             exact path={`${match.path}/friends`} 
             component={ProfileFriends} />
-          <ProtectedRoute exact path={`${match.path}/about`} component={ProfileAboutContainer} />
+          <ProtectedRoute exact path={`${match.path}/about`} match={match} component={ProfileAboutContainer} />
           <ProtectedRoute
             relationshipStatuses={relationshipStatuses}
             profile={profile}

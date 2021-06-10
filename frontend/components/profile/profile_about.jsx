@@ -37,7 +37,7 @@ const ProfileAbout = ({
   return (
     <div className='profile-about-layout'>
       <div className='profile-about-layout__container'>
-        <AboutHeader user={user} />
+        <AboutHeader match={match} user={user} />
         <AboutDetail
           user={user}
           profile={profile}

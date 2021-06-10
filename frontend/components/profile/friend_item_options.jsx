@@ -21,27 +21,36 @@ const FriendItemOptions = ({
 
     let icon;
     let label = ''
+    let label2 = ''
     let onFriendClick = () => { }
+    let onFriendClick2 = null;
     if (friend.friendshipStatus === 'PENDING_SENT') {
       label = 'Cancel Request'
       icon = faUserTimes
-      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: friend.id });
+      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: friend.id })
+                              .then(() => setShowFriendOptions(false))
     } else if (friend.friendshipStatus === 'PENDING_RECEIVED') {
-      label = 'Respond'
+      label = 'Confirm Request'
+      label2 = 'Delete Request'
       icon = faUserCheck
-      onFriendClick = () => updateFriendRequest({ user_id: currentUserId, friend_id: friend.id });
-
+      onFriendClick = () => updateFriendRequest({ user_id: currentUserId, friend_id: friend.id })              
+                              .then(() => setShowFriendOptions(false))
+      onFriendClick2 = () => deleteFriendRequest({ user_id: currentUserId, friend_id: friend.id })              
+                              .then(() => setShowFriendOptions(false))
     } else if (friend.friendshipStatus === 'FRIENDS') {
       label = 'Unfriend'
       icon = faUserMinus
-      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: friend.id });
+      onFriendClick = () => deleteFriendRequest({ user_id: currentUserId, friend_id: friend.id })
+                              .then(() => setShowFriendOptions(false))
     }
     else {
       label = 'Add Friend'
       icon = faUserPlus
-      onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: friend.id });
+      onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: friend.id })
+                              .then(() => setShowFriendOptions(false))                  
     }
 
+    console.log(friend.friendshipStatus)
 
 
   return (
@@ -57,14 +66,28 @@ const FriendItemOptions = ({
      
       <OutsideClickNotifier excludeIds={[`friend-item-options__button`]} sideEffect={() => setShowFriendOptions(false)} >
         <div className={`friend-item-options__option-menu${showFriendOptions ? '--show' : ''}`}>
+          {
+            friend.friendshipStatus === 'PENDING_RECEIVED' ?
+              <div 
+                className='friend-item-options__menu-item' 
+                onClick={() => updateFriendRequest({ user_id: currentUserId, friend_id: friend.id })}>
+                <span className='friend-item-options__menu-icon'>
+                  <FontAwesomeIcon icon={faUserPlus} />
+                </span>
+                <div className='friend-item-options__menu-edit'>
+                  {label}
+                </div>
+              </div>
+            : null
+          }
           <div 
             className='friend-item-options__menu-item' 
-            onClick={onFriendClick}>
+            onClick={onFriendClick2 ? onFriendClick2 : onFriendClick}>
             <span className='friend-item-options__menu-icon'>
               <FontAwesomeIcon icon={icon} />
             </span>
             <div className='friend-item-options__menu-edit'>
-              {label}
+              {label2 ? label2 : label}
             </div>
           </div>
         </div>

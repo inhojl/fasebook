@@ -5,14 +5,24 @@
   left: 0;
   right: 0;
   bottom: 0;
-  font-weight: bold;
+  
 
 
 
   &__sidebar {
     width: 36rem;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 5.6rem;
     bottom: 0;
+    z-index: 13;
+  }
+
+  &__profile {
+    position: absolute;
+    left: 36rem;
+    top: -5.6rem;
+    right: 0;
+    bottom: 0;
+    min-width: 50rem;
   }
 }

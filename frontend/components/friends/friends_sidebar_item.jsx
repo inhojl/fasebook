@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { NavLink } from 'react-router-dom';
 
 const FriendsSidebarItem = ({
   currentUserId,
@@ -28,9 +28,9 @@ const FriendsSidebarItem = ({
   const friendRequester = users[friendRequesterId]
   const profile = profiles[friendRequester.profileId]
   let message = ''
-  if (showConfirm) {
+  if (friendRequester.friendshipStatus === "FRIENDS") {
     message = 'Request approved'
-  } else if (showDelete) {
+  } else if (!friendRequester.friendshipStatus) {
     message = 'Request removed'
   }
 
@@ -43,7 +43,7 @@ const FriendsSidebarItem = ({
       <div className='friends-sidebar-item__container'>
         <h3 className='friends-sidebar-item__name'>{friendRequester.firstName} {friendRequester.lastName}</h3>
         {
-          showConfirm || showDelete ?
+          message ?
             (
               <p className='friends-sidebar-item__message'>{message}</p>
             ) : (
@@ -60,7 +60,7 @@ const FriendsSidebarItem = ({
                 </button>
               </div>
             )
-        }
+          }
       </div>
     </div>
   );

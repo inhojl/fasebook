@@ -3,6 +3,7 @@ import { fetchUser, fetchProfile, updateProfile, updateProfileFormData } from '.
 import { fetchFriends,createFriendRequest, updateFriendRequest, deleteFriendRequest } from '../../redux/actions/friendship';
 import { fetchRelationshipStatuses } from '../../redux/actions/relationship_status';
 import ProfilePage from './profile_page';
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId]
@@ -28,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
   deleteFriendRequest: (userId) => dispatch(deleteFriendRequest(userId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfilePage))
 
 
 // createFriendRequest
