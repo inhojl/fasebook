@@ -1,0 +1,141 @@
+.profile-friends-summary {
+  @include container-block;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 0;
+
+  }
+
+  
+
+  &__see-all-wrapper {
+    position: relative;
+    margin-left: auto;
+    margin-top: -0.3rem;
+  }
+
+  &__heading {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__see-all {
+    @include button--link;
+    
+    position: relative;
+    
+    &-background {
+      position: absolute;
+      width: 113%;
+      height: 100%;
+      pointer-events: none;
+      padding: 0 1.2rem;
+      height: 3.6rem;
+      top: 50%;
+      left: 50%;
+      background-color: transparent;
+      transform: translate(-50%, -50%);
+      border-radius: 0.6rem;
+      transition: background-color .2s linear;
+    }
+    
+  }
+
+  &:hover .profile-friends-summary__see-all-background {
+    background-color: $gray-18;
+  }
+
+
+  &__preview {
+
+  }
+
+  &__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: minmax(15rem, 17rem);
+    grid-gap: .8rem;
+  }
+
+  &__item {
+
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+  }
+
+  &__profile-image {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    background-color: $gray-5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+  }
+
+  &__no-img {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    background-color: $gray-5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7rem;
+  }
+
+  &__num {
+    font-size: 1.7rem;
+    color: $gray-15;
+    margin-top: 0.5rem;
+    margin-bottom: 1.6rem;
+  }
+
+  &__name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 0.6rem;
+  }
+}
+
+
+@media (min-width: $medium-width-2) {
+  .profile-friends-summary {
+    &__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-auto-rows: minmax(10rem, 12.3rem);
+      
+    }
+
+    &__no-img {
+      flex-grow: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.4rem;
+      background-color: $gray-5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+  
+  }
+
+  
+}

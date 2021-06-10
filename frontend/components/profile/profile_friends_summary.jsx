@@ -1,24 +1,69 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const ProfileFriendsSummary = () => {
+const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriends }) => {
 
+  let { userId } = useParams();
   let { pathname } = useLocation();
 
-  return (
-    <div className='profile-friends-summary'>
-      <Link to={`${pathname}/friends`}>
-        <h1 className='profile-friends-summary__heading'>Friends</h1>
-      </Link>
+  useEffect(() => {
+      fetchFriends(userId)
+        .then(() => setLoaded(true))
+  }, [userId])
 
-      <div className='profile-friends-summary__see-all-wrapper'>
-        <div className='profile-friends-summary__see-all-background'></div>
-        <Link className='profile-friends-summary__see-all' to={`${pathname}/friends`}>
-          See All Friends
+  const user = users[userId]
+console.log(profiles)
+  return loaded && user.friendIds ? (
+    <div className='profile-friends-summary'>
+      <div className='profile-friends-summary__header'>
+        <Link to={`${pathname}/friends`}>
+          <h1 className='profile-friends-summary__heading'>Friends</h1>
         </Link>
+
+        <div className='profile-friends-summary__see-all-wrapper'>
+          <div className='profile-friends-summary__see-all-background'></div>
+          <Link className='profile-friends-summary__see-all' to={`${pathname}/friends`}>
+            See All Friends
+          </Link>
+        </div>
       </div>
+      <div className='profile-friends-summary__num'>{ user.friendIds.length } friends</div>
+      <div className='profile-friends-summary__preview'>
+        <ul className='profile-friends-summary__grid'>
+          {
+            user.friendIds.map((friendId, index) => {
+              const friend = users[friendId];
+              console.log(friend)
+              
+              if (!profiles || !friend) return null;
+
+              const friendProfile = profiles[friend.profileId]
+              return index < 9 ? (
+                <Link to={`/${friend.id}`} key={`friend-${index}`}>
+                  <li className='profile-friends-summary__item'>
+                    {
+                      friendProfile && friendProfile.profilePicUrl ?
+                        <div
+                          className='profile-friends-summary__profile-image'
+                          style={{ backgroundImage: `url(${window.location.origin + friendProfile.profilePicUrl})` }}
+                        ></div>
+                        : 
+                        <div className='profile-friends-summary__no-img'><FontAwesomeIcon icon={faUser} /></div>
+                       
+                    }
+                    <span className='profile-friends-summary__name'>{friend.firstName} {friend.lastName}</span>  
+                  </li>
+                </Link>
+              ) : null;
+            })
+          }
+        </ul>
+      </div>
+
     </div>
-  )
+  ) : null
 
 }
 

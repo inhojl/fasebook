@@ -14,7 +14,7 @@ const userReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER: return { ...state, [action.currentUser.user.id]: action.currentUser.user };
     case RECEIVE_USER: return { ...state, [action.user.user.id ]: action.user.user}
-    case RECEIVE_USERS: return { ...state, ...action.users }
+    case RECEIVE_USERS: return { ...state, ...action.users.users }
     default: return state;
   }
 }

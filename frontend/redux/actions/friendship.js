@@ -15,7 +15,7 @@ const receiveUser = (user) => ({
 
 export const fetchFriends = (userId) => (dispatch) => (
   FriendshipAPIUtil.fetchFriends(userId)
-    .then((user) => dispatch(receiveUsers(user)))
+    .then((users) => dispatch(receiveUsers(users)))
 )
 
 export const createFriendRequest = (userId) => (dispatch) => (
