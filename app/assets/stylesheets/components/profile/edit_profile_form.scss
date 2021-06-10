@@ -143,6 +143,18 @@
     background-position: center center;
   }
 
+  &__no-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8.4rem;
+    border-radius: 50%;
+    width: 16.8rem;
+    height: 16.8rem;
+    transition: all .1s linear;
+    background-color: $gray-5;
+  }
+
   &__cover-photo-image {
     background-color: $gray-5;
     width: 51.2rem;

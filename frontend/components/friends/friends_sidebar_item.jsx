@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
 const FriendsSidebarItem = ({
@@ -36,10 +38,14 @@ const FriendsSidebarItem = ({
 
   return (
     <div className='friends-sidebar-item'>
-      <div
-        style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-        className='friends-sidebar-item__profile-image'
-      ></div>
+      {
+        profile.profilePicUrl ?
+        <div
+          style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
+          className='friends-sidebar-item__profile-image'
+        ></div>
+        : <div className='friends-sidebar-item__no-img'><FontAwesomeIcon icon={faUser}/></div>
+      }
       <div className='friends-sidebar-item__container'>
         <h3 className='friends-sidebar-item__name'>{friendRequester.firstName} {friendRequester.lastName}</h3>
         {

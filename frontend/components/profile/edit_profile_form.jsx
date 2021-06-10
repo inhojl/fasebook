@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ProfileBiographyForm from './profile_biography_form';
 import ProfileIntroItem from './profile_intro_item'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile, relationshipStatuses, updateProfileFormData }) => {
@@ -68,10 +68,15 @@ const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile,
           </span>
         </div>
         <div className='edit-profile__profile-picture-container'>
-          <div 
-            className='edit-profile__profile-image'
-            style={{backgroundImage: `url(${window.location.origin + profile.profilePicUrl})`}}>
-          </div>
+          {
+            profile.profilePicUrl ?
+              <div 
+                className='edit-profile__profile-image'
+                style={{backgroundImage: `url(${window.location.origin + profile.profilePicUrl})`}}>
+              </div>
+              : <div className='edit-profile__no-img'><FontAwesomeIcon icon={faUser}/></div>
+        
+          }
         </div>
         <div className='edit-profile__subheading-wrapper'>
           <h2 className='edit-profile__subheading'>Cover Photo</h2>
