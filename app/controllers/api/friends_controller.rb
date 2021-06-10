@@ -5,4 +5,9 @@ class Api::FriendsController < ApplicationController
     render :index
   end
 
+  def friend_requests
+    @user = User.find_by(id: params[:user_id])
+    render 'api/friends/friend_requests'
+  end
+
 end

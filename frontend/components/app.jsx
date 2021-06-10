@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import HomePageContainer from './home/home_page_container';
 import NavbarContainer from './navbar/navbar_container';
-import FriendsPage from './friends/friends_page';
+import FriendsPageContainer from './friends/friends_page_container';
 import ProfilePageContainer from './profile/profile_page_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route';
@@ -15,7 +15,7 @@ const App = () => (
   <div className='app'>
     <NavbarContainer />
     <Switch>
-      <ProtectedRoute exact path="/friends" component={FriendsPage} />
+      <ProtectedRoute exact path="/friends" component={FriendsPageContainer} />
       <ProtectedRoute path="/:userId" component={ProfilePageContainer} />
       <Route exact path="/" component={HomePageContainer} />
       <Redirect to="/" />

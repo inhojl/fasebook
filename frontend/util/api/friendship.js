@@ -30,3 +30,10 @@ export const fetchFriends = (userId) => (
   })
 )
 
+export const fetchFriendRequesters = (userId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/friend_requests`
+  })
+)
+

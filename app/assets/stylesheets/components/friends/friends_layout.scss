@@ -5,6 +5,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  font-size: 2rem;
   font-weight: bold;
+
+
+
+  &__sidebar {
+    width: 36rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
 }
