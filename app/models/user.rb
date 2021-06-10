@@ -31,6 +31,13 @@ class User < ApplicationRecord
   has_many :friend_request_senders, -> { where(friendships: { status: "PENDING_RECEIVED" }) }, through: :friendships, source: :friend
   has_many :friend_request_receivers, -> { where(friendships: { status: "PENDING_SENT" }) }, through: :friendships, source: :friend
 
+  has_many :wall_posts, class_name: :Post, foreign_key: :wall_id, dependent: :destroy
+  has_many :authored_posts, class_name: :Post, foreign_key: :author_id, dependent: :destroy
+
+
+
+  has_many :authored_comments, class_name: :Comment, foreign_key: :author_id
+
   validates :email, presence: { message: "What's your email?" }, uniqueness: { message: "This email has already been taken." }
   validates :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true

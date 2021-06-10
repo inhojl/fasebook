@@ -88,3 +88,13 @@ Friendship.create!(user_id: 4, friend_id: 1, status: "PENDING_RECEIVED")
 
 Friendship.create!(user_id: 2, friend_id: 3, status: "FRIENDS")
 Friendship.create!(user_id: 3, friend_id: 2, status: "FRIENDS")
+
+
+Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
+Post.create(author_id: 3, wall_id: 1, body: "HEYYY WHAT's UP")
+Post.create(author_id: 2, wall_id: 2, body: "YOOO IMPOSTING TO MYSELF")
+Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
+
+
+Comment.create(author_id: 2, post_id: 2, body: "im commenting on user1s post!")
+Comment.create(author_id: 2, post_id: 2, body: "im commenting on a comment", parent_id: 1)

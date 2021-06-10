@@ -1,1 +1,1 @@
-json.imageUrl url_for(@post.photo)
+json.partial! "api/posts/post", post: @post
