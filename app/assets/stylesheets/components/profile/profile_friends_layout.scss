@@ -1,0 +1,55 @@
+.profile-friends-layout {
+
+  background-color: $white-1;
+  display: flex;
+  justify-content: center;
+  background-color: $gray-5;
+  padding: 1.6rem 1.6rem 50rem 1.6rem;
+
+  
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 87.6rem;
+    box-shadow: 0 1px 2px $shadow-2;
+    border-radius: 0.8rem;
+
+
+  }
+
+  &__friends-container {
+    @include container-block;
+    width: 100%;
+  }
+
+  &__heading {
+
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: -0.3rem;
+    
+  }
+
+  &__grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+    
+}
+
+
+@media (min-width: $medium-small) {
+  .profile-friends-layout {
+
+    &__grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { faCamera, faPencilAlt, faUser, faUserCheck, faUserPlus, faUserMinus, fa
 import ProfileTabItem from './profile_tab_item';
 import ProfileBiographyForm from './profile_biography_form';
 import CurrentUserItem from '../util/current_user_item_container';
+import OutsideClickNotifier from '../shared/outside_click_notifier';
 
 const ProfileHeader = ({
   user,
@@ -24,6 +25,7 @@ const ProfileHeader = ({
   const [showBiographyForm, setShowBiographyForm] = useState(false);
   const [profilePicFile, setProfilePicFile] = useState(null);
   const [coverPhotoFile, setCoverPhotoFile] = useState(null);
+  const [showFriendOptions, setShowFriendOptions] = useState(false);
 
   useEffect(() => {
     if (profilePicFile) {
@@ -71,12 +73,44 @@ const ProfileHeader = ({
     setProfilePicFile(event.currentTarget.files[0]);
   }
 
+
+
+  //   <OutsideClickNotifier excludeIds={[`input-display__${name}-button`]} sideEffect={() => setShowMenu(false)} >
+  //   <div className={`input-display__option-menu${showMenu ? '--show' : ''}`}>
+  //     {
+  //       showEdit ?
+  //         <div className='input-display__menu-item' onClick={onEdit}>
+  //           <span className='input-display__menu-icon'>
+  //             <FontAwesomeIcon icon={faPencilAlt} />
+  //           </span>
+  //           <div className='input-display__menu-edit'>
+  //             Edit {label.toLowerCase()}
+  //           </div>
+  //         </div>
+  //         : null
+  //     }
+  //     {
+  //       showDelete ?
+  //         <div className='input-display__menu-item' onClick={onDelete}>
+  //           <div className='input-display__menu-icon'>
+  //             <FontAwesomeIcon icon={faTrashAlt} />
+  //           </div>
+  //           <div className='input-display__menu-delete'>
+  //             Delete {label.toLowerCase()}
+  //           </div>
+  //         </div>
+  //         : null
+  //     }
+  //   </div>
+  // </OutsideClickNotifier>
+  let currentStyle = '';
+
   let FriendButton = () => null;
   if (user && user.id != currentUserId) {
     let label = ''
     let icon;
     let style;
-    let onFriendClick = () => {}
+    let onFriendClick = () => { }
     if (user.friendshipStatus === 'PENDING_SENT') {
       label = 'Cancel Request'
       icon = faUserTimes
@@ -92,14 +126,16 @@ const ProfileHeader = ({
       label = 'Friends'
       icon = faUserCheck
       style = '--friends'
-     // onFriendClick = () => deleteFriendRequest(user.id)
+      onFriendClick = () => setShowFriendOptions(true)
     }
     else {
       label = 'Add Friend'
       icon = faUserPlus
-      style='--add'
+      style = '--add'
       onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: user.id });
     }
+
+    currentStyle = style;
 
     console.log(user.friendshipStatus)
 
@@ -113,6 +149,10 @@ const ProfileHeader = ({
     }
   }
 
+  const onDeleteFriend = () => {
+    deleteFriendRequest({ user_id: currentUserId, friend_id: user.id })
+      .then(setShowFriendOptions(false))
+  }
 
   return (
 
@@ -192,7 +232,27 @@ const ProfileHeader = ({
         <li className='profile-header__tab-item'>
           <ProfileTabItem path={`/${user.id}/friends`} label='Friends' />
         </li>
-        <FriendButton />
+
+        <div className='profile-header__friend-container'>
+          <FriendButton />
+          <OutsideClickNotifier excludeIds={[`profile-header__button${currentStyle}`]} sideEffect={() => setShowFriendOptions(false)} >
+            <div className={`profile-header__option-menu${showFriendOptions ? '--show' : ''}`}>
+              <div 
+                className='profile-header__menu-item' 
+                onClick={onDeleteFriend}>
+                <span className='profile-header__menu-icon'>
+                  <FontAwesomeIcon icon={faUserMinus} />
+                </span>
+                <div className='profile-header__menu-edit'>
+                  Unfriend
+                </div>
+              </div>
+            </div>
+          </OutsideClickNotifier>
+        </div>
+
+
+
         <CurrentUserItem>
           <li onClick={onClick} className='profile-header__button'>
             <span><FontAwesomeIcon icon={faPencilAlt} /></span>

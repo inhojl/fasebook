@@ -190,7 +190,7 @@
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    margin-left: auto;
+
     background-color: $gray-20;
     border-radius: 0.6rem;
     cursor: pointer;
@@ -207,8 +207,79 @@
     color: $white-1;
   }
 
- 
 
+  &__friend-container {
+    margin-left: auto;
+    position: relative;
+  }
+
+  &__option-menu {
+    position: absolute;
+  }
+  &__option-menu,
+  &__option-menu--show {
+    position: absolute;
+    padding: 0.8rem;
+    width: 34.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $white-1;
+    box-shadow: 0 12px 28px 0 $shadow-2,0 2px 4px 0 $shadow-1,inset 0 0 0 1px $shadow-inset;
+    border-radius: 0.8rem;
+    top: 5rem;
+    right: 0rem;
+    z-index: 5;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0; 
+      height: 0; 
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $white-1;
+      right: 1rem;
+      top: -.6rem;
+    }
+  }
+  &__option-menu {
+    display: none;
+  }
+
+  &__option-menu--show {
+    display: block;
+
+  }
+
+  &__menu-item {
+    display: flex;
+    padding: 0.8rem;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    height: 3.6rem;
+    &:hover {
+      background-color: $gray-18;
+      
+    }
+
+    &:active {
+      filter: brightness(95%);
+    }
+  }
+
+  &__menu-icon {
+    font-size: 2rem;
+    color: $gray-21;
+  }
+
+  &__menu-edit,
+  &__menu-delete {
+    font-size: 1.5rem;
+    color: $black-2;
+    margin-left: 1.2rem;
+  }
   
 
 

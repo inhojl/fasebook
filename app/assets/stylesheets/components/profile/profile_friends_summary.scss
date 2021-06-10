@@ -47,7 +47,7 @@
     
   }
 
-  &:hover .profile-friends-summary__see-all-background {
+  &__see-all-wrapper:hover > .profile-friends-summary__see-all-background {
     background-color: $gray-18;
   }
 
@@ -83,6 +83,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    transition: background-color 0.1s linear;
+    &:hover {
+      filter: brightness(90%);
+    }
     
   }
 

@@ -11,6 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     profile: user ? state.entities.profiles[user.profileId] : null,
     currentUserId: state.session.id,
     relationshipStatuses: state.entities.relationshipStatuses,
+    users: state.entities.users,
+    profiles: state.entities.profiles
   }
 }
 

@@ -16,7 +16,6 @@ const ProfilePage = ({
   user,
   profile,
   fetchUser,
-  currentUserId,
   match,
   relationshipStatuses,
   fetchRelationshipStatuses,
@@ -24,9 +23,12 @@ const ProfilePage = ({
   updateProfile,
   updateProfileFormData,
   fetchFriends,
+  currentUserId,
   createFriendRequest,
   updateFriendRequest,
-  deleteFriendRequest
+  deleteFriendRequest,
+  users,
+  profiles
 }) => {
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
@@ -67,7 +69,7 @@ const ProfilePage = ({
           profile={profile}
           currentUserId={currentUserId}
           setShowEditProfileForm={setShowEditProfileForm}
-          updateProfileFormData={updateProfileFormData}
+        updateProfileFormData={updateProfileFormData}
           createFriendRequest={createFriendRequest}
           updateFriendRequest={updateFriendRequest}
           deleteFriendRequest={deleteFriendRequest} />
@@ -75,7 +77,17 @@ const ProfilePage = ({
 
       <main className='profile-layout__main'>
         <Switch>
-          <ProtectedRoute exact path={`${match.path}/friends`} component={ProfileFriends} />
+          <ProtectedRoute 
+            createFriendRequest={createFriendRequest}
+            updateFriendRequest={updateFriendRequest}
+            deleteFriendRequest={deleteFriendRequest}
+            currentUserId={currentUserId}
+            user={user} 
+            fetchFriends={fetchFriends} 
+            users={users} 
+            profiles={profiles} 
+            exact path={`${match.path}/friends`} 
+            component={ProfileFriends} />
           <ProtectedRoute exact path={`${match.path}/about`} component={ProfileAboutContainer} />
           <ProtectedRoute
             relationshipStatuses={relationshipStatuses}
