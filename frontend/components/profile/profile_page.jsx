@@ -38,7 +38,7 @@ const ProfilePage = ({
   useEffect(() => {
     // setLoading(true)
     fetchRelationshipStatuses()
-    console.log({ history, match })
+
     fetchUser(match.params.userId)
       .then((res) => console.log(res))
       .fail(() => {
@@ -62,7 +62,7 @@ const ProfilePage = ({
     })
   }
 
-  console.log('match path', match);
+
 
   return user && profile ? (
     <div className='profile-layout'>

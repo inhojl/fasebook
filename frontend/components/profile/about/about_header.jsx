@@ -9,7 +9,6 @@ const PathNavLink = (props) => (
 
 const AboutHeader = ({ user, match }) => {
 
-  console.log(match)
   return (
     <nav className='about-header'>
       <h1 className='about-header__heading'>About</h1>

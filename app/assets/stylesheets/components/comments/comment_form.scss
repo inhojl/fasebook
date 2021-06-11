@@ -1,0 +1,45 @@
+.comment-form {
+
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0;
+  margin-bottom: 0.4rem;
+
+
+  &__profile-image {
+    align-self: flex-start;
+    background-color: $gray-5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 3.2rem;
+    min-width: 3.2rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+
+  
+  &__input {
+    flex: 1 1 0;
+    min-width: 0;
+    margin-left: 0.8rem;
+    width: 100%;
+    background-color: $gray-5;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1.8rem;
+    font-size: 1.5rem;
+
+  }
+
+  [contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block; /* For Firefox */
+    color: $gray-23;
+  }
+}

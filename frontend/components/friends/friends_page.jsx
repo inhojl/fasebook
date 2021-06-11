@@ -14,7 +14,6 @@ const FriendsPage = ({
   deleteFriendRequest,
   match
 }) => {
-  console.log(currentUserId)
 
 
   return (

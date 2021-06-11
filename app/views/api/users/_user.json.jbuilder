@@ -1,5 +1,5 @@
 
-json.extract! user, :id, :email, :username, :first_name, :last_name, :birthdate, :gender_id
+json.extract! user, :id, :email, :username, :first_name, :last_name, :birthdate, :gender_id, :wall_post_ids
 json.profile_id user.profile.id
 json.friend_ids user.friend_ids
 

@@ -25,7 +25,6 @@ export const fetchFriendRequesters = (userId) => (dispatch) => (
 export const createFriendRequest = (userId) => (dispatch) => (
   FriendshipAPIUtil.createFriendRequest(userId)
     .then((user) => {
-      console.log('here',user)
       dispatch(receiveUser(user))
     })
 )

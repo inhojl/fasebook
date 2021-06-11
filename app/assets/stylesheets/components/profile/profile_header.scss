@@ -24,6 +24,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+
     //background: linear-gradient(to top, $gray-19 0%, $gray-5 20%, $gray-5 80%);
   }
 
@@ -41,6 +42,7 @@
     right: 3.2rem;
     bottom: 1.6rem;
     font-weight: bold;
+    cursor: pointer;
     @include button-click-animation;
   }
 

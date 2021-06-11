@@ -1,0 +1,158 @@
+.comment-item {
+
+  
+  &__parent-comment,
+  &__parent-comment--child {
+  
+    display: flex;
+    align-items: center;
+    padding: 0.3rem;
+
+  }
+
+  &__parent-comment--child {
+    margin-left: 4.9rem;
+  }
+
+  &__profile-image-container {
+
+  }
+
+  &__link,
+  &__link--child {
+    margin-top: 0.3rem;
+    min-height: 3.2rem;
+    min-width: 3.2rem;
+    border-radius: 50%;
+    align-self: flex-start;
+  }
+
+  &__link--child {
+    min-height: 2.4rem;
+    min-width: 2.4rem;
+  }
+
+  &__profile-image,
+  &__profile-image--child {
+
+    background-color: $gray-5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 3.2rem;
+    min-width: 3.2rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__profile-image--child {
+    min-height: 2.4rem;
+    min-width: 2.4rem;
+  }
+
+  &__body-container {
+    padding-left: 0.8rem;
+    flex-grow: 1;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__content-container {
+    background-color: $gray-5;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1.8rem;
+  }
+
+  &__body-header {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  &__body-content {
+    font-size: 1.5rem;
+    word-break:break-all;
+  }
+
+  &__options {
+    font-size: 1.2rem;
+    color: $gray-15;
+    margin-left: 1.4rem;
+    margin-top: 0.3rem;
+  }
+
+  &__like,
+  &__reply {
+    font-weight: bold;
+    margin-right: 0.3rem;
+    cursor: pointer;
+    user-select: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__reply,
+  &__created-at {
+    margin-left: 0.3rem;
+  }
+
+
+  &__edit-container {
+    color: $gray-24;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+  }
+
+  &__edit-button {
+    margin-left: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    transition: background-color .1s linear;
+    &:hover {
+      background-color: $gray-5;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      filter: brightness(95%);
+    }
+  }
+
+  &__edit-icon {
+    display: none;
+  }
+
+  &__parent-comment:hover .comment-item__edit-icon,
+  &__parent-comment--child:hover .comment-item__edit-icon {
+    display: block;
+  }
+
+  .comment-form {
+    margin-left: 5.3rem;
+
+    &__profile-image {
+      min-width: 2.4rem;
+      min-height: 2.4rem;
+    }
+
+
+  }
+
+}
+
+

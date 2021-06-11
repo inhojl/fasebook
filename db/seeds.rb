@@ -91,10 +91,14 @@ Friendship.create!(user_id: 3, friend_id: 2, status: "FRIENDS")
 
 
 Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
-Post.create(author_id: 3, wall_id: 1, body: "HEYYY WHAT's UP")
-Post.create(author_id: 2, wall_id: 2, body: "YOOO IMPOSTING TO MYSELF")
+Post.create(author_id: 3, wall_id: 2, body: "HEY I MSYAING HII")
+Post.create(author_id: 2, wall_id: 2, body: "YOOO IM BATMAN")
 Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
+Post.create(author_id: 1, wall_id: 2, body: "I like the joker")
 
 
-Comment.create(author_id: 2, post_id: 2, body: "im commenting on user1s post!")
-Comment.create(author_id: 2, post_id: 2, body: "im commenting on a comment", parent_id: 1)
+Comment.create(author_id: 2, post_id: 2, body: "comment ajsdfasdfa s1")
+Comment.create(author_id: 1, post_id: 2, body: "comentasdf as efas dff 41", parent_id: 1)
+Comment.create(author_id: 2, post_id: 2, body: "asdfasd f1234 234t345agf", parent_id: 1)
+Comment.create(author_id: 3, post_id: 2, body: "adfsasdf123123 12 312 123 ", parent_id: 1)
+Comment.create(author_id: 4, post_id: 2, body: "adsfasd f 2342 11 afds bs fgdh", parent_id: 1)

@@ -16,8 +16,6 @@ const FriendItemOptions = ({
 
     
 
-    console.log({ 
-      friend })
 
     let icon;
     let label = ''
@@ -49,8 +47,6 @@ const FriendItemOptions = ({
       onFriendClick = () => createFriendRequest({ user_id: currentUserId, friend_id: friend.id })
                               .then(() => setShowFriendOptions(false))                  
     }
-
-    console.log(friend.friendshipStatus)
 
 
   return (

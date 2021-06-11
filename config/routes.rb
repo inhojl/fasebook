@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :relationship_statuses, only: [:index]
     resources :friendships, only: [ :create ]
-    resources :posts, only: [ :show, :create, :update, :destroy ]
+    resources :posts, only: [ :show, :create, :update, :destroy ] do
+      resources :comments, only: [:index]
+    end
+    resources :comments, only: [ :show, :create, :update, :destroy ]
 
     patch "/friendships", to: "friendships#update"
     delete "/friendships", to: "friendships#destroy"

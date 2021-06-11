@@ -14,7 +14,7 @@ const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriend
   }, [userId])
 
   const user = users[userId]
-  console.log({ user })
+
   return loaded && user.friendIds ? (
     <div className='profile-friends-summary'>
       <div className='profile-friends-summary__header'>
@@ -38,8 +38,7 @@ const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriend
               {
                 user.friendIds.map((friendId, index) => {
                   const friend = users[friendId];
-                  console.log(friend)
-                  
+    
                   if (!profiles || !friend) return null;
 
                   const friendProfile = profiles[friend.profileId]

@@ -57,7 +57,9 @@
 @import "components/profile/about_header.scss";
 @import "components/profile/about_detail.scss";
 
-
+// Posts
+@import "components/posts/post_list_item.scss";
+@import "components/posts/post_list.scss";
 
 // Newsfeed
 @import "components/newsfeed/newsfeed_layout.scss";
@@ -66,6 +68,10 @@
 @import "components/friends/friends_layout.scss";
 @import "components/friends/friends_sidebar.scss";
 @import "components/friends/friends_sidebar_item.scss";
+
+// Comments
+@import "components/comments/comment_item.scss";
+@import "components/comments/comment_form.scss";
 
 // Animations through React
 @import "react-transitions.scss"

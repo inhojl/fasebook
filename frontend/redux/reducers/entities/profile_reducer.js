@@ -4,6 +4,9 @@ import {
   RECEIVE_USER,
   RECEIVE_USERS
 } from '../../actions/user'
+import {
+  RECEIVE_POSTS
+} from '../../actions/post'
 
 const receiveProfile = (state, profile) => ({
   ...state,
@@ -18,6 +21,7 @@ const profileReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER: return receiveProfile(state, action.currentUser.profile);
     case RECEIVE_USER: return receiveProfile(state, action.user.profile);
     case RECEIVE_USERS: return { ...state, ...action.users.profiles }
+    case RECEIVE_POSTS: return { ...state, ...action.posts.profiles }
     default: return state;
   }
 }

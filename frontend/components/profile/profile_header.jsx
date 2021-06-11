@@ -113,7 +113,7 @@ const ProfileHeader = ({
 
     currentStyle = style;
 
-    console.log(user.friendshipStatus)
+
 
     FriendButton = () => {
       return (
@@ -137,8 +137,6 @@ const ProfileHeader = ({
     .then(() => setShowFriendOptions(false))
   }
 
-
-  console.log('profile header', match)
 
   return (
 

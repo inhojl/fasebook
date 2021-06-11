@@ -1,0 +1,173 @@
+.post-list-item {
+  @include container-block;
+  padding: 1.2rem 1.6rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  
+
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__profile-image {
+    background-color: $gray-5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 4rem;
+    min-width: 4rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.8rem;
+    font-weight: 400;
+  }
+
+
+  &__name {
+    font-size: 1.5rem;
+    color: $black-2;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__date,
+  &__date--recent {
+    font-size: 1.3rem;
+    color: $gray-15;
+
+  }
+
+  &__date--recent {
+    font-weight: bold;
+  }
+
+  
+
+  &__options {
+    margin-left: auto;
+  }
+
+  &__options-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    min-width: 3.2rem;
+    min-height: 3.2rem;
+    transition: all 0.1s linear;
+    font-size: 1.6rem;
+    color: $gray-24;
+
+    &:hover {
+      background-color: $gray-18;
+    }
+
+    &:active {
+      filter: brightness(90%);
+    }
+    
+  }
+
+  &__body {
+    margin-top: 0.8rem;
+    font-size: 2.4rem;
+
+  }
+
+  &__comment-count {
+    margin-left: auto;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+    color: $gray-15;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 0.2rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__padding {
+    padding-top: 1rem;
+  }
+
+  &__divider {
+
+    border-bottom: 1px solid $gray-16;
+  }
+
+  &__button-group {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    font-size: 1.5rem;
+    color: $gray-15;
+    
+  }
+
+  &__post-like {
+    margin-right: 0.4rem;
+  }
+
+  &__post-like,
+  &__post-comment {
+    cursor: pointer;
+    border-radius: 0.6rem;
+    height: 3.2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.2rem;
+    font-weight: bold;
+    
+    &:hover {
+      background-color:$gray-5;
+    }
+
+    &:active {
+      filter: brightness(95%);
+    }
+  }
+
+  &__comment-icon,
+  &__like-icon {
+    font-size: 1.7rem;
+  }
+
+  &__comment-icon {
+    margin-top: 0.2rem;
+  }
+
+  &__label {
+    margin-left: 0.6rem;
+  }
+
+  &__comments-container {
+    & > *:nth-child(2) {
+      margin-top: 0.5rem;
+    }
+  }
+
+
+
+}
