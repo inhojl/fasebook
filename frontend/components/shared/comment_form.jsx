@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons'; 
 import uniqid from 'uniqid'
 const CommentForm = React.forwardRef(({
   post,
@@ -65,15 +67,18 @@ const CommentForm = React.forwardRef(({
   }, [post])
 
 
-
   return (
     <form id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
-      <div
-        onClick={() => {}}
-        className={`comment-form__profile-image${!parentId ? '--parent' : ''}`}
-        style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-      >
-      </div>
+      {
+        profile.profilePicUrl ?
+          <div
+            onClick={() => {}}
+            className={`comment-form__profile-image${!parentId ? '--parent' : ''}`}
+            style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
+          >
+          </div>
+        : <div className='comment-form__no-img'><FontAwesomeIcon icon={faUser} /></div>
+      }
 
       <div
         id={id}

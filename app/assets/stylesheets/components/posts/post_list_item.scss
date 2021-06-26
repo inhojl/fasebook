@@ -29,6 +29,23 @@
     }
   }
 
+  &__no-img {
+    background-color: $gray-5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: $black-2;
+    min-height: 4rem;
+    min-width: 4rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
   &__heading {
     display: flex;
     flex-direction: column;

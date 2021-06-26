@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faEllipsisH, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as emptyThumbsUp, faCommentAlt } from '@fortawesome/free-regular-svg-icons';
 import CommentItem from './comment_item';
 import CommentForm from './comment_form';
@@ -61,14 +61,19 @@ const PostListItem = ({
  
   }
 
+
   return (
     <div className='post-list-item'>
       <div className='post-list-item__header'>
         <Link to={`/${author.id}`}>
-          <div 
-            className='post-list-item__profile-image'
-            style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-          ></div>
+          {
+            profile.profilePicUrl ?
+              <div 
+                className='post-list-item__profile-image'
+                style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
+              ></div>
+            : <div className='post-list-item__no-img'><FontAwesomeIcon icon={faUser} /></div>
+          }
         </Link>
         <div className='post-list-item__heading'>
           <Link to={`/${author.id}`}>

@@ -6,6 +6,22 @@
   padding: 0.4rem 0;
   margin-bottom: 0.4rem;
 
+  &__no-img {
+    background-color: $gray-5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: $black-2;
+    min-height: 3.2rem;
+    min-width: 3.2rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
 
   &__profile-image,
   &__profile-image--parent {

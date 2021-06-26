@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faUser } from '@fortawesome/free-solid-svg-icons';
 import CommentForm from './comment_form';
 import { Link } from 'react-router-dom';
 import timediff from 'timediff'
@@ -47,18 +47,21 @@ const ParentCommentItem = ({
 
   }
 
-  console.log('parent-item', { currentUser})
-  
+
 
   return !showEditForm ? (
     <div className='comment-item__parent-comment'>
 
       <Link className='comment-item__link' to={`/${author.id}`}>
-        <div
-          style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-          className='comment-item__profile-image'
-        >
-        </div>
+        {
+          profile.profilePicUrl ?
+            <div
+              style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
+              className='comment-item__profile-image'
+            >
+            </div>
+          : <div className='comment-item__no-img'><FontAwesomeIcon icon={faUser} /></div>
+        }
       </Link>
 
       <div className='comment-item__body-container'>
