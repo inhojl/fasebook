@@ -9,3 +9,9 @@ if logged_in?
     json.friendship_status friendship ? friendship.status : nil
   end
 end
+
+if logged_in?
+  if current_user.id == user.id
+    json.friend_requester_ids current_user.friend_request_senders.ids
+  end
+end

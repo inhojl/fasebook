@@ -7,7 +7,11 @@ import {
   RECEIVE_POSTS
 } from '../../actions/post'
 
+const receivePosts = (state, action) => {
+  console.log(action)
 
+  return { ...state, ...action.posts.users };
+}
 
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,7 +20,7 @@ const userReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER: return { ...state, [action.currentUser.user.id]: action.currentUser.user };
     case RECEIVE_USER: return { ...state, [action.user.user.id ]: action.user.user}
     case RECEIVE_USERS: return { ...state, ...action.users.users }
-    case RECEIVE_POSTS: return { ...state, ...action.posts.users }
+    case RECEIVE_POSTS: return receivePosts(state, action)
     default: return state;
   }
 }

@@ -163,9 +163,13 @@
   }
 
   &__comments-container {
-    & > *:nth-child(2) {
-      margin-top: 0.5rem;
-    }
+   
+      margin-top: 0.4rem;
+    
+  }
+
+  &__comment-form {
+    margin-top: 0.4rem;
   }
 
 

@@ -17,12 +17,15 @@ const FriendsSidebarItem = ({
   const [showConfirm, setShowConfirm] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
 
-  const onConfirm = () => {
+  const onConfirm = (e) => {
+    console.log(e)
+    e.preventDefault();
     updateFriendRequest({ user_id: currentUserId, friend_id: friendRequesterId })
       .then(setShowConfirm(true))
   }
 
-  const onDelete = () => {
+  const onDelete = (e) => {
+    e.preventDefault();
     deleteFriendRequest({ user_id: currentUserId, friend_id: friendRequesterId })
       .then(setShowDelete(true))
   }

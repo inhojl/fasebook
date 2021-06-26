@@ -27,6 +27,7 @@ class Api::CommentsController < ApplicationController
   def update
     @comment = Comment.find_by(id: params[:id])
     if @comment.update(comment_params)
+      @post = @comment.post
       render :show
     else
       render status: :unprocessable_entity
@@ -36,7 +37,8 @@ class Api::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find_by(id: params[:id])
     if @comment.destroy
-      render json: {}, status: :ok
+      @post = @comment.post
+      render 'api/posts/show', post: @post
     end
   end
 

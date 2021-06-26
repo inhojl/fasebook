@@ -60,6 +60,7 @@
 // Posts
 @import "components/posts/post_list_item.scss";
 @import "components/posts/post_list.scss";
+@import "components/posts/post_form.scss";
 
 // Newsfeed
 @import "components/newsfeed/newsfeed_layout.scss";
@@ -71,6 +72,7 @@
 
 // Comments
 @import "components/comments/comment_item.scss";
+@import "components/comments/comment_edit_options.scss";
 @import "components/comments/comment_form.scss";
 
 // Animations through React

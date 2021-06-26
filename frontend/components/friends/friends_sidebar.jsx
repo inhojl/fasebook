@@ -12,24 +12,32 @@ const FriendsSidebar = ({
   deleteFriendRequest
 }) => {
   const [ loaded, setLoaded ] = useState(false)
+  const [ friendRequesterIds, setFriendRequesterIds] = useState([])
 
   useEffect(() => {
     fetchFriendRequesters(currentUserId)
       .then(() => setLoaded(true))
   },[])
+
+  useEffect(() => {
+    if (friendRequesterIds.length === 0) {
+      setFriendRequesterIds(currentUser.friendRequesterIds);
+    }
+
+  }, [currentUser])
+
   const currentUser = users[currentUserId]
-  return loaded && currentUser ? (
+
+  return loaded ? (
     <div className='friends-sidebar'>
       <h1 className='friends-sidebar__heading'>Friends</h1>
       {
-        currentUser.friendRequesterIds ?
-        <h2 className='friends-sidebar__count'>{currentUser.friendRequesterIds.length} {currentUser.friendRequesterIds.length === 1 ? 'Friend Request' : 'Friend Requests'}</h2>
-        : null
+        <h2 className='friends-sidebar__count'>{friendRequesterIds.length} {friendRequesterIds.length === 1 ? 'Friend Request' : 'Friend Requests'}</h2>
       }
       <ul className='friends-sidebar__list'>
         {
-          currentUser.friendRequesterIds ? 
-            currentUser.friendRequesterIds.map((friendRequesterId, index) => {
+          friendRequesterIds.length ? 
+            friendRequesterIds.map((friendRequesterId, index) => {
               return (
                 <NavLink 
                   className="friends-sidebar-item-wrapper" 

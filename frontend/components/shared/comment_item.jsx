@@ -1,9 +1,13 @@
-import React, { useEffect,useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import CommentForm from './comment_form';
 import { Link } from 'react-router-dom';
 import timediff from 'timediff'
+import CommentEditOptions from './comment_edit_options'
+import uniqid from 'uniqid'
+import ParentCommentItem from './parent_comment_item';
+import ChildCommentItem from './child_comment_item';
 
 const CommentItem = ({
   comments,
@@ -14,20 +18,23 @@ const CommentItem = ({
   profiles,
   post,
   createComment,
+  deleteComment,
+  updateComment,
   currentUser
-}) => {
+}) => { 
+
+  
+  console.log({currentUser})
 
   const form = useRef()
 
-  const [showForm, setShowForm] = useState(false)
-  const [ triggerFocus, setTriggerFocus ] = useState(false)
-
+  const [showForm, setShowForm] = useState(false);
   useEffect(() => {
 
     if (showForm) {
       const $div = $(form.current)
-      setTimeout(function() {
-          $div.focus();
+      setTimeout(function () {
+        $div.focus();
       }, 0);
     }
   }, [showForm])
@@ -48,143 +55,52 @@ const CommentItem = ({
 
   }
 
-
-  const commentTimeDiff = (createdAt) => {
-    
-    const diff = timediff(createdAt, new Date(), 'YWDHmS')
-
-    if (diff.years) {
-      return `${diff.years}y`
-    } else if (diff.months) {
-      return `${diff.months}m`
-    } else if (diff.weeks) {
-      return `${diff.weeks}w`
-    } else if (diff.days) {
-      return `${diff.days}d`
-    } else if (diff.hours) {
-      return `${diff.hours}h`
-    } else if (diff.minutes) {
-      return `${diff.minutes}m`
-    } else if (diff.seconds) {
-      return `${diff.seconds}s`
-    }
-
-  }
-
-
-  
-  
-  
-
-
   return (
-    <div className='comment-item' >
-      <div className='comment-item__parent-comment'>
+    <div className='comment-item'>
 
-        <Link className='comment-item__link' to={`/${author.id}`}>
-          <div
-            style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-            className='comment-item__profile-image'
-          >
-          </div>
-        </Link>
-
-        <div className='comment-item__body-container'>
-          <div className='comment-item__body'>
-            <div className='comment-item__content-container'>
-              <h3 className='comment-item__body-header'>
-                {author.firstName} {author.lastName}
-              </h3>
-              <div className='comment-item__body-content'>
-                {comment.body}
-              </div>
-            </div>
-            <div className='comment-item__edit-container'>
-              <button type='button' className='comment-item__edit-button'>
-                <FontAwesomeIcon className='comment-item__edit-icon' icon={faEllipsisH} />
-              </button>
-            </div>
-          </div>
-          <div className='comment-item__options'>
-            <span className='comment-item__like'>
-              Like
-          </span>
-          ·
-          <span className='comment-item__reply' onClick={onClickReply}>
-              Reply
-          </span>
-          ·
-          <span className='comment-item__created-at'>
-              {commentTimeDiff(comment.createdAt)}
-          </span>
-          </div>
-        </div>
-
-      </div>
+      <ParentCommentItem 
+        createComment={createComment}
+        author={author}
+        profile={profile}
+        onClickReply={onClickReply}
+        comment={comment}
+        profiles={profiles}
+        currentUser={currentUser}
+        updateComment={updateComment}
+        deleteComment={deleteComment}
+        post={post}
+      />
 
       {
-        sortedChildComments ? sortedChildComments.map((childComment, index) =>
-
-        (
-          <div key={`child-comment-${index}`} className='comment-item__parent-comment--child'>
-            <Link className='comment-item__link--child' to={`/${childComment.authorId}`}>
-
-              <div
-                style={{ backgroundImage: `url(${profiles[users[childComment.authorId].profileId] ? window.location.origin + profiles[users[childComment.authorId].profileId].profilePicUrl : ''})` }}
-                className='comment-item__profile-image--child'
-              ></div>
-            </Link>
-
-            <div className='comment-item__body-container'>
-              <div className='comment-item__body'>
-                <div className='comment-item__content-container'>
-                  <h3 className='comment-item__body-header'>
-                    {users[childComment.authorId].firstName} {users[childComment.authorId].lastName}
-                  </h3>
-                  <div className='comment-item__body-content'>
-                    {childComment.body}
-                  </div>
-                </div>
-                <div className='comment-item__edit-container'>
-                  <button type='button' className='comment-item__edit-button'>
-                    <FontAwesomeIcon className='comment-item__edit-icon' icon={faEllipsisH} />
-                  </button>
-                </div>
-              </div>
-              <div className='comment-item__options'>
-                <span className='comment-item__like'>
-                  Like
-            </span>
-            ·
-            <span className='comment-item__reply' onClick={onClickReply}>
-                  Reply
-            </span>
-            ·
-            <span className='comment-item__created-at'>
-                {commentTimeDiff(childComment.createdAt)}
-            </span>
-              </div>
-            </div>
-
-          </div>
-        ))
-          : null
+        sortedChildComments ? sortedChildComments.map((childComment, index) => 
+            <ChildCommentItem
+            key={`comment-item-${index}`}
+            author={users[childComment.authorId]}
+            profile={profiles[users[childComment.authorId].profileId]}
+            onClickReply={onClickReply}
+            comment={childComment}
+            profiles={profiles}
+            currentUser={currentUser}
+            updateComment={updateComment}
+            deleteComment={deleteComment}
+            post={post}
+            />
+        ) 
+        : null
       }
 
       {
-        showForm ? 
+        showForm ?
           <CommentForm
+            id={uniqid()}
             parentId={comment.id}
-            ref={form}
             placeholder='Write a reply...'
             post={post}
             profile={profiles[currentUser.profileId]}
-            // comment={}
             author={currentUser}
             createComment={createComment}
           />
-
-        : null
+          : null
       }
 
 

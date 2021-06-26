@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const ProfileCreatePost = ({ profile }) => {
+const ProfileCreatePost = ({ profile, setShowPostForm }) => {
 
   return (
     <div className='profile-create-post'>
@@ -16,7 +16,7 @@ const ProfileCreatePost = ({ profile }) => {
             : <div className='profile-create-post__no-img'><FontAwesomeIcon icon={faUser} /></div>
         }
       </div>
-      <button type="button" className='profile-create-post__button'>What's on your mind?</button>
+      <button type="button" className='profile-create-post__button' onClick={() => setShowPostForm(true)}>What's on your mind?</button>
     </div>
   )
 

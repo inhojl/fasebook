@@ -1,5 +1,5 @@
 import * as CommentAPIUtil from '../../util/api/comment';
-
+import { receivePost } from './post';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
@@ -39,5 +39,5 @@ export const updateComment = (comment) => (dispatch) => (
 )
 export const deleteComment = (commentId) => (dispatch) => (
   CommentAPIUtil.deleteComment(commentId)
-    .then(() => dispatch(removeComment(commentId)))
+    .then((post) => dispatch(receivePost(post)))
 )

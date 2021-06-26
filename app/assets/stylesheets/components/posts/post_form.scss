@@ -1,0 +1,55 @@
+.post-form {
+  width: 100vw;
+  max-width: 50rem;
+  background-color: $white-1;
+  box-shadow: 0 12px 28px 0 $shadow-2,0 2px 4px 0 $shadow-1,inset 0 0 0 1px $shadow-inset;
+  border-radius: 0.8rem;
+
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: $black-2;
+    font-weight: bold;
+    padding: 0.9rem;
+  }
+
+  &__profile-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 4rem;
+    height: 4rem;
+    background-color: $gray-5;
+    border-radius: 50%;
+  }
+
+  &__divider {
+    border-bottom: 1px solid $gray-16;
+  }
+
+  &__container {
+    padding: 1.6rem;
+  }
+
+  &__user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  &__user-heading {
+    display: flex;
+    
+  }
+  
+  &__user-block {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+}

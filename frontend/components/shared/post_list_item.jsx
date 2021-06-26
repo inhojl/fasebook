@@ -7,6 +7,7 @@ import CommentItem from './comment_item';
 import CommentForm from './comment_form';
 import moment from 'moment'
 import timediff from 'timediff'
+import uniqid from 'uniqid';
 
 const PostListItem = ({
   author,
@@ -59,8 +60,6 @@ const PostListItem = ({
     }
  
   }
-
- console.log(dateModifier)
 
   return (
     <div className='post-list-item'>
@@ -120,10 +119,10 @@ const PostListItem = ({
           </span>
         </div>
       </div>
+      <div className='post-list-item__divider'></div>
       {
         showComments && comments.length > 0 ?
         <div className='post-list-item__comments-container'>
-          <div className='post-list-item__divider'></div>
 
           {sortedParentComments.map((comment) => (
             <CommentItem
@@ -142,17 +141,22 @@ const PostListItem = ({
             
             />
           ))}
-          <div className='post-list-item__comment-form'>
+        </div>
+        : null
+      }
+
+      {
+        (showComments && comments.length > 0) || (comments.length === 0) ?
+        
+        <div className='post-list-item__comment-form'>
             <CommentForm 
+              id={uniqid()}
               post={post}
               author={currentUser} 
               profile={profiles[currentUser.profileId]}
-              createComment={createComment}
-              updateComment={updateComment}
-              deleteComment={deleteComment} />
+              createComment={createComment} />
           </div>
-        </div>
-        : null
+          : null
       }
 
     

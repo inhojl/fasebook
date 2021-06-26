@@ -8,6 +8,11 @@ json.users do
       json.profile_id friend.profile.id
       friendship = current_user.friendships.find_by(friend_id: friend.id)
       json.friendship_status friendship ? friendship.status : nil
+
+      if friend.id == current_user.id 
+        json.friend_requester_ids current_user.friend_request_senders.ids
+      end
+
     end
   end
 end

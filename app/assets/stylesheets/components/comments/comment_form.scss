@@ -1,4 +1,5 @@
-.comment-form {
+.comment-form,
+.comment-form--parent {
 
   display: flex;
   align-items: center;
@@ -6,7 +7,8 @@
   margin-bottom: 0.4rem;
 
 
-  &__profile-image {
+  &__profile-image,
+  &__profile-image--parent {
     align-self: flex-start;
     background-color: $gray-5;
     background-size: cover;
@@ -43,3 +45,4 @@
     color: $gray-23;
   }
 }
+

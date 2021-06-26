@@ -9,6 +9,7 @@ import ProfileFriends from './profile_friends';
 import EditDetailsForm from './edit_details_form';
 import EditProfileForm from './edit_profile_form';
 import OutsideClickNotifier from '../shared/outside_click_notifier';
+import PostForm from '../shared/post_form';
 
 // should get user state
 
@@ -33,6 +34,7 @@ const ProfilePage = ({
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
+  const [showPostForm, setShowPostForm] = useState(false);
 
 
   useEffect(() => {
@@ -63,6 +65,12 @@ const ProfilePage = ({
   }
 
 
+  const onPostFormExit = () => {
+    setShowPostForm(false)
+    $('body').css({
+      'position': 'static'
+    })
+  }
 
   return user && profile ? (
     <div className='profile-layout'>
@@ -79,6 +87,7 @@ const ProfilePage = ({
           createFriendRequest={createFriendRequest}
           updateFriendRequest={updateFriendRequest}
           deleteFriendRequest={deleteFriendRequest}
+          
           fetchUser={fetchUser} />
       </header>
 
@@ -101,6 +110,7 @@ const ProfilePage = ({
             profile={profile}
             setShowEditDetailsForm={setShowEditDetailsForm}
             exact path={match.path}
+            setShowPostForm={setShowPostForm}
             component={ProfilePosts} />
           <Redirect exact to={match.path} />
         </Switch>
@@ -158,7 +168,31 @@ const ProfilePage = ({
           <div className='splash-layout__modal-background'></div>
         </div>
       </CSSTransition>
+
+
+      <CSSTransition
+        in={showPostForm}
+        timeout={200}
+        classNames='js-show-modal'
+        unmountOnExit
+        onEnter={() => setShowPostForm(true)}
+        onExited={onPostFormExit}
+      >
+        <div className='splash-layout__modal'>
+          <div className='splash-layout__modal-top-guard'>
+            <div className='splash-layout__modal-center'>
+              <OutsideClickNotifier excludeIds={[]} sideEffect={() => setShowPostForm(false)}>
+                <PostForm 
+                  currentProfile={profiles[users[currentUserId].profileId]}
+                  currentUser={users[currentUserId]}/>
+              </OutsideClickNotifier>
+            </div>
+          </div>
+          <div className='splash-layout__modal-background'></div>
+        </div>
+      </CSSTransition>
     </div>
+
   ) : <div>Loading...</div>;
 
 }

@@ -71,8 +71,71 @@ user4 = User.create!(
 
 
 user5 = User.create!(
-  email: 'user3@fasebook.com',
-  first_name: 'Dillan',
+  email: 'user4@fasebook.com',
+  first_name: 'Hermione',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user5@fasebook.com',
+  first_name: 'Harry',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user6@fasebook.com',
+  first_name: 'Moufasa',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user7@fasebook.com',
+  first_name: 'Link',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user8@fasebook.com',
+  first_name: 'Dude',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user9@fasebook.com',
+  first_name: 'Cake',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user10@fasebook.com',
+  first_name: 'Hello',
+  last_name: 'Wayne',
+  birthdate: Date.new(2000, 12, 25),
+  gender_id: 1,
+  password: '123456'
+)
+
+User.create!(
+  email: 'user11@fasebook.com',
+  first_name: 'Mai',
   last_name: 'Wayne',
   birthdate: Date.new(2000, 12, 25),
   gender_id: 1,
@@ -88,6 +151,20 @@ Friendship.create!(user_id: 4, friend_id: 1, status: "PENDING_RECEIVED")
 
 Friendship.create!(user_id: 2, friend_id: 3, status: "FRIENDS")
 Friendship.create!(user_id: 3, friend_id: 2, status: "FRIENDS")
+
+Friendship.create!(user_id: 2, friend_id: 4, status: "PENDING_RECEIVED")
+Friendship.create!(user_id: 2, friend_id: 5, status: "PENDING_RECEIVED")
+
+
+Friendship.create!(user_id: 2, friend_id: 6, status: "PENDING_SENT")
+Friendship.create!(user_id: 2, friend_id: 7, status: "PENDING_RECEIVED")
+
+Friendship.create!(user_id: 2, friend_id: 8, status: "PENDING_RECEIVED")
+Friendship.create!(user_id: 2, friend_id: 9, status: "FRIENDS")
+
+Friendship.create!(user_id: 2, friend_id: 10, status: "FRIENDS")
+Friendship.create!(user_id: 2, friend_id: 11, status: "FRIENDS")
+
 
 
 Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")

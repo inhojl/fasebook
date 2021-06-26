@@ -12,6 +12,9 @@ json.users do
   @posts.each do |post|
     json.set! post.author_id do
       json.partial! 'api/users/user', user: post.author
+      if post.author_id == current_user.id
+        json.friend_requester_ids current_user.friend_request_senders.ids
+      end
     end
 
     post.comments.each do |comment|
