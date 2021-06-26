@@ -4,6 +4,7 @@
   background-color: $white-1;
   box-shadow: 0 12px 28px 0 $shadow-2,0 2px 4px 0 $shadow-1,inset 0 0 0 1px $shadow-inset;
   border-radius: 0.8rem;
+  position: relative;
 
 
   &__header {
@@ -15,6 +16,23 @@
     font-weight: bold;
     padding: 0.9rem;
   }
+
+  &__exit-button {
+    @include button-click-animation;
+    background-color: $gray-20;
+    width: 3.6rem;
+    height: 3.6rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 50%;
+    top: 1.3rem;
+    cursor: pointer;
+    right: 1.3rem;
+  }
+
 
   &__profile-image {
     background-size: cover;
@@ -31,7 +49,9 @@
   }
 
   &__container {
-    padding: 1.6rem;
+    padding: 0 1.6rem 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &__user-name {
@@ -41,6 +61,7 @@
   
   &__user-heading {
     display: flex;
+    padding: 1.6rem 0;
     
   }
   
@@ -48,8 +69,85 @@
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
 
+  &__no-img {
+    background-color: $gray-5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: $black-2;
+    min-height: 4rem;
+    min-width: 4rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__availability {
+    margin-top: 3px;
+    padding: 0.4rem 0.8rem;
+    background-color: $gray-20;
+    color: $black-2;
+    height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.6rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  &__public {
+    margin-left: 0.3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    font-size: 2.4rem;
+    min-width: 100%;
+    max-width: 100%;
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      background-color: transparent;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #e4e4e4;
+      border-radius: 8px;
+    }
+  
+    &:hover::-webkit-scrollbar-thumb {
+      background: #bbb;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 8px;
+    }
+  }
+
+  &__submit {
+    background-color: $blue-1;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.2rem;
+    margin-top: 1.6rem;
+    height: 3.6rem;
+  }
 
 
 }

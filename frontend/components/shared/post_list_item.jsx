@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faEllipsisH, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as emptyThumbsUp, faCommentAlt } from '@fortawesome/free-regular-svg-icons';
+import PostEditOptions from './post_edit_options';
 import CommentItem from './comment_item';
 import CommentForm from './comment_form';
 import moment from 'moment'
@@ -19,7 +20,12 @@ const PostListItem = ({
   currentUser,
   createComment,
   updateComment,
-  deleteComment
+  deleteComment,
+  updatePost,
+  deletePost,
+  setShowPostForm,
+  fetchPosts,
+  setEditPost
 }) => {
 
   const [ showComments, setShowComments ] = useState(true)
@@ -36,10 +42,10 @@ const PostListItem = ({
 
   const dateModifier = (createdAt) => {
     const diff = timediff(createdAt, new Date(), 'YWDHmS')
+    if (diff.weeks || diff.months || diff.years) return '';
     if (diff.hours || diff.minutes || diff.seconds) {
       return '--recent'
     }
-    return '';
   }
   
 
@@ -48,9 +54,10 @@ const PostListItem = ({
     const diff = timediff(createdAt, new Date(), 'YWDHmS')
 
     if (diff.years || diff.months || diff.weeks > 2) {
-      return moment(new Date(post.createdAt)).format("MMMM D, YYYY")
+      return moment(new Date(createdAt)).format("MMMM D, YYYY")
     } else if (diff.weeks || diff.days) {
-      {moment(new Date(post.createdAt)).format("MMMM D, YYYY [at] LT")}
+    
+      return moment(new Date(createdAt)).format("MMMM D, YYYY [at] LT")
     } else if (diff.hours) {
       return `${diff.hours}h`
     } else if (diff.minutes) {
@@ -86,9 +93,14 @@ const PostListItem = ({
           </span>
         </div>
         <div className='post-list-item__options'>
-          <div className='post-list-item__options-button'>
-            <FontAwesomeIcon icon={faEllipsisH} />
-          </div>
+          <PostEditOptions
+            setEditPost={setEditPost}
+            post={post}
+            updatePost={updatePost}
+            deletePost={deletePost}
+            setShowPostForm={setShowPostForm}
+            fetchPosts={fetchPosts}
+          />
         </div>
       </div>
 
@@ -124,7 +136,7 @@ const PostListItem = ({
           </span>
         </div>
       </div>
-      <div className='post-list-item__divider'></div>
+      { showComments ? <div className='post-list-item__divider'></div> : null }
       {
         showComments && comments.length > 0 ?
         <div className='post-list-item__comments-container'>

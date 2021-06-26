@@ -12,7 +12,11 @@ const PostList = ({
   profiles,
   createComment,
   updateComment,
-  deleteComment
+  deleteComment,
+  updatePost,
+  deletePost,
+  setShowPostForm,
+  setEditPost
 }) => {
   useEffect(() => {
     if (user) fetchPosts(user.id)
@@ -21,15 +25,25 @@ const PostList = ({
 
   if (wallPosts.some((wallPost => !wallPost))) return null;
 
-
+  const descendingWallPosts = wallPosts.sort((a, b) => {
+    const date1 = new Date(a.createdAt)
+    const date2 = new Date(b.createdAt)
+    return date1 > date2 ? -1 : 1;
+  })
+  
 
   return (
 
-        wallPosts.map((wallPost, index) => (
+        descendingWallPosts.map((wallPost, index) => (
           <PostListItem
+            setEditPost={setEditPost}
+            fetchPosts={fetchPosts}
+            updatePost={updatePost}
+            deletePost={deletePost}
             createComment={createComment}
             updateComment={updateComment}
             deleteComment={deleteComment}
+            setShowPostForm={setShowPostForm}
             currentUser={currentUser}
             profiles={profiles}
             users={users}

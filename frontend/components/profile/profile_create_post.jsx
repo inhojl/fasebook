@@ -4,6 +4,14 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const ProfileCreatePost = ({ profile, setShowPostForm }) => {
 
+  const onClick = () => {
+    setShowPostForm(true)
+    $('body').css({
+      'position': 'fixed'
+    })
+  }
+
+
   return (
     <div className='profile-create-post'>
       <div className='profile-create-post__profile-image-wrapper'>
@@ -16,7 +24,7 @@ const ProfileCreatePost = ({ profile, setShowPostForm }) => {
             : <div className='profile-create-post__no-img'><FontAwesomeIcon icon={faUser} /></div>
         }
       </div>
-      <button type="button" className='profile-create-post__button' onClick={() => setShowPostForm(true)}>What's on your mind?</button>
+      <button type="button" className='profile-create-post__button' onClick={onClick}>What's on your mind?</button>
     </div>
   )
 

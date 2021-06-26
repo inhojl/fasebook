@@ -29,12 +29,17 @@ const ProfilePage = ({
   updateFriendRequest,
   deleteFriendRequest,
   users,
-  profiles
+  profiles,
+  createPost,
+  deletePost,
+  updatePost
 }) => {
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [showPostForm, setShowPostForm] = useState(false);
+  
+  const [ editPost, setEditPost ] = useState({});
 
 
   useEffect(() => {
@@ -108,7 +113,9 @@ const ProfilePage = ({
           <ProtectedRoute
             relationshipStatuses={relationshipStatuses}
             profile={profile}
+            setEditPost={setEditPost}
             setShowEditDetailsForm={setShowEditDetailsForm}
+            setShowPostForm={setShowPostForm}
             exact path={match.path}
             setShowPostForm={setShowPostForm}
             component={ProfilePosts} />
@@ -182,9 +189,15 @@ const ProfilePage = ({
           <div className='splash-layout__modal-top-guard'>
             <div className='splash-layout__modal-center'>
               <OutsideClickNotifier excludeIds={[]} sideEffect={() => setShowPostForm(false)}>
-                <PostForm 
+                <PostForm
+                  editPost={editPost}
                   currentProfile={profiles[users[currentUserId].profileId]}
-                  currentUser={users[currentUserId]}/>
+                  currentUser={users[currentUserId]}
+                  setShowPostForm={setShowPostForm}
+                  createPost={createPost}
+                  updatePost={updatePost}
+                  fetchUser={fetchUser}
+                  />
               </OutsideClickNotifier>
             </div>
           </div>

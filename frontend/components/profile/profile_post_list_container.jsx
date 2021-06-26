@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { fetchPosts } from '../../redux/actions/post';
 import { createComment, updateComment, deleteComment } from '../../redux/actions/comment';
+import { updatePost, deletePost } from '../../redux/actions/post';
 import PostList from '../shared/post_list';
 
 const mapStateToProps = (state, ownProps) => {
@@ -26,7 +27,9 @@ const mapDispatchToProps = dispatch => ({
   fetchPost: (postId) => dispatch(fetchPost(postId)),
   createComment: (comment) => dispatch(createComment(comment)),
   updateComment: (comment) => dispatch(updateComment(comment)),
-  deleteComment: (commentId) => dispatch(deleteComment(commentId))
+  deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+  updatePost: (post) => dispatch(updatePost(post)),
+  deletePost: (post) => dispatch(deletePost(post))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostList))
