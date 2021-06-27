@@ -43,10 +43,13 @@ const PostListItem = ({
 
   const dateModifier = (createdAt) => {
     const diff = timediff(createdAt, new Date(), 'YWDHmS')
-    if (diff.weeks || diff.months || diff.years) return '';
-    if (diff.hours || diff.minutes || diff.seconds) {
+    if (diff.weeks || diff.months || diff.years) {
+      return '';
+    }
+    else {
       return '--recent'
     }
+    
   }
   
 
@@ -65,6 +68,8 @@ const PostListItem = ({
       return `${diff.minutes}m`
     } else if (diff.seconds) {
       return `${diff.seconds}s`
+    } else {
+      return `0s`;
     }
  
   }

@@ -29,7 +29,7 @@ const ChildCommentItem = ({
     if (diff.years) {
       return `${diff.years}y`
     } else if (diff.months) {
-      return `${diff.months}m`
+      return `${diff.months}mo`
     } else if (diff.weeks) {
       return `${diff.weeks}w`
     } else if (diff.days) {
@@ -40,6 +40,8 @@ const ChildCommentItem = ({
       return `${diff.minutes}m`
     } else if (diff.seconds) {
       return `${diff.seconds}s`
+    } else {
+      return `0s`
     }
 
   }

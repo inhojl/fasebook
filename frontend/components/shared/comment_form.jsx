@@ -55,11 +55,15 @@ const CommentForm = React.forwardRef(({
               post_id: post.id,
               body: commentText,
               parent_id: parentId ? parentId : null
-            }) 
+            })
+            .then(() => {
+              $(this).focus()
+            })
+
+            
   
           }
-            
-            $(this).empty()
+          $(this).empty()
         }
       });
   

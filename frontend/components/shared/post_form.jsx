@@ -43,8 +43,8 @@ const PostForm = ({
         wall_id: editPost.wallId,
         body
       })
-      .then(() => fetchUser(userId))
       .then(() => {
+        fetchUser(userId)
         setShowPostForm(false)
         setEditPost(null)
       })
@@ -54,8 +54,10 @@ const PostForm = ({
         wall_id: userId,
         body
       })
-      .then(() => fetchUser(userId))
-      .then(() => setShowPostForm(false))
+      .then(() => {
+        fetchUser(userId)
+        setShowPostForm(false)
+      })
     }
 
   }
