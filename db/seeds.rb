@@ -159,23 +159,31 @@ Friendship.create!(user_id: 2, friend_id: 5, status: "PENDING_RECEIVED")
 Friendship.create!(user_id: 2, friend_id: 6, status: "PENDING_SENT")
 Friendship.create!(user_id: 2, friend_id: 7, status: "PENDING_RECEIVED")
 
-Friendship.create!(user_id: 2, friend_id: 8, status: "PENDING_RECEIVED")
+Friendship.create!(user_id: 8, friend_id: 2, status: "PENDING_RECEIVED")
+
+
 Friendship.create!(user_id: 2, friend_id: 9, status: "FRIENDS")
+Friendship.create!(user_id: 9, friend_id: 2, status: "FRIENDS")
+
 
 Friendship.create!(user_id: 2, friend_id: 10, status: "FRIENDS")
+Friendship.create!(user_id: 10, friend_id: 2, status: "FRIENDS")
+
+
 Friendship.create!(user_id: 2, friend_id: 11, status: "FRIENDS")
+Friendship.create!(user_id: 11, friend_id: 2, status: "FRIENDS")
 
 
 
 Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
-Post.create(author_id: 3, wall_id: 2, body: "HEY I MSYAING HII")
-Post.create(author_id: 2, wall_id: 2, body: "YOOO IM BATMAN")
-Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
-Post.create(author_id: 1, wall_id: 2, body: "I like the joker")
+Post.create(author_id: 11, wall_id: 2, body: "HEY I MSYAING HII")
+Post.create(author_id: 10, wall_id: 2, body: "YOOO IM BATMAN")
+Post.create(author_id: 3, wall_id: 2, body: "YOOOO WHAT's UP")
+Post.create(author_id: 9, wall_id: 2, body: "I like the joker")
 
 
-Comment.create(author_id: 2, post_id: 2, body: "comment ajsdfasdfa s1")
-Comment.create(author_id: 1, post_id: 2, body: "comentasdf as efas dff 41", parent_id: 1)
-Comment.create(author_id: 2, post_id: 2, body: "asdfasd f1234 234t345agf", parent_id: 1)
-Comment.create(author_id: 3, post_id: 2, body: "adfsasdf123123 12 312 123 ", parent_id: 1)
-Comment.create(author_id: 4, post_id: 2, body: "adsfasd f 2342 11 afds bs fgdh", parent_id: 1)
+Comment.create(author_id: 3, post_id: 2, body: "comment ajsdfasdfa s1")
+Comment.create(author_id: 11, post_id: 2, body: "comentasdf as efas dff 41", parent_id: 1)
+Comment.create(author_id: 11, post_id: 2, body: "asdfasd f1234 234t345agf", parent_id: 1)
+Comment.create(author_id: 10, post_id: 2, body: "adfsasdf123123 12 312 123 ", parent_id: 1)
+Comment.create(author_id: 9, post_id: 2, body: "adsfasd f 2342 11 afds bs fgdh", parent_id: 1)

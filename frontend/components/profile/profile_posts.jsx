@@ -5,7 +5,7 @@ import ProfileCreatePost from './profile_create_post';
 import ProfilePostFilter from './profile_post_filter';
 import ProfilePostListContainer from './profile_post_list_container';
 
-const ProfilePosts = ({ profile, relationshipStatuses, setShowEditDetailsForm, setShowPostForm, setEditPost, fetchUser }) => {
+const ProfilePosts = ({ user, currentUserId, profile, relationshipStatuses, setShowEditDetailsForm, setShowPostForm, setEditPost, fetchUser }) => {
 
   const [ loaded, setLoaded ] = useState(false)
  
@@ -21,7 +21,11 @@ const ProfilePosts = ({ profile, relationshipStatuses, setShowEditDetailsForm, s
           <ProfileFriendsSummaryContainer loaded={loaded} setLoaded={setLoaded} />
         </section>
         <section className='profile-posts-layout__wall'>
-          <ProfileCreatePost profile={profile} setShowPostForm={setShowPostForm} />
+          {
+            (user.id === currentUserId || user.friendshipStatus === 'FRIENDS') ?
+            <ProfileCreatePost profile={profile} setShowPostForm={setShowPostForm} />
+            : null
+          } 
           <ProfilePostFilter />
           <ProfilePostListContainer setShowPostForm={setShowPostForm} setEditPost={setEditPost} fetchUser={fetchUser} />
         </section>

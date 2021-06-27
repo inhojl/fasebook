@@ -19,6 +19,7 @@ const removePost = (postId) => ({
   postId
 })
 
+
 export const fetchPosts = (wallId) => (dispatch) => (
   PostAPIUtil.fetchPosts(wallId)
     .then((posts) => dispatch(receivePosts(posts)))
@@ -40,4 +41,9 @@ export const updatePost = (post) => (dispatch) => (
 export const deletePost = (postId) => (dispatch) => (
   PostAPIUtil.deletePost(postId)
     .then(() => dispatch(removePost(postId)))
+)
+
+export const fetchNewsfeed = (userId) => (dispatch) => (
+  PostAPIUtil.fetchNewsfeed(userId)
+    .then(posts => dispatch(receivePosts(posts)))
 )

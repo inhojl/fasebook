@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update] do
       get "/friends", to: "friends#index"
       get "/friend_requests", to: "friends#friend_requests"
+      get "/newsfeed", to: "newsfeed#index"
       resources :posts, only: [:index]
     end
     resources :profiles, only: [ :show, :update ]

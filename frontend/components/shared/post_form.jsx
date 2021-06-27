@@ -12,8 +12,10 @@ const PostForm = ({
   updatePost,
   fetchUser,
   editPost,
-  setEditPost
+  setEditPost,
+  newsfeed
 }) => {
+
 
   const [ body, setBody ] = useState('');
 
@@ -44,7 +46,8 @@ const PostForm = ({
         body
       })
       .then(() => {
-        fetchUser(userId)
+        
+        //fetchUser(newsfeed ? currentUser.id : userId)
         setShowPostForm(false)
         setEditPost(null)
       })

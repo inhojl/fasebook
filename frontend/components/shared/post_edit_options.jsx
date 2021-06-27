@@ -14,13 +14,21 @@ const PostEditOptions = ({
   post,
   fetchPosts,
   setEditPost,
-  fetchUser
+  fetchUser,
+  newsfeed,
+  fetchNewsfeed,
+  currentUser
 }) => {
 
   const [ showMenu, setShowMenu ] = useState(false)
   const { userId } = useParams();
 
+
   const onEdit = () => {
+    $('body').css({
+      'position': 'fixed'
+    })
+
     setEditPost(post)
     setShowPostForm(true)
     setShowMenu(false)
@@ -29,7 +37,7 @@ const PostEditOptions = ({
   const onDelete = () => {
     deletePost(post.id)
       .then(() =>  {
-        fetchUser(userId)
+        newsfeed ? fetchNewsfeed(currentUser.id) : fetchUser(userId)
         setShowMenu(false)
       })
   }

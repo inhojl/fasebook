@@ -36,3 +36,11 @@ export const deletePost = (postId) => (
     url: `/api/posts/${postId}`
   })
 )
+
+
+export const fetchNewsfeed = (userId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/newsfeed`
+  })
+)

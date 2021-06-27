@@ -29,8 +29,6 @@ const CommentForm = React.forwardRef(({
       $(`#${id}`).text(comment ? comment.body : '')
   
       $(`#${id}`).on('keydown', function(e) {  
-        console.log(e.target)
-        
         if(e.keyCode == 13)
         {
             e.preventDefault();
@@ -44,9 +42,8 @@ const CommentForm = React.forwardRef(({
               body: commentText,
               parent_id: parentId ? parentId : null
             }).then(() => {
-              if (setShowEditForm) {
-                setShowEditForm(false)
-              }
+              //setShowEditForm(false)
+              
             })
           } else if (createComment) {
             

@@ -5,6 +5,7 @@ import CommentForm from './comment_form';
 import { Link } from 'react-router-dom';
 import timediff from 'timediff'
 import CommentEditOptions from './comment_edit_options'
+import CurrentUserItem from '../util/current_user_item_container';
 import uniqid from 'uniqid'
 
 const ChildCommentItem = ({

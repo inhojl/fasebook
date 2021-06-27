@@ -6,6 +6,7 @@ import { faThumbsUp as emptyThumbsUp, faCommentAlt } from '@fortawesome/free-reg
 import PostEditOptions from './post_edit_options';
 import CommentItem from './comment_item';
 import CommentForm from './comment_form';
+import CurrentUserItem from '../util/current_user_item_container';
 import moment from 'moment'
 import timediff from 'timediff'
 import uniqid from 'uniqid';
@@ -26,12 +27,14 @@ const PostListItem = ({
   setShowPostForm,
   fetchPosts,
   setEditPost,
-  fetchUser
+  fetchUser,
+  newsfeed,
+  fetchNewsfeed,
+  user
 }) => {
 
   const [ showComments, setShowComments ] = useState(true)
 
- 
   
   const parentComments = comments.filter((comment) => comment.parentId === null);
   const sortedParentComments = parentComments.sort((a, b) => {
@@ -98,17 +101,22 @@ const PostListItem = ({
             { postTimeDiff(post.createdAt) }
           </span>
         </div>
-        <div className='post-list-item__options'>
-          <PostEditOptions
-            setEditPost={setEditPost}
-            post={post}
-            updatePost={updatePost}
-            deletePost={deletePost}
-            setShowPostForm={setShowPostForm}
-            fetchPosts={fetchPosts}
-            fetchUser={fetchUser}
-          />
-        </div>
+        <CurrentUserItem otherUserId={post.authorId}>
+          <div className='post-list-item__options'>
+            <PostEditOptions
+              setEditPost={setEditPost}
+              post={post}
+              updatePost={updatePost}
+              deletePost={deletePost}
+              setShowPostForm={setShowPostForm}
+              fetchPosts={fetchPosts}
+              fetchUser={fetchUser}
+              newsfeed={newsfeed}
+              fetchNewsfeed={fetchNewsfeed}
+              currentUser={currentUser}
+            />
+          </div>
+        </CurrentUserItem>
       </div>
 
       <div className='post-list-item__body'>
@@ -170,7 +178,8 @@ const PostListItem = ({
       }
 
       {
-        (showComments && comments.length > 0) || (comments.length === 0) ?
+        (showComments && comments.length > 0) || (comments.length === 0) &&
+        (user && currentUser && (user.id === currentUser.id || user.friendshipStatus === 'FRIENDS')) ?
         
         <div className='post-list-item__comment-form'>
             <CommentForm 

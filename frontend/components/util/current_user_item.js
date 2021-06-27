@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 
-const CurrentUserItem = ({ children, currentUserId }) => {
-
+const CurrentUserItem = ({ children, currentUserId, otherUserId }) => {
   const { userId } = useParams();
   return (
-    currentUserId == userId ? children : null
+    otherUserId ? 
+    (currentUserId == otherUserId ? children : null) 
+    : (currentUserId == userId ? children : null) 
   )
 }
 

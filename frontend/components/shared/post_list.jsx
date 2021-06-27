@@ -20,31 +20,57 @@ const PostList = ({
   deletePost,
   setShowPostForm,
   setEditPost,
-  fetchUser
+  fetchUser,
+  newsfeed,
+  fetchNewsfeed,
+  newsfeedPosts
 }) => {
 
   const { userId } = useParams();
 
+  useEffect(() => {
+    if (newsfeed) {
+      fetchNewsfeed(currentUser.id)
+    }
+  }, [])
   
   useEffect(() => {
-    if (userId) fetchPosts(userId)
+
+    if (!newsfeed) {
+      if (userId) fetchPosts(userId)
+    }
+    
   }, [userId])
   
   
+  let descendingPosts;
+
+  if (newsfeed) {
+    if (newsfeedPosts.some((newsfeedPost => !newsfeedPost))) return null;
+      descendingPosts = newsfeedPosts.sort((a, b) => {
+      const date1 = new Date(a.createdAt)
+      const date2 = new Date(b.createdAt)
+      return date1 > date2 ? -1 : 1;
+    })
+    
+  } else {
+    if (wallPosts.some((wallPost => !wallPost))) return null;
+      descendingPosts = wallPosts.sort((a, b) => {
+      const date1 = new Date(a.createdAt)
+      const date2 = new Date(b.createdAt)
+      return date1 > date2 ? -1 : 1;
+    })
+  }
   
-  
-  if (wallPosts.some((wallPost => !wallPost))) return null;
-  const descendingWallPosts = wallPosts.sort((a, b) => {
-    const date1 = new Date(a.createdAt)
-    const date2 = new Date(b.createdAt)
-    return date1 > date2 ? -1 : 1;
-  })
 
 
   return (
 
-        descendingWallPosts.slice().map((wallPost, index) => (
+        descendingPosts.slice().map((post, index) => (
           <PostListItem
+            user={user}
+            fetchNewsfeed={fetchNewsfeed}
+            newsfeed={newsfeed}
             setEditPost={setEditPost}
             fetchPosts={fetchPosts}
             updatePost={updatePost}
@@ -57,10 +83,10 @@ const PostList = ({
             profiles={profiles}
             users={users}
             key={`post-item-${uniqid()}`}
-            post={ wallPost }
-            author={users[wallPost.authorId]}
-            profile={profiles[users[wallPost.authorId].profileId]}
-            comments={wallPost.commentIds.map((commentId) => comments[commentId] )}
+            post={ post }
+            author={users[post.authorId]}
+            profile={profiles[users[post.authorId].profileId]}
+            comments={post.commentIds.map((commentId) => comments[commentId] )}
             fetchUser={fetchUser}
           />
         ))

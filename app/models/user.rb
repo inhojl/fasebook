@@ -80,4 +80,12 @@ class User < ApplicationRecord
     self.build_profile if !self.profile
   end
 
+  def newsfeed
+    friend_ids = []
+    self.friends.each do |friend|
+      friend_ids.push(friend.id)
+    end
+    Post.where('author_id IN (?) OR author_id = ?', friend_ids, self.id ).to_a
+  end
+
 end

@@ -1,8 +1,8 @@
 import React from 'react';
 import SplashPage from '../splash/splash_page';
-import NewsfeedPage from '../newsfeed/newsfeed_page';
+import NewsfeedPageContainer from '../newsfeed/newsfeed_page_container';
 
 const HomePage = ({ loggedIn }) => (
-  loggedIn ? <NewsfeedPage /> : <SplashPage /> 
+  loggedIn ? <NewsfeedPageContainer /> : <SplashPage /> 
 )
 export default HomePage;

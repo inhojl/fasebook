@@ -18,7 +18,6 @@ const FriendsSidebarItem = ({
   const [showDelete, setShowDelete] = useState(false)
 
   const onConfirm = (e) => {
-    console.log(e)
     e.preventDefault();
     updateFriendRequest({ user_id: currentUserId, friend_id: friendRequesterId })
       .then(setShowConfirm(true))
