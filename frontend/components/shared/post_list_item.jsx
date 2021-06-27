@@ -25,7 +25,8 @@ const PostListItem = ({
   deletePost,
   setShowPostForm,
   fetchPosts,
-  setEditPost
+  setEditPost,
+  fetchUser
 }) => {
 
   const [ showComments, setShowComments ] = useState(true)
@@ -100,6 +101,7 @@ const PostListItem = ({
             deletePost={deletePost}
             setShowPostForm={setShowPostForm}
             fetchPosts={fetchPosts}
+            fetchUser={fetchUser}
           />
         </div>
       </div>

@@ -8,7 +8,7 @@ import {
 } from '../../actions/post'
 
 const receivePosts = (state, action) => {
-  console.log(action)
+
 
   return { ...state, ...action.posts.users };
 }

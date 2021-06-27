@@ -19,51 +19,54 @@ const CommentForm = React.forwardRef(({
 
   const formId = uniqid()
 
+  const [ addEvent, setAddEvent ] = useState(false)
+
 
   useEffect(() => {
 
-
-    $(`#${id}`).text(comment ? comment.body : '')
-
-    $(`#${id}`).on('keydown', function(e) {  
-      if(e.keyCode == 13)
-      {
-          e.preventDefault();
-          const commentText = e.target.innerText;
-          if (updateComment) { 
-            console.log('updating',comment)
-          updateComment({ 
-            id: comment.id,
-            author_id: author.id, 
-            post_id: post.id,
-            body: commentText,
-            parent_id: parentId ? parentId : null
-          }).then(() => {
-            if (setShowEditForm) {
-              setShowEditForm(false)
-            }
-          })
-        } else if (createComment) {
-          console.log('WHATs- going on', { 
-            author_id: author.id, 
-            post_id: post.id,
-            body: commentText,
-            parent_id: parentId ? parentId : null
-          })
-          createComment({ 
-            author_id: author.id, 
-            post_id: post.id,
-            body: commentText,
-            parent_id: parentId ? parentId : null
-          }) 
-
+    if (!addEvent && post) {
+      setAddEvent(true)
+      $(`#${id}`).text(comment ? comment.body : '')
+  
+      $(`#${id}`).on('keydown', function(e) {  
+        console.log(e.target)
+        
+        if(e.keyCode == 13)
+        {
+            e.preventDefault();
+            const commentText = e.target.innerText;
+            if (updateComment) { 
+      
+            updateComment({ 
+              id: comment.id,
+              author_id: author.id, 
+              post_id: post.id,
+              body: commentText,
+              parent_id: parentId ? parentId : null
+            }).then(() => {
+              if (setShowEditForm) {
+                setShowEditForm(false)
+              }
+            })
+          } else if (createComment) {
+            
+            createComment({ 
+              author_id: author.id, 
+              post_id: post.id,
+              body: commentText,
+              parent_id: parentId ? parentId : null
+            }) 
+  
+          }
+            
+            $(this).empty()
         }
-          
-          $(this).empty()
-      }
-    });
+      });
+  
+      return () => $(`#${id}`).off('keydown')
 
-    return () => $(`#${id}`).off('keydown')
+    }
+
   }, [post])
 
 

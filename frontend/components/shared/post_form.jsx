@@ -11,7 +11,8 @@ const PostForm = ({
   createPost,
   updatePost,
   fetchUser,
-  editPost
+  editPost,
+  setEditPost
 }) => {
 
   const [ body, setBody ] = useState('');
@@ -43,7 +44,10 @@ const PostForm = ({
         body
       })
       .then(() => fetchUser(userId))
-      .then(() => setShowPostForm(false))
+      .then(() => {
+        setShowPostForm(false)
+        setEditPost(null)
+      })
     } else {
       createPost({
         author_id: currentUser.id,

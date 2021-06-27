@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { fetchPosts } from '../../redux/actions/post';
 import { createComment, updateComment, deleteComment } from '../../redux/actions/comment';
 import { updatePost, deletePost } from '../../redux/actions/post';
+import { fetchUser } from '../../redux/actions/user';
 import PostList from '../shared/post_list';
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   fetchPosts: (wallId) => dispatch(fetchPosts(wallId)),
   fetchPost: (postId) => dispatch(fetchPost(postId)),
+  fetchUser: (userId) => dispatch(fetchUser(userId)),
   createComment: (comment) => dispatch(createComment(comment)),
   updateComment: (comment) => dispatch(updateComment(comment)),
   deleteComment: (commentId) => dispatch(deleteComment(commentId)),

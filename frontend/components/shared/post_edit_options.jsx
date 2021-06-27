@@ -13,7 +13,8 @@ const PostEditOptions = ({
   deletePost,
   post,
   fetchPosts,
-  setEditPost
+  setEditPost,
+  fetchUser
 }) => {
 
   const [ showMenu, setShowMenu ] = useState(false)
@@ -27,8 +28,10 @@ const PostEditOptions = ({
 
   const onDelete = () => {
     deletePost(post.id)
-      .then(() => fetchPosts(userId))
-      .then(() => setShowMenu(false))
+      .then(() =>  {
+        fetchUser(userId)
+        setShowMenu(false)
+      })
   }
  
   return (

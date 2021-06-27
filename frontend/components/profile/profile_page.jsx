@@ -39,7 +39,7 @@ const ProfilePage = ({
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [showPostForm, setShowPostForm] = useState(false);
   
-  const [ editPost, setEditPost ] = useState({});
+  const [ editPost, setEditPost ] = useState(null);
 
 
   useEffect(() => {
@@ -191,6 +191,7 @@ const ProfilePage = ({
               <OutsideClickNotifier excludeIds={[]} sideEffect={() => setShowPostForm(false)}>
                 <PostForm
                   editPost={editPost}
+                  setEditPost={setEditPost}
                   currentProfile={profiles[users[currentUserId].profileId]}
                   currentUser={users[currentUserId]}
                   setShowPostForm={setShowPostForm}

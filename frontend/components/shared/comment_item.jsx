@@ -23,8 +23,6 @@ const CommentItem = ({
   currentUser
 }) => { 
 
-  
-  console.log({currentUser})
 
   const form = useRef()
 
