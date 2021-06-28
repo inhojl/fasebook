@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NewsfeedListContainer from './newsfeed_list_container'
 import OutsideClickNotifier from '../shared/outside_click_notifier';
 import { CSSTransition } from 'react-transition-group';
+import Loader from '../util/loader'
 
 import PostForm from '../shared/post_form';
 

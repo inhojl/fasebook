@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import Loader from '../util/loader';
 
 import { createComment, deleteComment } from '../../util/api/comment';
 import PostListItem from './post_list_item';
@@ -46,7 +47,7 @@ const PostList = ({
   let descendingPosts;
 
   if (newsfeed) {
-    if (newsfeedPosts.some((newsfeedPost => !newsfeedPost))) return null;
+    if (newsfeedPosts.some((newsfeedPost => !newsfeedPost))) return <Loader />;
       descendingPosts = newsfeedPosts.sort((a, b) => {
       const date1 = new Date(a.createdAt)
       const date2 = new Date(b.createdAt)
@@ -54,7 +55,7 @@ const PostList = ({
     })
     
   } else {
-    if (wallPosts.some((wallPost => !wallPost))) return null;
+    if (wallPosts.some((wallPost => !wallPost))) return <Loader />;
       descendingPosts = wallPosts.sort((a, b) => {
       const date1 = new Date(a.createdAt)
       const date2 = new Date(b.createdAt)
