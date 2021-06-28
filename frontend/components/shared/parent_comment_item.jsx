@@ -18,7 +18,7 @@ const ParentCommentItem = ({
   deleteComment,
   profiles,
   updateComment,
-  post
+  post,
 }) => {
 
   
@@ -77,12 +77,15 @@ const ParentCommentItem = ({
             </div>
           </div>
           {
-            comment.authorId === currentUser.id ?
+            comment.authorId === currentUser.id || post.wallId == currentUser.id ?
             <div className='comment-item__edit-container'>
               <CommentEditOptions
                 deleteComment={() => deleteComment(comment.id)}
                 setShowEditForm={setShowEditForm}
                 id={uniqid()}
+                post={post}
+                currentUser={currentUser}
+                comment={comment}
               />
             </div>
             : null

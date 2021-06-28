@@ -52,15 +52,18 @@ const PostEditOptions = ({
 
       <OutsideClickNotifier excludeIds={[`post-edit-options__button`]} sideEffect={() => setShowMenu(false)} >
         <div className={`post-edit-options__option-menu${showMenu ? '--show' : ''}`}>
-      
-          <div
-            className='post-edit-options__menu-item'
-            onClick={onEdit}>
-            <div className='post-edit-options__menu-edit'>
-              Edit
-            </div>
-          </div>
-            
+
+          {
+            post.authorId == currentUser.id ? 
+              <div
+                className='post-edit-options__menu-item'
+                onClick={onEdit}>
+                <div className='post-edit-options__menu-edit'>
+                  Edit
+                </div>
+              </div>
+              : null
+          }
           <div
             className='post-edit-options__menu-item'
             onClick={onDelete}>

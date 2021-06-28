@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import uniqid from 'uniqid'
 
 const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriends }) => {
 
@@ -43,7 +44,7 @@ const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriend
 
                   const friendProfile = profiles[friend.profileId]
                   return index < 9 ? (
-                    <Link to={`/${friend.id}`} key={`friend-${index}`}>
+                    <Link to={`/${friend.id}`} key={`friend-${uniqid()}`}>
                       <li className='profile-friends-summary__item'>
                         {
                           friendProfile && friendProfile.profilePicUrl ?

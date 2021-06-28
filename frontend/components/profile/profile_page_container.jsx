@@ -12,6 +12,7 @@ import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId]
+  console.log('container', ownProps.match.params.userId, state.entities.users)
   return {
     user: user,
     profile: user ? state.entities.profiles[user.profileId] : null,
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
   deletePost: (postId) => dispatch(deletePost(postId)),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfilePage))
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)
 
 
 // createFriendRequest

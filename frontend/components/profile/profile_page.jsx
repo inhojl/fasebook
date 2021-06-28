@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useParams } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route'
 import { CSSTransition } from 'react-transition-group';
@@ -34,6 +34,7 @@ const ProfilePage = ({
   deletePost,
   updatePost
 }) => {
+  console.log(user)
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
@@ -41,6 +42,7 @@ const ProfilePage = ({
   
   const [ editPost, setEditPost ] = useState(null);
 
+  console.log(match.params.userId)
 
   useEffect(() => {
     // setLoading(true)
@@ -49,6 +51,7 @@ const ProfilePage = ({
     fetchUser(match.params.userId)
       .then((res) => console.log(res))
       .fail(() => {
+        console.log('failing')
         if (match.path !== '/friends') history.push('/')
       })
       // .always(() => setLoading(false))

@@ -32,11 +32,16 @@
 
 .navbar-create-item,
 .navbar-messenger-item,
-.navbar-notifications-item,
-.navbar-settings-item {
+.navbar-notifications-item {
   background-color: $gray-14;
   color: $black-2;
 }
+
+.navbar-settings-item {
+  background-color: $gray-5;
+}
+
+
 
 .navbar-create-item--active,
 .navbar-messenger-item--active,
@@ -81,7 +86,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $black-2;
+    color: $gray-22;
     font-size: 1.8rem;
   }
 }

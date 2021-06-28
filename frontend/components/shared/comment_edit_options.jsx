@@ -8,7 +8,10 @@ import OutsideClickNotifier from './outside_click_notifier';
 const CommentEditOptions = ({
   id,
   setShowEditForm,
-  deleteComment
+  deleteComment,
+  post,
+  currentUser,
+  comment
 }) => {
 
   const [ showMenu, setShowMenu ] = useState(false)
@@ -33,14 +36,17 @@ const CommentEditOptions = ({
       <OutsideClickNotifier excludeIds={[`comment-edit-options__button`]} sideEffect={() => setShowMenu(false)} >
         <div className={`comment-edit-options__option-menu${showMenu ? '--show' : ''}`}>
       
-          <div
-            className='comment-edit-options__menu-item'
-            onClick={onEdit}>
-            <div className='comment-edit-options__menu-edit'>
-              Edit
-            </div>
-          </div>
-            
+          {
+            comment.authorId == currentUser.id ?
+              <div
+                className='comment-edit-options__menu-item'
+                onClick={onEdit}>
+                <div className='comment-edit-options__menu-edit'>
+                  Edit
+                </div>
+              </div>
+            : null
+          }
           <div
             className='comment-edit-options__menu-item'
             onClick={onDelete}>

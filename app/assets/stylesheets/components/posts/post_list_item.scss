@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.8rem;
-    color: $black-2;
+    color: $gray-22;
     min-height: 4rem;
     min-width: 4rem;
     border-radius: 50%;
@@ -53,6 +53,18 @@
     font-weight: 300;
   }
 
+  &__name-seperator {
+    margin: 0 0.4rem 0.1rem 0.4rem;
+    color: $gray-19;
+
+  }
+
+  &__name-wrapper {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__name {
     font-size: 1.5rem;

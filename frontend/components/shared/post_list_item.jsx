@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faEllipsisH, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faEllipsisH, faUser, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as emptyThumbsUp, faCommentAlt } from '@fortawesome/free-regular-svg-icons';
 import PostEditOptions from './post_edit_options';
 import CommentItem from './comment_item';
@@ -34,6 +34,7 @@ const PostListItem = ({
 }) => {
 
   const [ showComments, setShowComments ] = useState(true)
+  const { userId: userIdFromParams } = useParams();
 
   
   const parentComments = comments.filter((comment) => comment.parentId === null);
@@ -92,31 +93,56 @@ const PostListItem = ({
           }
         </Link>
         <div className='post-list-item__heading'>
-          <Link to={`/${author.id}`}>
-            <span className='post-list-item__name'>
-              {author.firstName} {author.lastName}
-            </span>
-          </Link>
+{/* 
+        { 
+                post.authorId !== post.wallId ?
+                <>
+                  {" "}<FontAwesomeIcon icon={faCaretRight} /> {users[post.wallId].firstName + " " + users[post.wallId].lastName}
+                </>
+                : null
+              } */}
+          <div className='post-list-item__name-wrapper'>
+            <Link to={`/${author.id}`}>
+              <span className='post-list-item__name'>
+                {author.firstName} {author.lastName}
+              </span>
+            </Link>
+            {
+              post.authorId !== post.wallId ?
+              <>
+              <FontAwesomeIcon icon={faCaretRight} className='post-list-item__name-seperator' /> 
+              <Link to={`/${post.wallId}`}>
+                <span className='post-list-item__name'>
+                {users[post.wallId].firstName + " " + users[post.wallId].lastName}
+                </span>
+              </Link>
+              </>
+              : null
+            }
+
+          </div>
           <span className={`post-list-item__date${dateModifier(post.createdAt)}`}>
             { postTimeDiff(post.createdAt) }
           </span>
         </div>
-        <CurrentUserItem otherUserId={post.authorId}>
-          <div className='post-list-item__options'>
-            <PostEditOptions
-              setEditPost={setEditPost}
-              post={post}
-              updatePost={updatePost}
-              deletePost={deletePost}
-              setShowPostForm={setShowPostForm}
-              fetchPosts={fetchPosts}
-              fetchUser={fetchUser}
-              newsfeed={newsfeed}
-              fetchNewsfeed={fetchNewsfeed}
-              currentUser={currentUser}
-            />
-          </div>
-        </CurrentUserItem>
+          {
+            post && currentUser && (post.authorId == currentUser.id || post.wallId == currentUser.id) ?
+            <div className='post-list-item__options'>
+              <PostEditOptions
+                setEditPost={setEditPost}
+                post={post}
+                updatePost={updatePost}
+                deletePost={deletePost}
+                setShowPostForm={setShowPostForm}
+                fetchPosts={fetchPosts}
+                fetchUser={fetchUser}
+                newsfeed={newsfeed}
+                fetchNewsfeed={fetchNewsfeed}
+                currentUser={currentUser}
+              />
+            </div>
+            : null
+          }
       </div>
 
       <div className='post-list-item__body'>

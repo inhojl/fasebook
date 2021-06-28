@@ -23,7 +23,6 @@ const ProfileHeader = ({
   deleteFriendRequest,
   match
 }) => {
-
   const [showBiographyForm, setShowBiographyForm] = useState(false);
   const [profilePicFile, setProfilePicFile] = useState(null);
   const [coverPhotoFile, setCoverPhotoFile] = useState(null);

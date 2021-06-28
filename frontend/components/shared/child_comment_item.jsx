@@ -72,13 +72,15 @@ const ChildCommentItem = ({
             </div>
           </div>
             {
-              comment.authorId === currentUser.id ?
+              comment.authorId === currentUser.id || post.wallId == currentUser.id ?
               <div className='comment-item__edit-container'>
                 <CommentEditOptions
                   id={uniqid()}
                   setShowEditForm={setShowEditForm}
                   deleteComment={() => deleteComment(comment.id)}
-          
+                  post={post}
+                  currentUser={currentUser}
+                  comment={comment}
                 />
               </div>
               : null

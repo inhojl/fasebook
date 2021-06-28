@@ -85,7 +85,7 @@
     background-position: center center;
     transition: background-color 0.1s linear;
     &:hover {
-      filter: brightness(90%);
+      filter: brightness(95%);
     }
     
   }
@@ -100,9 +100,10 @@
     align-items: center;
     justify-content: center;
     font-size: 7rem;
+    color: $gray-22;
     transition: background-color 0.1s linear;
     &:hover {
-      filter: brightness(90%);
+      filter: brightness(95%);
     }
   }
 
@@ -141,6 +142,7 @@
       height: 100%;
       border-radius: 0.4rem;
       background-color: $gray-5;
+      color: $gray-22;
       display: flex;
       align-items: center;
       justify-content: center;

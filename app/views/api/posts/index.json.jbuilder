@@ -22,6 +22,16 @@ json.users do
       end
     end
 
+    json.set! post.wall_id do
+      json.partial! 'api/users/user', user: post.wall
+      if post.wall_id == current_user.id
+        json.friend_requester_ids current_user.friend_request_senders.ids
+      end
+      if post.wall_id == current_user.id
+        json.newsfeed_post_ids @posts.map { |p| p.id }
+      end
+    end
+
     post.comments.each do |comment|
       json.set! comment.author_id do
         json.partial! 'api/users/user', user: comment.author
@@ -30,6 +40,8 @@ json.users do
 
   end
 end
+
+
 
 json.profiles do
   @posts.each do |post|

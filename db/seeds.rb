@@ -153,13 +153,17 @@ Friendship.create!(user_id: 2, friend_id: 3, status: "FRIENDS")
 Friendship.create!(user_id: 3, friend_id: 2, status: "FRIENDS")
 
 Friendship.create!(user_id: 2, friend_id: 4, status: "PENDING_RECEIVED")
+Friendship.create!(user_id: 4, friend_id: 2, status: "PENDING_SENT")
+
 Friendship.create!(user_id: 2, friend_id: 5, status: "PENDING_RECEIVED")
+Friendship.create!(user_id: 5, friend_id: 2, status: "PENDING_SENT")
 
 
 Friendship.create!(user_id: 2, friend_id: 6, status: "PENDING_SENT")
 Friendship.create!(user_id: 2, friend_id: 7, status: "PENDING_RECEIVED")
 
 Friendship.create!(user_id: 8, friend_id: 2, status: "PENDING_RECEIVED")
+Friendship.create!(user_id: 2, friend_id: 8, status: "PENDING_SENT")
 
 
 Friendship.create!(user_id: 2, friend_id: 9, status: "FRIENDS")
