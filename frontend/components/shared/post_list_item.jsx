@@ -207,7 +207,7 @@ const PostListItem = ({
 
       {
         (showComments && comments.length > 0) || (comments.length === 0) &&
-        (user && currentUser && (user.id === currentUser.id || user.friendshipStatus === 'FRIENDS')) ?
+        (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS')) ?
         
         <div className='post-list-item__comment-form'>
             <CommentForm 
