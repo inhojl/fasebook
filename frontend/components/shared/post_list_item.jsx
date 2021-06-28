@@ -63,9 +63,11 @@ const PostListItem = ({
 
     if (diff.years || diff.months || diff.weeks > 2) {
       return moment(new Date(createdAt)).format("MMMM D, YYYY")
-    } else if (diff.weeks || diff.days) {
+    } else if (diff.weeks) {
     
       return moment(new Date(createdAt)).format("MMMM D, YYYY [at] LT")
+    } else if (diff.days) {
+      return `${diff.days}d`
     } else if (diff.hours) {
       return `${diff.hours}h`
     } else if (diff.minutes) {

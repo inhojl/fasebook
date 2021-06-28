@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:index]
     end
     resources :comments, only: [ :show, :create, :update, :destroy ]
+    resources :likes, only: [ :create ]
+    delete "/likes", to: "likes#destroy"
 
     patch "/friendships", to: "friendships#update"
     delete "/friendships", to: "friendships#destroy"
