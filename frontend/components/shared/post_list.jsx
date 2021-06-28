@@ -28,17 +28,19 @@ const PostList = ({
 }) => {
 
   const { userId } = useParams();
+  const [ loaded, setLoaded ] = useState(false)
 
   useEffect(() => {
     if (newsfeed) {
       fetchNewsfeed(currentUser.id)
+        .then(() => setLoaded(true))
     }
   }, [])
   
   useEffect(() => {
 
     if (!newsfeed) {
-      if (userId) fetchPosts(userId)
+      if (userId) fetchPosts(userId).then(() => setLoaded(true))
     }
     
   }, [userId])
@@ -66,7 +68,8 @@ const PostList = ({
 
 
   return (
-
+      
+        loaded ? 
         descendingPosts.slice().map((post, index) => (
           <PostListItem
             user={user}
@@ -91,6 +94,8 @@ const PostList = ({
             fetchUser={fetchUser}
           />
         ))
+        : <Loader />
+      
 
     
   )

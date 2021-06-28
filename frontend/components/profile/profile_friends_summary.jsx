@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import uniqid from 'uniqid'
+import Loader from '../util/loader'
 
 const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriends }) => {
 
@@ -68,7 +69,7 @@ const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriend
       }
 
     </div>
-  ) : null
+  ) : <Loader />
 
 }
 

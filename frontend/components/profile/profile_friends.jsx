@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { fetchUser } from '../../redux/actions/user';
 import { fetchFriends } from '../../util/api/friendship';
 import ProfileFriendItem from './profile_friend_item';
+import Loader from '../util/loader'
 
 const ProfileFriends = ({
   user,
