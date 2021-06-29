@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faEllipsisH, faUser, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as filledThumbsUp, faEllipsisH, faUser, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as emptyThumbsUp, faCommentAlt } from '@fortawesome/free-regular-svg-icons';
 import PostEditOptions from './post_edit_options';
 import CommentItem from './comment_item';
@@ -30,7 +30,9 @@ const PostListItem = ({
   fetchUser,
   newsfeed,
   fetchNewsfeed,
-  user
+  user,
+  createLike,
+  deleteLike
 }) => {
 
   const [ showComments, setShowComments ] = useState(true)
@@ -78,6 +80,20 @@ const PostListItem = ({
       return `0s`;
     }
  
+  }
+
+
+  const onLike = () => {
+    const like = {
+      likeable_type: 'Post',
+      likeable_id: post.id,
+      liker_id: currentUser.id
+    }
+    if (post.liked) {
+      deleteLike(like)
+    } else {
+      createLike(like)
+    }
   }
 
 
@@ -150,21 +166,41 @@ const PostListItem = ({
       <div className='post-list-item__body'>
         {post.body}
       </div>
-      {
-        comments.length > 0 ?
-          <span className='post-list-item__comment-count' onClick={() => setShowComments(!showComments)}>
-            {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
+
+
+
+    
+        
+        <div className='post-list-item__likes-comments'>
+          {
+            post.likeCount ?
+          <span className='post-list-item__like-count-wrapper'>
+            <span className='post-list-item__like-icon-wrapper'><FontAwesomeIcon className='post-list-item__like-icon-inner' icon={filledThumbsUp} /></span>
+            <span className='post-list-item__like-num'>{post.likeCount}</span>
           </span>
-        : <div className='post-list-item__padding'></div>
-      }
+          : null
+          }
+          {
+            comments.length > 0 ?
+            <span className='post-list-item__comment-count' onClick={() => setShowComments(!showComments)}>
+              {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
+            </span>
+            : <div className='post-list-item__padding'></div>
+          }
+        </div>
      
 
       <div className='post-list-item__divider'></div>
 
       <div className='post-list-item__button-group'>
-        <div className='post-list-item__post-like'>
+        
+        <div className={`post-list-item__post-like${post.liked ? '--liked' : ''}`} onClick={onLike}>
           <span className='post-list-item__like-icon'>
-            <FontAwesomeIcon icon={emptyThumbsUp} />
+            {
+              post.liked ? 
+              <FontAwesomeIcon icon={filledThumbsUp} />
+              : <FontAwesomeIcon icon={emptyThumbsUp} />
+            }
           </span>
           <span className='post-list-item__label'>
             Like
@@ -198,7 +234,7 @@ const PostListItem = ({
               deleteComment={deleteComment}
               profiles={profiles}
               users={users}
-            
+              
             />
           ))}
         </div>

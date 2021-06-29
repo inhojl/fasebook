@@ -4,6 +4,7 @@ import { fetchPosts } from '../../redux/actions/post';
 import { createComment, updateComment, deleteComment } from '../../redux/actions/comment';
 import { updatePost, deletePost, fetchNewsfeed } from '../../redux/actions/post';
 import { fetchUser } from '../../redux/actions/user';
+import { createLike, deleteLike } from '../../redux/actions/like';
 import PostList from '../shared/post_list';
 
 const mapStateToProps = (state, ownProps) => {
@@ -33,7 +34,9 @@ const mapDispatchToProps = dispatch => ({
   deleteComment: (commentId) => dispatch(deleteComment(commentId)),
   updatePost: (post) => dispatch(updatePost(post)),
   deletePost: (post) => dispatch(deletePost(post)),
-  fetchNewsfeed: (userId) => dispatch(fetchNewsfeed(userId))
+  fetchNewsfeed: (userId) => dispatch(fetchNewsfeed(userId)),
+  createLike: (like) => dispatch(createLike(like)),
+  deleteLike: (like) => dispatch(deleteLike(like))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostList))

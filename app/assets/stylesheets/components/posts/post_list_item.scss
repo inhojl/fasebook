@@ -144,6 +144,42 @@
     border-bottom: 1px solid $gray-16;
   }
 
+  &__likes-comments {
+    display: flex;
+    align-items: center;
+  }
+
+  &__like-count-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.933rem;
+  }
+
+  &__like-icon-wrapper {
+    min-height: 1.8rem;
+    min-width: 1.8rem;
+    background-image: linear-gradient(to top, #0064E1, #29b4ff);
+    border-radius: 50%;
+    padding: 0.2rem;
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__like-icon-inner {
+    margin-bottom: 0.1rem;
+  }
+
+
+  &__like-num {
+    font-size: 1.5rem;
+    color: $gray-15;
+    margin-left: 0.4rem;
+  }
+
   &__button-group {
     display: flex;
     align-items: center;
@@ -153,12 +189,14 @@
     
   }
 
-  &__post-like {
+  &__post-like,
+  &__post-like--liked {
     margin-right: 0.4rem;
   }
 
   &__post-like,
-  &__post-comment {
+  &__post-comment,
+  &__post-like--liked {
     cursor: pointer;
     border-radius: 0.6rem;
     height: 3.2rem;
@@ -178,10 +216,16 @@
     }
   }
 
+  &__post-like--liked {
+    color: $blue-1;
+  }
+
   &__comment-icon,
-  &__like-icon {
+  &__like-icon{
     font-size: 1.7rem;
   }
+
+  
 
   &__comment-icon {
     margin-top: 0.2rem;

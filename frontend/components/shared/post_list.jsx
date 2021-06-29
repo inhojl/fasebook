@@ -24,7 +24,9 @@ const PostList = ({
   fetchUser,
   newsfeed,
   fetchNewsfeed,
-  newsfeedPosts
+  newsfeedPosts,
+  createLike,
+  deleteLike
 }) => {
 
   const { userId } = useParams();
@@ -92,6 +94,8 @@ const PostList = ({
             profile={profiles[users[post.authorId].profileId]}
             comments={post.commentIds.map((commentId) => comments[commentId] )}
             fetchUser={fetchUser}
+            createLike={createLike}
+            deleteLike={deleteLike}
           />
         ))
         : <Loader />

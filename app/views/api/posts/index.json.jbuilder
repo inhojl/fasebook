@@ -4,6 +4,12 @@ json.posts do
   @posts.each do |post|
     json.set! post.id do
       json.partial! 'api/posts/post', post: post
+      json.like_count post.likes.length
+      if (post.likes.find { |like| like.liker_id == current_user.id})
+        json.liked true
+      else
+        json.liked false
+      end
     end
   end
 
@@ -66,6 +72,12 @@ json.comments do
     post.comments.each do |comment|
       json.set! comment.id do
         json.partial! 'api/comments/comment', comment: comment
+        json.likes_count comment.likes.length
+        if (comment.likes.find { |like| like.liker_id == current_user.id})
+          json.liked true
+        else
+          json.liked false
+        end
       end
     end
   end
