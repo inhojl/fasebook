@@ -25,7 +25,7 @@ if @comment.parent
   json.parent_comment do
     json.partial! "api/comments/comment", comment: @comment.parent
     json.like_count @comment.parent.likes.length
-    if (@comment.likes.find { |like| like.liker_id == current_user.id})
+    if (@comment.parent.likes.find { |like| like.liker_id == current_user.id})
       json.liked true
     else
       json.liked false

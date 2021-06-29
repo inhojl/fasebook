@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faUser, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import CommentForm from './comment_form';
 import { Link } from 'react-router-dom';
 import timediff from 'timediff'
@@ -19,6 +19,8 @@ const ParentCommentItem = ({
   profiles,
   updateComment,
   post,
+  createLike,
+  deleteLike
 }) => {
 
   
@@ -50,6 +52,19 @@ const ParentCommentItem = ({
   }
 
 
+  const onLike = () => {
+    const like = {
+      likeable_type: 'Comment',
+      likeable_id: comment.id,
+      liker_id: currentUser.id
+    }
+    if (comment.liked) {
+      deleteLike(like)
+    } else {
+      createLike(like)
+    }
+  }
+
 
   return !showEditForm ? (
     <div className='comment-item__parent-comment'>
@@ -77,6 +92,16 @@ const ParentCommentItem = ({
             </div>
           </div>
           {
+            comment.likeCount ?
+            <div className='comment-item__like-count'>
+                <span className='comment-item__like-count-wrapper'>
+                  <span className='comment-item__like-icon-wrapper'><FontAwesomeIcon icon={faThumbsUp} /></span>
+                  <span className='comment-item__like-num'>{comment.likeCount}</span>
+                </span>
+            </div>
+            : null
+          }
+          {
             comment.authorId === currentUser.id || post.wallId == currentUser.id ?
             <div className='comment-item__edit-container'>
               <CommentEditOptions
@@ -92,7 +117,7 @@ const ParentCommentItem = ({
           }
         </div>
         <div className='comment-item__options'>
-          <span className='comment-item__like'>
+          <span className={`comment-item__like${comment.liked ? '--liked' : ''}`} onClick={onLike}>
             Like
       </span>
       ·

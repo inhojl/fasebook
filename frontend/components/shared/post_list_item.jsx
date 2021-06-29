@@ -234,7 +234,8 @@ const PostListItem = ({
               deleteComment={deleteComment}
               profiles={profiles}
               users={users}
-              
+              createLike={createLike}
+              deleteLike={deleteLike}
             />
           ))}
         </div>

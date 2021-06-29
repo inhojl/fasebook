@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faUser, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import CommentForm from './comment_form';
 import { Link } from 'react-router-dom';
 import timediff from 'timediff'
@@ -17,7 +17,9 @@ const ChildCommentItem = ({
   currentUser,
   updateComment,
   deleteComment,
-  post
+  post,
+  deleteLike,
+  createLike
 }) => {
   const [ showEditForm, setShowEditForm] = useState(false)
 
@@ -48,6 +50,22 @@ const ChildCommentItem = ({
   }
 
 
+  const onLike = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const like = {
+      likeable_type: 'Comment',
+      likeable_id: comment.id,
+      liker_id: currentUser.id
+    }
+    if (comment.liked) {
+      deleteLike(like)
+    } else {
+      createLike(like)
+    }
+  }
+
+
   return !showEditForm ? (
     <div className='comment-item__parent-comment--child'>
       <Link className='comment-item__link--child' to={`/${comment.authorId}`}>
@@ -71,6 +89,16 @@ const ChildCommentItem = ({
               {comment.body}
             </div>
           </div>
+          {
+            comment.likeCount ?
+            <div className='comment-item__like-count'>
+                <span className='comment-item__like-count-wrapper'>
+                  <span className='comment-item__like-icon-wrapper'><FontAwesomeIcon icon={faThumbsUp} /></span>
+                  <span className='comment-item__like-num'>{comment.likeCount}</span>
+                </span>
+            </div>
+            : null
+          }
             {
               comment.authorId === currentUser.id || post.wallId == currentUser.id ?
               <div className='comment-item__edit-container'>
@@ -87,7 +115,7 @@ const ChildCommentItem = ({
             }
         </div>
         <div className='comment-item__options'>
-          <span className='comment-item__like'>
+          <span className={`comment-item__like${comment.liked ? '--liked' : ''}`} onClick={onLike}>
             Like
     </span>
     ·

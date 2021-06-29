@@ -20,7 +20,9 @@ const CommentItem = ({
   createComment,
   deleteComment,
   updateComment,
-  currentUser
+  currentUser,
+  createLike,
+  deleteLike
 }) => { 
 
 
@@ -67,6 +69,8 @@ const CommentItem = ({
         updateComment={updateComment}
         deleteComment={deleteComment}
         post={post}
+        createLike={createLike}
+        deleteLike={deleteLike}
       />
 
       {
@@ -82,6 +86,8 @@ const CommentItem = ({
             updateComment={updateComment}
             deleteComment={deleteComment}
             post={post}
+            createLike={createLike}
+            deleteLike={deleteLike}
             />
         ) 
         : null

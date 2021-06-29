@@ -124,7 +124,8 @@
   }
 
   &__like,
-  &__reply {
+  &__reply,
+  &__like--liked {
     font-weight: bold;
     margin-right: 0.3rem;
     cursor: pointer;
@@ -134,6 +135,51 @@
       text-decoration: underline;
     }
   }
+
+
+  &__like--liked {
+    color: $blue-1;
+  }
+
+  &__like-count {
+    min-width: 3rem;
+    position: relative;
+    align-self: flex-end;
+  }
+
+  &__like-count-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0.4rem;
+    left: -1rem;
+    box-shadow: 0 1px 3px 0 $shadow-2;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    background-color: white;
+  }
+
+  &__like-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.6rem;
+    min-width: 1.6rem;
+    background-image: linear-gradient(to top, #0064E1, #29b4ff);
+    border-radius: 50%;
+    color: white;
+    svg {
+      margin-bottom: 0.1rem;
+    }
+  }
+
+  &__like-num {
+    font-size: 1.3rem;
+    color: $gray-15;
+    margin-left: 0.3rem;
+    margin-right: 0.2rem;
+  }
+
 
   &__reply,
   &__created-at {
