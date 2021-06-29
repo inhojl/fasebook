@@ -12,7 +12,8 @@ import NavbarMessengerMenu from './navbar_messenger_menu';
 import NavbarNotificationsMenu from './navbar_notifications_menu';
 import NavbarSettingsMenu from './navbar_settings_menu';
 import OutsideClickNotifier from '../shared/outside_click_notifier';
-
+import PostForm from '../shared/post_form';
+import { CSSTransition } from 'react-transition-group';
 
 
 const ItemType = {
@@ -28,10 +29,23 @@ const Navbar = ({
   currentUserId,
   currentUser,
   currentProfile,
-  fetchProfile
+  fetchProfile,
+  createPost,
+  fetchUser,
+  profiles,
+  users,
+  fetchNewsfeed
 }) => {
 
   const [selected, setSelected] = useState('');
+  const [ showPostForm, setShowPostForm] = useState(false);
+  
+  const onPostFormExit = () => {
+    setShowPostForm(false)
+    $('body').css({
+      'position': 'static'
+    })
+  }
 
   useEffect(() => {
     if (currentUserId) {
@@ -77,16 +91,17 @@ const Navbar = ({
             id='navbar-create-item'
             active={selected === ItemType.CREATE}
             setSelected={onSelect(ItemType.CREATE)}
+           
           />
           {
             selected === ItemType.CREATE ?
               <OutsideClickNotifier excludeIds={['navbar-create-item']} sideEffect={() => { setSelected('') }}>
-                <NavbarCreateMenu />
+                <NavbarCreateMenu  setShowPostForm={setShowPostForm} setSelected={setSelected}/>
               </OutsideClickNotifier>
               : null
           }
         </li>
-        <li>
+        {/* <li>
           <NavbarMessengerItem
             id='navbar-messenger-item'
             active={selected === ItemType.MESSENGER}
@@ -111,7 +126,7 @@ const Navbar = ({
               </OutsideClickNotifier>
               : null
           }
-        </li>
+        </li> */}
         <li>
 
           <NavbarSettingsItem
@@ -130,6 +145,34 @@ const Navbar = ({
 
         </li>
       </ul>
+
+
+      <CSSTransition
+        in={showPostForm}
+        timeout={200}
+        classNames='js-show-modal'
+        unmountOnExit
+        onEnter={() => setShowPostForm(true)}
+        onExited={onPostFormExit}
+      >
+        <div className='splash-layout__modal'>
+          <div className='splash-layout__modal-top-guard'>
+            <div className='splash-layout__modal-center'>
+              <OutsideClickNotifier excludeIds={[]} sideEffect={() => setShowPostForm(false)}>
+                <PostForm
+                  currentProfile={profiles[users[currentUserId].profileId]}
+                  currentUser={users[currentUserId]}
+                  setShowPostForm={setShowPostForm}
+                  createPost={createPost}
+                  fetchUser={fetchUser}
+                  fetchNewsfeed={fetchNewsfeed}
+                  />
+              </OutsideClickNotifier>
+            </div>
+          </div>
+          <div className='splash-layout__modal-background'></div>
+        </div>
+      </CSSTransition>
     </nav>
   ) : null;
 }

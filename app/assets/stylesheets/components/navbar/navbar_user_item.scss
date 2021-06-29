@@ -45,8 +45,7 @@
 
 .navbar-create-item--active,
 .navbar-messenger-item--active,
-.navbar-notifications-item--active,
-.navbar-settings-item--active {
+.navbar-notifications-item--active {
   color: $blue-4;
   background-color: $blue-5;
 }
@@ -54,6 +53,7 @@
 .navbar-create-item,
 .navbar-create-item--active {
   font-size: 1.5rem;
+  margin-right: 0.8rem;
 }
 
 .navbar-messenger-item,
@@ -83,10 +83,13 @@
     // top: 50%;
     // left: 50%;
     // transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: $gray-22;
+    background-color: $gray-5;
     font-size: 1.8rem;
   }
 }

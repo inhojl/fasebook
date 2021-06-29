@@ -34,7 +34,6 @@ const ProfilePage = ({
   deletePost,
   updatePost
 }) => {
-  console.log(user)
   const [ loading, setLoading ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
@@ -42,7 +41,6 @@ const ProfilePage = ({
   
   const [ editPost, setEditPost ] = useState(null);
 
-  console.log(match.params.userId)
 
   useEffect(() => {
     // setLoading(true)

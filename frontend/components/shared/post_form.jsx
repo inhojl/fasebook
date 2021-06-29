@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { fetchNewsfeed } from '../../redux/actions/post';
 
 
 const PostForm = ({
@@ -13,7 +14,8 @@ const PostForm = ({
   fetchUser,
   editPost,
   setEditPost,
-  newsfeed
+  newsfeed,
+  fetchNewsfeed
 }) => {
 
 
@@ -52,13 +54,18 @@ const PostForm = ({
         setEditPost(null)
       })
     } else {
+
       createPost({
         author_id: currentUser.id,
-        wall_id: userId,
+        wall_id: userId ? userId : currentUser.id,
         body
       })
       .then(() => {
-        fetchUser(userId)
+        if (window.location.pathname === "/") {
+          fetchNewsfeed(currentUser.id)
+        } else {
+          fetchUser(userId ? userId : currentUser.id)
+        }
         setShowPostForm(false)
       })
     }

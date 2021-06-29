@@ -2,12 +2,17 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-const NavbarCreateMenu = () => {
+const NavbarCreateMenu = ({ setShowPostForm, setSelected }) => {
+
+  const onClick = () => {
+    setShowPostForm(true)
+    setSelected('')
+  }
 
   return (
     <ul className='navbar-create-menu'>
       <h1 className='navbar-create-menu__header'>Create</h1>
-      <li className='navbar-create-menu__post-item'>
+      <li className='navbar-create-menu__post-item' onClick={onClick} >
         <span className='navbar-create-menu__post-icon'>
           <FontAwesomeIcon icon={faEdit} />
         </span>

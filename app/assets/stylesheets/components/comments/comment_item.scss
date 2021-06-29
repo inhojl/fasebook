@@ -50,6 +50,7 @@
   }
 
 
+
   &__profile-image-container {
 
   }
@@ -226,12 +227,19 @@
 
   .comment-form {
 
-    margin-left: 5.3rem;
+    margin-left: 4.9rem;
   
-    &__profile-image {
+    &__profile-image,
+    &__no-img {
       min-width: 2.4rem;
       min-height: 2.4rem;
     }
+
+    &__no-img {
+      font-size: 1rem;
+    }
+
+    
   }
 
   .comment-edit-options__svg {
