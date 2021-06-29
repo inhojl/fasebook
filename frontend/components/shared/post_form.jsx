@@ -61,7 +61,8 @@ const PostForm = ({
         body
       })
       .then(() => {
-        if (window.location.pathname === "/") {
+        if (window.location.pathname === "#/") {
+          
           fetchNewsfeed(currentUser.id)
         } else {
           fetchUser(userId ? userId : currentUser.id)
