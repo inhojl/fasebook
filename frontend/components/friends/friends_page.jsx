@@ -30,9 +30,9 @@ const FriendsPage = ({
         />
       </div>
       <div className='friends-layout__profile'>
-        <Switch>
-          <ProtectedRoute path={`/friends/:userId`} component={ProfilePageContainer}></ProtectedRoute>
-        </Switch>
+          <Switch>
+            <ProtectedRoute path={`/friends/:userId`} component={ProfilePageContainer}></ProtectedRoute>
+          </Switch>
       </div>
     </div>
   );
