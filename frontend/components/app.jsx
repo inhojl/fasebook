@@ -8,6 +8,7 @@ import HomePageContainer from './home/home_page_container';
 import NavbarContainer from './navbar/navbar_container';
 import FriendsPageContainer from './friends/friends_page_container';
 import ProfilePageContainer from './profile/profile_page_container';
+import SearchPageContainer from './search/search_page_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route';
 
@@ -16,6 +17,7 @@ const App = () => (
     <NavbarContainer />
     <Switch>
       <ProtectedRoute path="/friends" component={FriendsPageContainer} />
+      <ProtectedRoute path="/search" component={SearchPageContainer} />
       <ProtectedRoute path="/:userId" component={ProfilePageContainer} />
       <Route exact path="/" component={HomePageContainer} />
       <Redirect to="/" />

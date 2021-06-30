@@ -8,7 +8,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def show
-    debugger
     @comment = Comment.find_by(id: params[:id])
     @post = @comment.post
     render :show

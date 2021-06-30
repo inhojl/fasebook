@@ -1,5 +1,18 @@
 class Api::UsersController < ApplicationController
 
+  def index
+    if params[:query]
+
+      @users = User.where(
+        "lower(first_name) like ? OR lower(last_name) like ?", 
+        params[:query].downcase, 
+        params[:query].downcase
+      )
+      
+      render 'api/users/index'
+    end
+  end
+
   def show
     @user = User.find_by(id: params[:id])
     render :show
@@ -41,5 +54,7 @@ class Api::UsersController < ApplicationController
       
     )
   end
+
+  
 
 end

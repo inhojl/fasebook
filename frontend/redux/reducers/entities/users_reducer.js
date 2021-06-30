@@ -1,7 +1,8 @@
 import {
   RECEIVE_USER,
   RECEIVE_CURRENT_USER,
-  RECEIVE_USERS
+  RECEIVE_USERS,
+  RECEIVE_SEARCH
 } from '../../actions/user'
 import {
   RECEIVE_POSTS
@@ -19,7 +20,8 @@ const userReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER: return { ...state, [action.currentUser.user.id]: action.currentUser.user };
     case RECEIVE_USER: return { ...state, [action.user.user.id ]: action.user.user}
-    case RECEIVE_USERS: 
+    case RECEIVE_USERS:
+    case RECEIVE_SEARCH:
     return { ...state, ...action.users.users }
     case RECEIVE_POSTS: return receivePosts(state, action)
     default: return state;

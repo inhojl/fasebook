@@ -1,12 +1,18 @@
 
+export const fetchUsers = (query) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users`,
+    data: { query: `%${query}%` }
+  })
+)
+
 export const fetchUser = (id) => (
   $.ajax({
     method: 'GET',
     url: `/api/users/${id}`
   })
 )
-
-
 
 export const updateUser = (user) => (
   $.ajax({
@@ -16,9 +22,7 @@ export const updateUser = (user) => (
   })
 )
 
-
 // PROFILES
-
 export const fetchProfile = (profileId) => (
   $.ajax({
     method: 'GET',
@@ -33,7 +37,6 @@ export const updateProfile = (profile) => (
     data: { profile }
   })
 )
-
 
 export const updateProfileFormData = (profileId, formData) => (
   $.ajax({

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Navbar from './navbar';
-import { logout, fetchProfile, fetchUser } from '../../redux/actions/user';
+import { logout, fetchProfile, fetchUser, fetchUsers } from '../../redux/actions/user';
 import { createPost, fetchNewsfeed } from '../../redux/actions/post';
 
 const mapStateToProps = (state) => ({
@@ -17,7 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchProfile: (profileId) => dispatch(fetchProfile(profileId)),
   createPost: (post) => dispatch(createPost(post)),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
-  fetchNewsfeed: (userId) => dispatch(fetchNewsfeed(userId))
+  fetchNewsfeed: (userId) => dispatch(fetchNewsfeed(userId)),
+  fetchUsers: (query) => dispatch(fetchUsers(query))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

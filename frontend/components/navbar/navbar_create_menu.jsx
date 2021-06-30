@@ -7,7 +7,12 @@ const NavbarCreateMenu = ({ setShowPostForm, setSelected }) => {
   const onClick = () => {
     setShowPostForm(true)
     setSelected('')
+    $('body').css({
+      'position': 'fixed'
+    })
   }
+
+
 
   return (
     <ul className='navbar-create-menu'>

@@ -10,6 +10,7 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_SIGNUP_ERRORS = 'RECEIVE_SIGNUP_ERRORS';
 export const RESET_SESSION_ERRORS = 'RESET_SESSION_ERRORS';
 export const RESET_SIGNUP_ERRORS = 'RESET_SIGNUP_ERRORS';
+export const RECEIVE_SEARCH = 'RECEIVE_SEARCH'
 
 export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
@@ -20,6 +21,11 @@ export const receiveUser = (user) => ({
   type: RECEIVE_USER,
   user
 });
+
+export const receiveUsers = (users) => ({
+  type: RECEIVE_SEARCH,
+  users
+})
 
 
 export const receiveProfile = (profile) => ({
@@ -70,6 +76,14 @@ export const fetchUser = (userId) => (dispatch) => (
   UserAPIUtil.fetchUser(userId)
     .then((user) => dispatch(receiveUser(user)))
 );
+
+export const fetchUsers = (query) => (dispatch) => (
+  UserAPIUtil.fetchUsers(query)
+    .then((users) => {
+      console.log('fetched users,', users)
+      dispatch(receiveUsers(users))
+    })
+)
 
 export const updateUser = (user) => (dispatch) => (
   UserAPIUtil.updateUser(user)

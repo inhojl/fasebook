@@ -1,0 +1,95 @@
+.search-page {
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  background-color: $gray-5;
+  padding: 7.2rem 1.6rem 0 1.6rem;
+
+
+  &__background {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 100vh;
+    background-color: $gray-5;
+
+  }
+
+  &__results-container {
+    @include container-block;
+    width: 74.4rem;
+    margin-bottom: 20rem;
+  }
+
+  &__result-item {
+    display: flex;
+  }
+
+  &__profile-image {
+    cursor: pointer;
+    background-color: $gray-5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 6rem;
+    min-width: 6rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__no-img {
+    cursor: pointer;
+    background-color: $gray-5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: $gray-22;
+    min-height: 6rem;
+    min-width: 6rem;
+    border-radius: 50%;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__name {
+    cursor: pointer;
+    color: $black-2;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 1.2rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__result-item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid $gray-16;
+
+    &:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  &__no-results {
+    margin-top: 12rem;
+  }
+}

@@ -34,8 +34,10 @@ const Navbar = ({
   fetchUser,
   profiles,
   users,
-  fetchNewsfeed
+  fetchNewsfeed,
+  fetchUsers
 }) => {
+  console.log(fetchUsers)
 
   const [selected, setSelected] = useState('');
   const [ showPostForm, setShowPostForm] = useState(false);
@@ -68,7 +70,7 @@ const Navbar = ({
             <Logo />
           </Link>
         </li>
-        <li className='navbar__search-item'><SearchBar /></li>
+        <li className='navbar__search-item'><SearchBar fetchUsers={fetchUsers} /></li>
       </ul>
       <ul className='navbar-layout__tabs-section'>
 
