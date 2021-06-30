@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -15,13 +15,22 @@ const PostForm = ({
   editPost,
   setEditPost,
   newsfeed,
-  fetchNewsfeed
+  fetchNewsfeed,
+  user
 }) => {
 
 
   const [ body, setBody ] = useState('');
 
   const { userId } = useParams();
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current.focus();
+  }, [])
+
+
+
 
   useEffect(() => {
     if (editPost) {
@@ -61,8 +70,7 @@ const PostForm = ({
         body
       })
       .then(() => {
-        if (window.location.pathname === "#/") {
-          
+        if (window.location.hash === "#/") {
           fetchNewsfeed(currentUser.id)
         } else {
           fetchUser(userId ? userId : currentUser.id)
@@ -103,7 +111,7 @@ const PostForm = ({
           </div>
         </div>
 
-        <textarea placeholder="What's on your mind?" className='post-form__content' onChange={(e) => setBody(e.target.value)} value={body}></textarea>
+        <textarea ref={ref} placeholder={user && user.firstName && currentUser.id !== user.id ? `Write something to ${user.firstName}...` : "What's on your mind?" } className='post-form__content' onChange={(e) => setBody(e.target.value)} value={body}></textarea>
         <button onClick={onSubmit} type="submit" className='post-form__submit'>{editPost ? "Save" : "Post" }</button>
       </div>
     </div>

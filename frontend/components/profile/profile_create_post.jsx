@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Loader from '../util/loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const ProfileCreatePost = ({ profile, setShowPostForm }) => {
+const ProfileCreatePost = ({ profile, currentUser, currentUserProfile, user, setShowPostForm, newsfeed }) => {
 
   const onClick = () => {
     setShowPostForm(true)
@@ -12,21 +14,32 @@ const ProfileCreatePost = ({ profile, setShowPostForm }) => {
   }
 
 
-  return (
+  return newsfeed || (profile && user && currentUser && currentUserProfile) ? (
+
     <div className='profile-create-post'>
-      <div className='profile-create-post__profile-image-wrapper'>
+      <Link to={`/${currentUser ? currentUser.id : ''}`}>
+        <div className='profile-create-post__profile-image-wrapper'>
+          {
+            currentUserProfile && currentUserProfile.profilePicUrl ?
+              <div
+                className='profile-create-post__profile-image'
+                style={{ backgroundImage: `url(${window.location.origin + currentUserProfile.profilePicUrl})` }}
+              ></div>
+              : <div className='profile-create-post__no-img'><FontAwesomeIcon icon={faUser} /></div>
+          }
+        </div>
+      </Link>
+      <button type="button" className='profile-create-post__button' onClick={onClick}>
         {
-          profile && profile.profilePicUrl ?
-            <div
-              className='profile-create-post__profile-image'
-              style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-            ></div>
-            : <div className='profile-create-post__no-img'><FontAwesomeIcon icon={faUser} /></div>
+        
+            profile && profile.userId === currentUser.id || newsfeed || currentUser.id === user.id ?
+              "What's on your mind?"
+              : `Write something to ${user ? user.firstName : ''}...`
+          
         }
-      </div>
-      <button type="button" className='profile-create-post__button' onClick={onClick}>What's on your mind?</button>
+      </button>
     </div>
-  )
+  ) : null
 
 }
 

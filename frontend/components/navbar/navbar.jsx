@@ -37,7 +37,6 @@ const Navbar = ({
   fetchNewsfeed,
   fetchUsers
 }) => {
-  console.log(fetchUsers)
 
   const [selected, setSelected] = useState('');
   const [ showPostForm, setShowPostForm] = useState(false);

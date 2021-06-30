@@ -47,7 +47,6 @@ const ProfilePage = ({
     fetchRelationshipStatuses()
 
     fetchUser(match.params.userId)
-      .then((res) => console.log(res))
       .fail(() => {
         console.log('failing')
         if (match.path !== '/friends') history.push('/')
@@ -117,6 +116,8 @@ const ProfilePage = ({
             setEditPost={setEditPost}
             user={user}
             currentUserId={currentUserId}
+            currentUser={users[currentUserId]}
+            currentUserProfile={profiles[users[currentUserId].profileId]}
             setShowEditDetailsForm={setShowEditDetailsForm}
             setShowPostForm={setShowPostForm}
             exact path={match.path}
@@ -201,6 +202,7 @@ const ProfilePage = ({
                   createPost={createPost}
                   updatePost={updatePost}
                   fetchUser={fetchUser}
+                  user={user}
                   />
               </OutsideClickNotifier>
             </div>

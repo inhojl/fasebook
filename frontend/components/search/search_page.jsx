@@ -22,7 +22,6 @@ const SearchPage = ({
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const name = params.get('name');
-  console.log(name)
 
   useEffect(() => {
     setLoading(true)

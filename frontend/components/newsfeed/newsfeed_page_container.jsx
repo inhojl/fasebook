@@ -5,7 +5,8 @@ import { fetchRelationshipStatuses } from '../../redux/actions/relationship_stat
 import { 
   createPost,
   updatePost,
-  deletePost
+  deletePost,
+  fetchNewsfeed
  } from '../../redux/actions/post';
 import NewsfeedPage from './newsfeed_page';
 import { withRouter } from 'react-router-dom'
@@ -36,6 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
   createPost: (post) => dispatch(createPost(post)),
   updatePost: (post) => dispatch(updatePost(post)),
   deletePost: (postId) => dispatch(deletePost(postId)),
+  fetchNewsfeed: (userId) => dispatch(fetchNewsfeed(userId))
 
 })
 

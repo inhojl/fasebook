@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NewsfeedListContainer from './newsfeed_list_container'
 import OutsideClickNotifier from '../shared/outside_click_notifier';
 import { CSSTransition } from 'react-transition-group';
+import ProfileCreatePost from '../profile/profile_create_post';
 import Loader from '../util/loader'
 
 import PostForm from '../shared/post_form';
@@ -14,7 +15,8 @@ const NewsfeedPage = ({
   profiles,
   createPost,
   updatePost,
-  newsfeed
+  newsfeed,
+  fetchNewsfeed
 }) => {
   
   const [ showPostForm, setShowPostForm] = useState(false);
@@ -35,6 +37,7 @@ const NewsfeedPage = ({
           
           </section>
           <section className='newsfeed-layout__wall'>
+            <ProfileCreatePost profile={{}} user={{}} newsfeed={newsfeed} setShowPostForm={setShowPostForm} currentUser={users[currentUserId]} currentUserProfile={profiles[users[currentUserId].profileId]} />
             <NewsfeedListContainer setEditPost={setEditPost} setShowPostForm={setShowPostForm} />
           </section>
       </div>
@@ -61,6 +64,8 @@ const NewsfeedPage = ({
                   createPost={createPost}
                   updatePost={updatePost}
                   fetchUser={fetchUser}
+                  fetchNewsfeed={fetchNewsfeed}
+                  user={editPost ? users[editPost.wallId] : {}}
                   />
               </OutsideClickNotifier>
             </div>

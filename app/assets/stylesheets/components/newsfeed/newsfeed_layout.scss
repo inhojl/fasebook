@@ -44,6 +44,9 @@
 
   &__wall {
     margin-bottom: 20rem;
+    & > *:first-child {
+      width: 100%;
+    }
   }
 
 }

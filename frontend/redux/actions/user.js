@@ -80,7 +80,6 @@ export const fetchUser = (userId) => (dispatch) => (
 export const fetchUsers = (query) => (dispatch) => (
   UserAPIUtil.fetchUsers(query)
     .then((users) => {
-      console.log('fetched users,', users)
       dispatch(receiveUsers(users))
     })
 )
