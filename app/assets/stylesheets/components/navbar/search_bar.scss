@@ -2,7 +2,8 @@
 
   position: relative;
 
-  &__icon {
+  &__icon,
+  &__icon--show {
 
     position: absolute;
     font-size: 1.6rem;
@@ -10,15 +11,27 @@
     justify-content: center;
     align-items: center;
     border-radius: 5rem;
-    top: 1.2rem;
-    left: 1.2rem;;
+    top: 0rem;
+    left: 0rem;
     background: $gray-5;
     z-index: 4;
     color: $gray-12;
-
+    cursor: pointer;
+    height: 4rem;
+    width: 4rem;
   }
 
-  &__input {
+  &__icon--show {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 3rem;
+    left: 0.5rem;
+  }
+
+  
+
+  &__input,
+  &__input--show {
     
     height: 4rem;
     width: 4rem;  
@@ -35,14 +48,33 @@
     }
     
   }
-}
 
-@media (min-width: $large) {
-  .search-bar__input {
+  &__input--show {
     width: 24rem;
     padding: 0.7rem 1.6rem 0.9rem 3.6rem;
     &::placeholder {
       color: $gray-11;
     }
   }
+
+
 }
+
+
+// @media (min-width: $large) {
+//   .search-bar__input {
+//     width: 24rem;
+//     padding: 0.7rem 1.6rem 0.9rem 3.6rem;
+//     &::placeholder {
+//       color: $gray-11;
+//     }
+//   }
+
+//   .search-bar__icon {
+//     border-top-right-radius: 0;
+//     border-bottom-right-radius: 0;
+//     width: 3rem;
+//     left: 0.5rem;
+//   }
+
+// }
