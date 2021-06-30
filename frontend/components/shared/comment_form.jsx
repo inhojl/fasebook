@@ -22,12 +22,7 @@ const CommentForm = ({
   const inputRef = useRef();
 
   useEffect(() => {
-    // $(inputRef.current).focus()
-    // $(inputRef.current).val($(inputRef.current).text());
-    // console.log('mounting'
-
       inputRef.current.focus();
-      console.log('focusing first')
   }, [])
 
 
@@ -81,7 +76,7 @@ const CommentForm = ({
 
 
   return (
-    <form onSubmit={() => console.log('submit')} id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
+    <form id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
       {
         profile.profilePicUrl ?
           <div
