@@ -218,6 +218,11 @@
 
   &__post-like--liked {
     color: $blue-1;
+
+    .post-list-item__like-icon {
+      animation: like 0.5s;
+    }
+
   }
 
   &__comment-icon,
@@ -246,5 +251,27 @@
   }
 
 
+
+}
+
+@keyframes like {
+  from {
+    transform: rotate(0) scale(1)
+  }
+
+  50% {
+    transform: rotate(-20deg) scale(1.2)
+
+  }
+
+  70% {
+    transform: rotate(-20deg) scale(1.2)
+
+  }
+
+  to {
+    transform: rotate(0) scale(1)
+
+  }
 
 }

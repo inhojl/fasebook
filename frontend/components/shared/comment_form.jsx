@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons'; 
 import uniqid from 'uniqid'
-const CommentForm = React.forwardRef(({
+const CommentForm = ({
   post,
   profile,
   comment,
@@ -15,20 +15,20 @@ const CommentForm = React.forwardRef(({
   setShowEditForm,
   id
   
-}, ref) => {
+}) => {
 
   const formId = uniqid()
 
-  const [ addEvent, setAddEvent ] = useState(false)
+  const inputRef = useRef();
 
 
   useEffect(() => {
 
-    if (!addEvent && post) {
-      setAddEvent(true)
-      $(`#${id}`).text(comment ? comment.body : '')
+    if (post) {
+
+      $(inputRef.current).text(comment ? comment.body : '')
   
-      $(`#${id}`).on('keydown', function(e) {  
+      $(inputRef.current).on('keydown', function(e) {  
         if(e.keyCode == 13)
         {
             e.preventDefault();
@@ -64,7 +64,7 @@ const CommentForm = React.forwardRef(({
         }
       });
   
-      return () => $(`#${id}`).off('keydown')
+      return () => $(inputRef.current).off('keydown')
 
     }
 
@@ -72,7 +72,7 @@ const CommentForm = React.forwardRef(({
 
 
   return (
-    <form id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
+    <form onSubmit={() => console.log('submit')} id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
       {
         profile.profilePicUrl ?
           <div
@@ -86,7 +86,7 @@ const CommentForm = React.forwardRef(({
 
       <div
         id={id}
-        ref={ref}
+        ref={inputRef}
         contentEditable
         placeholder={placeholder ? placeholder : "Write a comment..."}
         className='comment-form__input'
@@ -96,6 +96,6 @@ const CommentForm = React.forwardRef(({
     </form>
 
   );
-})
+}
 
 export default CommentForm;
