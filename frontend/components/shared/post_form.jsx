@@ -50,6 +50,7 @@ const PostForm = ({
 
   const onSubmit = () => {
     if (editPost) {
+      setShowPostForm(false)
       updatePost({
         id: editPost.id,
         author_id: editPost.authorId,
@@ -57,12 +58,11 @@ const PostForm = ({
         body
       })
       .then(() => {
-        
-        //fetchUser(newsfeed ? currentUser.id : userId)
-        setShowPostForm(false)
         setEditPost(null)
+        //fetchUser(newsfeed ? currentUser.id : userId)
       })
     } else {
+      setShowPostForm(false)
 
       createPost({
         author_id: currentUser.id,
@@ -75,7 +75,6 @@ const PostForm = ({
         } else {
           fetchUser(userId ? userId : currentUser.id)
         }
-        setShowPostForm(false)
       })
     }
 
