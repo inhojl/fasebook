@@ -21,6 +21,15 @@ const CommentForm = ({
 
   const inputRef = useRef();
 
+  useEffect(() => {
+    // $(inputRef.current).focus()
+    // $(inputRef.current).val($(inputRef.current).text());
+    // console.log('mounting'
+
+      inputRef.current.focus();
+      console.log('focusing first')
+  }, [])
+
 
   useEffect(() => {
 
@@ -42,7 +51,7 @@ const CommentForm = ({
               body: commentText,
               parent_id: parentId ? parentId : null
             }).then(() => {
-              //setShowEditForm(false)
+              setShowEditForm(false)
               
             })
           } else if (createComment) {

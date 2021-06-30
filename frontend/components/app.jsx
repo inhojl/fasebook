@@ -13,7 +13,7 @@ import SearchPageContainer from './search/search_page_container';
 import { AuthRoute, ProtectedRoute } from '../util/route';
 
 const App = () => (
-  <div className='app'>
+  <div className='app' tabIndex={0}>
     <NavbarContainer />
     <Switch>
       <ProtectedRoute path="/friends" component={FriendsPageContainer} />

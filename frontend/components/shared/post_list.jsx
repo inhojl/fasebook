@@ -35,9 +35,17 @@ const PostList = ({
   useEffect(() => {
     if (newsfeed) {
       fetchNewsfeed(currentUser.id)
-        .then(() => setLoaded(true))
+        .then(() => {
+          setLoaded(true)
+        })
     }
+
   }, [])
+
+  useEffect(() => {
+    $('.app').focus();
+  }, [loaded])
+
   
   useEffect(() => {
 

@@ -220,7 +220,7 @@
     color: $blue-1;
 
     .post-list-item__like-icon {
-      animation: like 0.5s;
+      animation: like 0.4s;
     }
 
   }
@@ -259,12 +259,12 @@
     transform: rotate(0) scale(1)
   }
 
-  50% {
+  40% {
     transform: rotate(-20deg) scale(1.2)
 
   }
 
-  70% {
+  85% {
     transform: rotate(-20deg) scale(1.2)
 
   }
