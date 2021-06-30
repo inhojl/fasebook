@@ -11,7 +11,7 @@ const SearchBar = ({ fetchUsers }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    fetchUsers(input.trim())
+    //fetchUsers(input.trim())
     history.push(`/search${input ? '?name=' + input : ''}`)
     setInput('')
   } 

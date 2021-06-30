@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import NoResults from './no_results';
+import NoResults from '../shared/no_results';
 import FriendButton from './friend_button'
+import Loader from '../util/loader'
 
 const SearchPage = ({
   fetchUsers,
@@ -17,24 +18,29 @@ const SearchPage = ({
   fetchUser
 }) => {
 
+  const [ loading, setLoading ] = useState(true);
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const name = params.get('name');
   console.log(name)
 
   useEffect(() => {
+    setLoading(true)
     if (name) {
       fetchUsers(name)
+        .then(() => setLoading(false))
+        .fail(() => setLoading(false))
     }
   }, [name])
 
   return (
 
-
+    
     <div className='search-page'>
       <div className='search-page__background'></div>
 
       {
+        !loading ? (
         searchResults.length ?
           <div className='search-page__results-container'>
             <h1 className='search-page__results-container__heading'>People</h1>
@@ -77,6 +83,7 @@ const SearchPage = ({
               <NoResults />
             </div>
           )
+        ): <Loader />
       }
 
     </div>
