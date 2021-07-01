@@ -105,7 +105,7 @@ const PostListItem = ({
 
   const isFriend = (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS'))
 
-
+  const noLikesAndComments = !post.likeCount && comments.length === 0;
 
   return (
     <div className='post-list-item'>
@@ -181,7 +181,7 @@ const PostListItem = ({
 
 
 
-      <div className='post-list-item__likes-comments'>
+      <div className={`post-list-item__likes-comments${noLikesAndComments ? '--extra-padding' : ''}`}>
         {
           post.likeCount ?
             <span className='post-list-item__like-count-wrapper'>

@@ -147,6 +147,9 @@
   &__likes-comments {
     display: flex;
     align-items: center;
+    &--extra-padding {
+      margin-top: 0.4rem;
+    }
   }
 
   &__like-count-wrapper {
