@@ -98,7 +98,7 @@ User.create!(
 )
 
 User.create!(
-  email: 'kobe@fasebook.com',
+  email: 'link@fasebook.com',
   first_name: 'Link',
   last_name: 'Link',
   birthdate: Date.new(2000, 12, 25),
