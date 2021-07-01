@@ -142,26 +142,30 @@ const ProfileHeader = ({
     <div className='profile-header'>
 
       <div className='profile-header__picture-banner'>
-        <div
-          className='profile-header__cover-photo-wrapper'
-          style={{ backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})` }}>
+        {
+          profile && profile.coverPhotoUrl ?
+          <div
+            className='profile-header__cover-photo-wrapper'
+            style={{ backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})` }}>
 
-          <CurrentUserItem >
-            <div className='profile-header__upload-cover-photo' onClick={onCoverPhotoClick}>
-              <FontAwesomeIcon icon={faCamera} />
-              <input
-                type="file"
-                className='profile-header__cover-photo-upload'
-                onChange={onChangeCoverPhoto} />
-              {profile.coverPhotoUrl ? 'Edit' : 'Add'} Cover Photo
-            </div>
-          </CurrentUserItem>
+            <CurrentUserItem >
+              <div className='profile-header__upload-cover-photo' onClick={onCoverPhotoClick}>
+                <FontAwesomeIcon icon={faCamera} />
+                <input
+                  type="file"
+                  className='profile-header__cover-photo-upload'
+                  onChange={onChangeCoverPhoto} />
+                {profile.coverPhotoUrl ? 'Edit' : 'Add'} Cover Photo
+              </div>
+            </CurrentUserItem>
 
-        </div>
+          </div>
+          : null
+        }
         <span className='profile-header__profile-picture'>
           <div className='profile-header__profile-image-wrapper'>
             {
-              profile.profilePicUrl ?
+              profile && profile.profilePicUrl ?
                 <div
                   className='profile-header__profile-image'
                   style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}

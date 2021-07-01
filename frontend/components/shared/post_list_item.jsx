@@ -109,7 +109,7 @@ const PostListItem = ({
       <div className='post-list-item__header'>
         <Link to={`/${author.id}`}>
           {
-            profile.profilePicUrl ?
+            profile && profile.profilePicUrl ?
               <div 
                 className='post-list-item__profile-image'
                 style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}

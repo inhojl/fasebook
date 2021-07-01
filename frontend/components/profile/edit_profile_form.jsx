@@ -69,7 +69,7 @@ const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile,
         </div>
         <div className='edit-profile__profile-picture-container'>
           {
-            profile.profilePicUrl ?
+            profile && profile.profilePicUrl ?
               <div 
                 className='edit-profile__profile-image'
                 style={{backgroundImage: `url(${window.location.origin + profile.profilePicUrl})`}}>
@@ -86,10 +86,14 @@ const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile,
           </span>
         </div>
         <div className='edit-profile__cover-photo-container'>
-          <div 
-            className='edit-profile__cover-photo-image'
-            style={{backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})`}}>
-          </div>
+          {
+            profile && profile.coverPhotoUrl ?
+            <div 
+              className='edit-profile__cover-photo-image'
+              style={{backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})`}}>
+            </div>
+            : null
+          }
         </div>
         <div className='edit-profile__subheading-wrapper'>
           <h2 className='edit-profile__subheading'>Bio</h2>

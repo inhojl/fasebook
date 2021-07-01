@@ -49,7 +49,7 @@ const SearchPage = ({
                   <li className='search-page__result-item' key={`result-item-${i}`}>
                     <Link to={`/${userId}`}>
                       {
-                        profiles[users[userId].profileId].profilePicUrl ?
+                        profiles[users[userId].profileId] && profiles[users[userId].profileId].profilePicUrl ?
                           
                           <div
                             className='search-page__profile-image'

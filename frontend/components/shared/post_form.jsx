@@ -96,7 +96,7 @@ const PostForm = ({
 
         <div className='post-form__user-heading'>
           {
-            currentProfile.profilePicUrl ?
+            currentProfile && currentProfile.profilePicUrl ?
               <div
                 className='post-form__profile-image'
                 style={{ backgroundImage: `url(${window.location.origin + currentProfile.profilePicUrl})` }}

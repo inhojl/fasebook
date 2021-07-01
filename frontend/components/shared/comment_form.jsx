@@ -73,7 +73,7 @@ const CommentForm = ({
   return (
     <form id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
       {
-        profile.profilePicUrl ?
+        profile && profile.profilePicUrl ?
           <div
             onClick={() => {}}
             className={`comment-form__profile-image${!parentId ? '--parent' : ''}`}

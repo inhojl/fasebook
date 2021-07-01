@@ -71,7 +71,7 @@ const ParentCommentItem = ({
 
       <Link className='comment-item__link' to={`/${author.id}`}>
         {
-          profile.profilePicUrl ?
+          profile && profile.profilePicUrl ?
             <div
               style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
               className='comment-item__profile-image'

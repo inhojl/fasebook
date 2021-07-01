@@ -20,7 +20,7 @@ const ProfileFriendItem = ({
     <li className='profile-friend-item'>
       <Link to={`/${friend.id}`}>
         {
-          profile.profilePicUrl ?
+          profile && profile.profilePicUrl ?
           <div 
             className='profile-friend-item__profile-image'
             style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
