@@ -53,8 +53,9 @@ const ProfilePage = ({
   useEffect(() => {
     // setLoading(true)
     fetchRelationshipStatuses()
-
+    setLoaded(false)
     fetchUser(match.params.userId)
+      .then(() => (setLoaded(true)))
       .fail(() => {
         console.log('failing')
         if (match.path !== '/friends') history.push('/')
