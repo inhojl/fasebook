@@ -16,8 +16,7 @@ const PostForm = ({
   setEditPost,
   newsfeed,
   fetchNewsfeed,
-  user,
-  setLoaded
+  user
 }) => {
 
 
@@ -71,15 +70,12 @@ const PostForm = ({
         body
       })
       .then(() => {
-        setLoaded(false)
 
         if (window.location.hash === "#/") {
           fetchNewsfeed(currentUser.id)
-            .then(() => setLoaded(true))
           
         } else {
           fetchUser(userId ? userId : currentUser.id)
-            .then(() => setLoaded(true))
 
         }
       })

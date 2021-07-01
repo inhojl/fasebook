@@ -34,7 +34,6 @@ const ProfilePage = ({
   deletePost,
   updatePost
 }) => {
-  const [ loaded, setLoaded ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [showPostForm, setShowPostForm] = useState(false);
@@ -42,27 +41,11 @@ const ProfilePage = ({
   const [ editPost, setEditPost ] = useState(null);
 
   useEffect(() => {
-
-    if (loaded) {
-      console.log('executing')
-      setTimeout(() => {
-
-        $('.app').focus()
-      }, 0)
-      
-    }
-
-  }, [loaded,users])
-
-  useEffect(() => {
     // setLoading(true)
-    setLoaded(false)
     fetchRelationshipStatuses()
     fetchUser(match.params.userId)
-      .then(() => (setLoaded(true)))
       .fail(() => {
         console.log('failing')
-        setLoaded(true)
         if (match.path !== '/friends') history.push('/')
       })
       // .always(() => setLoading(false))
@@ -217,7 +200,6 @@ const ProfilePage = ({
                   updatePost={updatePost}
                   fetchUser={fetchUser}
                   user={user}
-                  setLoaded={setLoaded}
                   />
               </OutsideClickNotifier>
             </div>

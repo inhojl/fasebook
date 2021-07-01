@@ -23,13 +23,7 @@ const NewsfeedPage = ({
 
   const [showPostForm, setShowPostForm] = useState(false);
   const [editPost, setEditPost] = useState(null);
-  const [ loaded, setLoaded ] = useState(false);
 
-  useEffect(() => {
-    if (loaded) {
-      $('.app').focus()
-    }
-  }, [loaded])
 
   const onPostFormExit = () => {
     setShowPostForm(false)
@@ -154,7 +148,7 @@ const NewsfeedPage = ({
                   fetchUser={fetchUser}
                   fetchNewsfeed={fetchNewsfeed}
                   user={editPost ? users[editPost.wallId] : {}}
-                  setLoaded={setLoaded}
+                
                 />
               </OutsideClickNotifier>
             </div>

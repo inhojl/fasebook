@@ -38,6 +38,13 @@ const PostListItem = ({
   const [ showComments, setShowComments ] = useState(true)
   const { userId: userIdFromParams } = useParams();
 
+  useEffect(() => {
+    if (showComments) {
+      $(document.activeElement).closest('.post-list-item').find('.comment-form__input').focus()
+    }
+  }, [showComments])
+
+
   
   const parentComments = comments.filter((comment) => comment.parentId === null);
   const sortedParentComments = parentComments.sort((a, b) => {
@@ -182,7 +189,7 @@ const PostListItem = ({
           }
           {
             comments.length > 0 ?
-            <span className='post-list-item__comment-count' onClick={() => setShowComments(!showComments)}>
+            <span tabIndex={1} className='post-list-item__comment-count' onClick={() => setShowComments(!showComments)}>
               {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
             </span>
             : <div className='post-list-item__padding'></div>

@@ -22,10 +22,6 @@ const CommentForm = ({
   const inputRef = useRef();
 
   useEffect(() => {
-      inputRef.current.focus();
-  }, [])
-
-  useEffect(() => {
 
     if (post) {
 
