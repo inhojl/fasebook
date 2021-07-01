@@ -17,7 +17,7 @@ const FriendsPrompt = ({
                     <circle cx="72.58" cy="53.81" r="12.08" fill="none" />
                   </clipPath>
                 </defs>
-                <g clip-path="url(#a)">
+                <g clipPath="url(#a)">
                   <circle cx="72.58" cy="53.81" r="12.08" fill="#1876f2" />
                   <circle cx="62.18" cy="40.55" r="14.72" fill="#a4a7ab" />
                   <circle cx="88.92" cy="39.27" r="14.72" fill="#a4a7ab" />
