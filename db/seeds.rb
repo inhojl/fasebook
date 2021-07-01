@@ -32,9 +32,9 @@ Gender.create(label: "Cis Female", parent_id: 3)
 Gender.create(label: "Cis Male", parent_id: 3)
 
 user1 = User.create!(
-  email: 'joe@email.com',
-  first_name: 'Joe',
-  last_name: 'Johnson',
+  email: 'inho@fasebook.com',
+  first_name: 'Inho',
+  last_name: 'Lee',
   birthdate: Date.new(1980, 12, 25),
   gender_id: 1,
   password: '123456'
@@ -52,8 +52,8 @@ user2 = User.create!(
 
 user3 = User.create!(
   email: 'user1@fasebook.com',
-  first_name: 'Royce',
-  last_name: 'Wayne',
+  first_name: 'The',
+  last_name: 'Joker',
   birthdate: Date.new(2000, 12, 25),
   gender_id: 1,
   password: '123456'
@@ -61,83 +61,83 @@ user3 = User.create!(
 
 
 user4 = User.create!(
-  email: 'user2@fasebook.com',
-  first_name: 'Bob',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
+  email: 'roger@fasebook.com',
+  first_name: 'Roger',
+  last_name: 'Federer',
+  birthdate: Date.new(1981, 8, 8),
   gender_id: 1,
   password: '123456'
 )
 
 
 user5 = User.create!(
-  email: 'user4@fasebook.com',
-  first_name: 'Hermione',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
-  gender_id: 1,
-  password: '123456'
-)
-
-User.create!(
-  email: 'user5@fasebook.com',
+  email: 'harry@fasebook.com',
   first_name: 'Harry',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
+  last_name: 'Potter',
+  birthdate: Date.new(1980, 7, 31),
   gender_id: 1,
   password: '123456'
 )
 
 User.create!(
-  email: 'user6@fasebook.com',
-  first_name: 'Moufasa',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
+  email: 'hermione@fasebook.com',
+  first_name: 'Hermione',
+  last_name: 'Granger',
+  birthdate: Date.new(1979, 9, 19),
+  gender_id: 2,
+  password: '123456'
+)
+
+User.create!(
+  email: 'goku@fasebook.com',
+  first_name: 'Son',
+  last_name: 'Goku',
+  birthdate: Date.new(1999, 1, 8),
   gender_id: 1,
   password: '123456'
 )
 
 User.create!(
-  email: 'user7@fasebook.com',
+  email: 'kobe@fasebook.com',
   first_name: 'Link',
-  last_name: 'Wayne',
+  last_name: 'Link',
   birthdate: Date.new(2000, 12, 25),
   gender_id: 1,
   password: '123456'
 )
 
 User.create!(
-  email: 'user8@fasebook.com',
-  first_name: 'Dude',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
+  email: 'kobe@fasebook.com',
+  first_name: 'Kobe',
+  last_name: 'Bryant',
+  birthdate: Date.new(1978, 8, 23),
   gender_id: 1,
   password: '123456'
 )
 
 User.create!(
-  email: 'user9@fasebook.com',
-  first_name: 'Cake',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
+  email: 'neo@fasebook.com',
+  first_name: 'Thomas',
+  last_name: 'Anderson',
+  birthdate: Date.new(1990, 5, 19),
   gender_id: 1,
   password: '123456'
 )
 
 User.create!(
-  email: 'user10@fasebook.com',
-  first_name: 'Hello',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
-  gender_id: 1,
+  email: 'trinity0@fasebook.com',
+  first_name: 'Trinity',
+  last_name: 'Trin',
+  birthdate: Date.new(1967, 9, 1),
+  gender_id: 2,
   password: '123456'
 )
 
 User.create!(
-  email: 'user11@fasebook.com',
-  first_name: 'Mai',
-  last_name: 'Wayne',
-  birthdate: Date.new(2000, 12, 25),
+  email: 'morpheus@fasebook.com',
+  first_name: 'Morpheus',
+  last_name: 'Daniel',
+  birthdate: Date.new(1970, 3, 16),
   gender_id: 1,
   password: '123456'
 )
@@ -179,15 +179,5 @@ Friendship.create!(user_id: 11, friend_id: 2, status: "FRIENDS")
 
 
 
-Post.create(author_id: 2, wall_id: 3, body: "YOOOO WHAT's UP")
-Post.create(author_id: 11, wall_id: 2, body: "HEY I MSYAING HII")
-Post.create(author_id: 10, wall_id: 2, body: "YOOO IM BATMAN")
-Post.create(author_id: 3, wall_id: 2, body: "YOOOO WHAT's UP")
-Post.create(author_id: 9, wall_id: 2, body: "I like the joker")
 
 
-Comment.create(author_id: 3, post_id: 2, body: "comment ajsdfasdfa s1")
-Comment.create(author_id: 11, post_id: 2, body: "comentasdf as efas dff 41", parent_id: 1)
-Comment.create(author_id: 11, post_id: 2, body: "asdfasd f1234 234t345agf", parent_id: 1)
-Comment.create(author_id: 10, post_id: 2, body: "adfsasdf123123 12 312 123 ", parent_id: 1)
-Comment.create(author_id: 9, post_id: 2, body: "adsfasd f 2342 11 afds bs fgdh", parent_id: 1)
