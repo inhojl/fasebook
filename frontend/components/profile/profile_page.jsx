@@ -44,6 +44,7 @@ const ProfilePage = ({
   useEffect(() => {
 
     if (loaded) {
+      console.log('executing')
       $('.app').focus()
       
     }
