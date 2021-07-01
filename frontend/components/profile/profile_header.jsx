@@ -160,7 +160,20 @@ const ProfileHeader = ({
             </CurrentUserItem>
 
           </div>
-          : null
+          :           
+          <div
+          className='profile-header__cover-photo-wrapper'>
+          <CurrentUserItem >
+            <div className='profile-header__upload-cover-photo' onClick={onCoverPhotoClick}>
+              <FontAwesomeIcon icon={faCamera} />
+              <input
+                type="file"
+                className='profile-header__cover-photo-upload'
+                onChange={onChangeCoverPhoto} />
+                Add Cover Photo
+            </div>
+          </CurrentUserItem>
+          </div>
         }
         <span className='profile-header__profile-picture'>
           <div className='profile-header__profile-image-wrapper'>

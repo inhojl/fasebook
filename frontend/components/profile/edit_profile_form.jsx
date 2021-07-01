@@ -92,7 +92,8 @@ const EditProfileForm = ({ user, profile, setShowEditProfileForm, updateProfile,
               className='edit-profile__cover-photo-image'
               style={{backgroundImage: `url(${window.location.origin + profile.coverPhotoUrl})`}}>
             </div>
-            : null
+            :             
+            <div className='edit-profile__cover-photo-image'></div>
           }
         </div>
         <div className='edit-profile__subheading-wrapper'>
