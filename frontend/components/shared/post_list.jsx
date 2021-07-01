@@ -44,6 +44,7 @@ const PostList = ({
 
   useEffect(() => {
     $('.app').focus();
+    console.log('remounting')
   }, [loaded])
 
   

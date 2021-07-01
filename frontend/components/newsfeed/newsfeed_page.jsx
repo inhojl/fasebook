@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsfeedListContainer from './newsfeed_list_container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faAngellist } from '@fortawesome/free-brands-svg-icons'
@@ -23,6 +23,13 @@ const NewsfeedPage = ({
 
   const [showPostForm, setShowPostForm] = useState(false);
   const [editPost, setEditPost] = useState(null);
+  const [ loaded, setLoaded ] = useState(false);
+
+  useEffect(() => {
+    if (loaded) {
+      $('.app').focus()
+    }
+  }, [loaded])
 
   const onPostFormExit = () => {
     setShowPostForm(false)
@@ -147,6 +154,7 @@ const NewsfeedPage = ({
                   fetchUser={fetchUser}
                   fetchNewsfeed={fetchNewsfeed}
                   user={editPost ? users[editPost.wallId] : {}}
+                  setLoaded={setLoaded}
                 />
               </OutsideClickNotifier>
             </div>

@@ -34,13 +34,21 @@ const ProfilePage = ({
   deletePost,
   updatePost
 }) => {
-  const [ loading, setLoading ] = useState(false)
+  const [ loaded, setLoaded ] = useState(false)
   const [showEditDetailsForm, setShowEditDetailsForm] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [showPostForm, setShowPostForm] = useState(false);
   
   const [ editPost, setEditPost ] = useState(null);
 
+  useEffect(() => {
+
+    if (loaded) {
+      $('.app').focus()
+      
+    }
+
+  }, [loaded])
 
   useEffect(() => {
     // setLoading(true)
@@ -203,6 +211,7 @@ const ProfilePage = ({
                   updatePost={updatePost}
                   fetchUser={fetchUser}
                   user={user}
+                  setLoaded={setLoaded}
                   />
               </OutsideClickNotifier>
             </div>

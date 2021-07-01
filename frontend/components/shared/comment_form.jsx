@@ -25,7 +25,6 @@ const CommentForm = ({
       inputRef.current.focus();
   }, [])
 
-
   useEffect(() => {
 
     if (post) {

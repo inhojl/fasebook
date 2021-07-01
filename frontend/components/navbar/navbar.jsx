@@ -40,6 +40,9 @@ const Navbar = ({
 
   const [selected, setSelected] = useState('');
   const [ showPostForm, setShowPostForm] = useState(false);
+  const [ loaded, setLoaded ] = useState(false)
+
+
   
   const onPostFormExit = () => {
     setShowPostForm(false)
@@ -47,6 +50,12 @@ const Navbar = ({
       'position': 'static'
     })
   }
+
+  useEffect(() => {
+    if (loaded) {
+      $('.app').focus();
+    }
+  }, [loaded])
 
   useEffect(() => {
     if (currentUserId) {
@@ -167,6 +176,7 @@ const Navbar = ({
                   createPost={createPost}
                   fetchUser={fetchUser}
                   fetchNewsfeed={fetchNewsfeed}
+                  setLoaded={setLoaded}
                   />
               </OutsideClickNotifier>
             </div>
