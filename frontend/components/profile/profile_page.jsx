@@ -45,7 +45,10 @@ const ProfilePage = ({
 
     if (loaded) {
       console.log('executing')
-      $('.app').focus()
+      setTimeout(() => {
+
+        $('.app').focus()
+      }, 0)
       
     }
 
