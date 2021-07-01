@@ -59,10 +59,6 @@
     color: $gray-22;
     transition: all .1s linear;
     background-color: $gray-5;
-
-    &:hover {
-      filter: brightness(95%);
-    }
   }
 
   &__name {
