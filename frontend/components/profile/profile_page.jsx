@@ -52,12 +52,12 @@ const ProfilePage = ({
       
     }
 
-  }, [loaded])
+  }, [loaded,users])
 
   useEffect(() => {
     // setLoading(true)
-    fetchRelationshipStatuses()
     setLoaded(false)
+    fetchRelationshipStatuses()
     fetchUser(match.params.userId)
       .then(() => (setLoaded(true)))
       .fail(() => {

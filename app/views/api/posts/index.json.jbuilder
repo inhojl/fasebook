@@ -20,22 +20,22 @@ json.users do
   @posts.each do |post|
     json.set! post.author_id do
       json.partial! 'api/users/user', user: post.author
-      if post.author_id == current_user.id
-        json.friend_requester_ids current_user.friend_request_senders.ids
-      end
-      if post.author_id == current_user.id
-        json.newsfeed_post_ids @posts.map { |p| p.id }
-      end
+      # if post.author_id == current_user.id
+      #   json.friend_requester_ids current_user.friend_request_senders.ids
+      # end
+      # if post.author_id == current_user.id
+      #   json.newsfeed_post_ids @posts.map { |p| p.id }
+      # end
     end
 
     json.set! post.wall_id do
       json.partial! 'api/users/user', user: post.wall
-      if post.wall_id == current_user.id
-        json.friend_requester_ids current_user.friend_request_senders.ids
-      end
-      if post.wall_id == current_user.id
-        json.newsfeed_post_ids @posts.map { |p| p.id }
-      end
+      # if post.wall_id == current_user.id
+      #   json.friend_requester_ids current_user.friend_request_senders.ids
+      # end
+      # if post.wall_id == current_user.id
+      #   json.newsfeed_post_ids @posts.map { |p| p.id }
+      # end
     end
 
     post.comments.each do |comment|
@@ -44,6 +44,12 @@ json.users do
       end
     end
 
+  end
+
+  json.set! current_user.id do
+    json.partial! 'api/users/user', user: current_user
+    json.newsfeed_post_ids @posts.map { |p| p.id }
+    json.friend_requester_ids current_user.friend_request_senders.ids
   end
 end
 

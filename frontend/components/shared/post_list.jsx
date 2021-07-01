@@ -39,7 +39,6 @@ const PostList = ({
           setLoaded(true)
         })
     }
-
   }, [])
 
   useEffect(() => {
