@@ -13,6 +13,9 @@ const SplashFooter = () => (
       <li className='splash-footer__site-item'>
         <a href='https://www.linkedin.com/in/inhojl' target='_blank'>LinkedIn</a>
       </li>
+      <li className='splash-footer__site-item'>
+        <a href='#' target='_blank'>AngelList</a>
+      </li>
     </ul>
     <p className='splash-footer__copyright'>Fasebook © 2021</p>
   </footer>

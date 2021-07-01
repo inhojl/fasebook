@@ -8,6 +8,164 @@
   padding: 7.2rem 1.6rem 0 1.6rem;
 
 
+  &__personal-links {
+    margin-right: 6.4rem;
+    width: 29.167rem;
+    display: none;
+
+  }
+  &__personal-projects {
+    margin-left: 6.4rem;
+    margin-top: 1.2rem;
+    margin-right: 0.8rem;
+    width: 29.167rem;
+    display: none;
+    // display: flex;
+    // flex-direction: column;
+  }
+
+  &__personal-links-list {
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__personal-photo-wrapper,
+  &__personal-icon {
+    min-height: 3.6rem;
+    min-width: 3.6rem;
+    max-height: 3.6rem;
+    max-width: 3.6rem;
+    border-radius: 50%;
+  
+  }
+
+  &__personal-photo-wrapper {
+    overflow: hidden;
+  }
+
+  &__personal-photo {
+    overflow: hidden;
+    object-fit: center;
+    min-width: 3.6rem;
+    min-height: 3.6rem;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+  }
+
+  &__github,
+  &__linkedin,
+  &__angelist {
+    min-height: 3.6rem;
+    min-width: 3.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.6rem;
+  }
+
+  &__github {
+    color: #181717;
+  }
+
+  &__linkedin {
+    color: #0A66C2;
+  }
+
+  &__angelist {
+    color: #000000;
+  }
+
+
+  &__personal-label {
+    margin-left: 1rem;
+  }
+
+  &__personal-link-item {
+    width: 100%;
+    height: 5.2rem;
+    background: $gray-5;
+    border-radius: 0.8rem;
+    font-size: 1.5rem;
+
+    a {
+      padding: 0 0.8rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__personal-project-item {
+    width: 100%;
+    height: 13.1rem;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background: $gray-5;
+    cursor: pointer;
+
+
+    &:hover {
+      filter: brightness(95%);
+    }
+
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+
+    &:last-of-type {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__wizrd {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 0.8rem;
+  }
+
+  &__chat {
+    height: 100%;
+    width: 17rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 0.8rem;
+  }
+
+  &__chat-label {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: $black-2;
+    display: flex;
+    flex-direction: column
+  }
+
+  &__chat-site {
+    margin-top: 0.4rem;
+    color: $gray-15;
+    font-size: 1.3rem;
+  }
+
+  &__personal-projects-heading {
+    font-size: 1.7rem;
+    color: $gray-15;
+    font-weight: bold;
+  }
+
+
+
   &__background {
     position: absolute;
     z-index: -1;
@@ -24,7 +182,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 87.6rem;
+    width: 50rem;
     height: 100%;
   }
 
@@ -47,6 +205,20 @@
     & > *:first-child {
       width: 100%;
     }
+  }
+
+}
+
+@media (min-width: $medium-large-width) {
+  .newsfeed-layout__personal-links {
+    display: block;
+  }
+}
+
+@media (min-width: $medium-small-3) {
+  .newsfeed-layout__personal-projects {
+    display: flex;
+    flex-direction: column;
   }
 
 }
