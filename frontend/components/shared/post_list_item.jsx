@@ -35,7 +35,7 @@ const PostListItem = ({
   deleteLike
 }) => {
 
-  const [ showComments, setShowComments ] = useState(true)
+  const [showComments, setShowComments] = useState(true)
   const { userId: userIdFromParams } = useParams();
 
   useEffect(() => {
@@ -45,14 +45,14 @@ const PostListItem = ({
   }, [showComments])
 
 
-  
+
   const parentComments = comments.filter((comment) => comment.parentId === null);
   const sortedParentComments = parentComments.sort((a, b) => {
     const date1 = new Date(a.createdAt)
     const date2 = new Date(b.createdAt)
     return date1 < date2 ? -1 : 1;
   })
-  
+
 
   const dateModifier = (createdAt) => {
     const diff = timediff(createdAt, new Date(), 'YWDHmS')
@@ -62,9 +62,9 @@ const PostListItem = ({
     else {
       return '--recent'
     }
-    
+
   }
-  
+
 
   const postTimeDiff = (createdAt) => {
 
@@ -73,7 +73,7 @@ const PostListItem = ({
     if (diff.years || diff.months || diff.weeks > 2) {
       return moment(new Date(createdAt)).format("MMMM D, YYYY")
     } else if (diff.weeks) {
-    
+
       return moment(new Date(createdAt)).format("MMMM D, YYYY [at] LT")
     } else if (diff.days) {
       return `${diff.days}d`
@@ -86,7 +86,7 @@ const PostListItem = ({
     } else {
       return `0s`;
     }
- 
+
   }
 
 
@@ -103,6 +103,9 @@ const PostListItem = ({
     }
   }
 
+  const isFriend = (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS'))
+
+
 
   return (
     <div className='post-list-item'>
@@ -110,15 +113,15 @@ const PostListItem = ({
         <Link to={`/${author.id}`}>
           {
             profile && profile.profilePicUrl ?
-              <div 
+              <div
                 className='post-list-item__profile-image'
                 style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
               ></div>
-            : <div className='post-list-item__no-img'><FontAwesomeIcon icon={faUser} /></div>
+              : <div className='post-list-item__no-img'><FontAwesomeIcon icon={faUser} /></div>
           }
         </Link>
         <div className='post-list-item__heading'>
-{/* 
+          {/* 
         { 
                 post.authorId !== post.wallId ?
                 <>
@@ -134,24 +137,24 @@ const PostListItem = ({
             </Link>
             {
               post.authorId !== post.wallId ?
-              <>
-              <FontAwesomeIcon icon={faCaretRight} className='post-list-item__name-seperator' /> 
-              <Link to={`/${post.wallId}`}>
-                <span className='post-list-item__name'>
-                {users[post.wallId].firstName + " " + users[post.wallId].lastName}
-                </span>
-              </Link>
-              </>
-              : null
+                <>
+                  <FontAwesomeIcon icon={faCaretRight} className='post-list-item__name-seperator' />
+                  <Link to={`/${post.wallId}`}>
+                    <span className='post-list-item__name'>
+                      {users[post.wallId].firstName + " " + users[post.wallId].lastName}
+                    </span>
+                  </Link>
+                </>
+                : null
             }
 
           </div>
           <span className={`post-list-item__date${dateModifier(post.createdAt)}`}>
-            { postTimeDiff(post.createdAt) }
+            {postTimeDiff(post.createdAt)}
           </span>
         </div>
-          {
-            post && currentUser && (post.authorId == currentUser.id || post.wallId == currentUser.id) ?
+        {
+          post && currentUser && (post.authorId == currentUser.id || post.wallId == currentUser.id) ?
             <div className='post-list-item__options'>
               <PostEditOptions
                 setEditPost={setEditPost}
@@ -167,7 +170,7 @@ const PostListItem = ({
               />
             </div>
             : null
-          }
+        }
       </div>
 
       <div className='post-list-item__body'>
@@ -176,95 +179,99 @@ const PostListItem = ({
 
 
 
-    
-        
-        <div className='post-list-item__likes-comments'>
-          {
-            post.likeCount ?
-          <span className='post-list-item__like-count-wrapper'>
-            <span className='post-list-item__like-icon-wrapper'><FontAwesomeIcon className='post-list-item__like-icon-inner' icon={filledThumbsUp} /></span>
-            <span className='post-list-item__like-num'>{post.likeCount}</span>
-          </span>
-          : null
-          }
-          {
-            comments.length > 0 ?
+
+
+      <div className='post-list-item__likes-comments'>
+        {
+          post.likeCount ?
+            <span className='post-list-item__like-count-wrapper'>
+              <span className='post-list-item__like-icon-wrapper'><FontAwesomeIcon className='post-list-item__like-icon-inner' icon={filledThumbsUp} /></span>
+              <span className='post-list-item__like-num'>{post.likeCount}</span>
+            </span>
+            : null
+        }
+        {
+          comments.length > 0 ?
             <span tabIndex={1} className='post-list-item__comment-count' onClick={() => setShowComments(!showComments)}>
               {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
             </span>
             : <div className='post-list-item__padding'></div>
-          }
-        </div>
-     
-
-      <div className='post-list-item__divider'></div>
-
-      <div className='post-list-item__button-group'>
-        
-        <div className={`post-list-item__post-like${post.liked ? '--liked' : ''}`} onClick={onLike}>
-          <span className='post-list-item__like-icon'>
-            {
-              post.liked ? 
-              <FontAwesomeIcon icon={filledThumbsUp} />
-              : <FontAwesomeIcon icon={emptyThumbsUp} />
-            }
-          </span>
-          <span className='post-list-item__label'>
-            Like
-          </span>
-        </div>
-        <div className='post-list-item__post-comment'>
-          <span className='post-list-item__comment-icon'>
-            <FontAwesomeIcon icon={faCommentAlt} />
-          </span>
-          <span className='post-list-item__label'>
-            Comment
-          </span>
-        </div>
+        }
       </div>
-      { showComments ? <div className='post-list-item__divider'></div> : null }
+
+
+      {
+        (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS')) ?
+          <>
+            <div className='post-list-item__divider'></div>
+            <div className='post-list-item__button-group'>
+              <div className={`post-list-item__post-like${post.liked ? '--liked' : ''}`} onClick={onLike}>
+                <span className='post-list-item__like-icon'>
+                  {
+                    post.liked ?
+                      <FontAwesomeIcon icon={filledThumbsUp} />
+                      : <FontAwesomeIcon icon={emptyThumbsUp} />
+                  }
+                </span>
+                <span className='post-list-item__label'>
+                  Like
+          </span>
+              </div>
+              <div className='post-list-item__post-comment'>
+                <span className='post-list-item__comment-icon'>
+                  <FontAwesomeIcon icon={faCommentAlt} />
+                </span>
+                <span className='post-list-item__label'>
+                  Comment
+          </span>
+              </div>
+            </div>
+          </>
+          : null
+      }
+
+
+      { showComments ? <div className='post-list-item__divider'></div> : null}
       {
         showComments && comments.length > 0 ?
-        <div className='post-list-item__comments-container'>
+          <div className={`post-list-item__comments-container${!isFriend ? '--extra-padding' : ''}`}>
 
-          {sortedParentComments.map((comment) => (
-            <CommentItem
-              currentUser={currentUser}
-              comments={comments}
-              key={`comment-${comment.id}`}
-              post={post}
-              author={users[comment.authorId]}
-              comment={comment}
-              profile={profiles[users[comment.authorId].profileId]}
-              createComment={createComment}
-              updateComment={updateComment}
-              deleteComment={deleteComment}
-              profiles={profiles}
-              users={users}
-              createLike={createLike}
-              deleteLike={deleteLike}
-            />
-          ))}
-        </div>
-        : null
+            {sortedParentComments.map((comment) => (
+              <CommentItem
+                currentUser={currentUser}
+                comments={comments}
+                key={`comment-${comment.id}`}
+                post={post}
+                author={users[comment.authorId]}
+                comment={comment}
+                profile={profiles[users[comment.authorId].profileId]}
+                createComment={createComment}
+                updateComment={updateComment}
+                deleteComment={deleteComment}
+                profiles={profiles}
+                users={users}
+                createLike={createLike}
+                deleteLike={deleteLike}
+              />
+            ))}
+          </div>
+          : null
       }
 
       {
-        (showComments && comments.length > 0) || (comments.length === 0) &&
-        (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS')) ?
-        
-        <div className='post-list-item__comment-form'>
-            <CommentForm 
+        ((showComments && comments.length > 0) || (comments.length === 0)) &&
+          (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS')) ?
+
+          <div className='post-list-item__comment-form'>
+            <CommentForm
               id={uniqid()}
               post={post}
-              author={currentUser} 
+              author={currentUser}
               profile={profiles[currentUser.profileId]}
               createComment={createComment} />
           </div>
           : null
       }
-
-    
     </div>
   )
 }

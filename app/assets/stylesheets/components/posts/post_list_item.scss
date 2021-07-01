@@ -244,7 +244,12 @@
    
       margin-top: 0.4rem;
     
+      &--extra-padding {
+        margin: 0.8rem 0;
+      }
   }
+
+  
 
   &__comment-form {
     margin-top: 0.4rem;

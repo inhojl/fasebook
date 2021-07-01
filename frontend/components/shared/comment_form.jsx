@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons'; 
 import uniqid from 'uniqid'
@@ -14,11 +15,9 @@ const CommentForm = ({
   parentId,
   setShowEditForm,
   id
-  
 }) => {
 
   const formId = uniqid()
-
   const inputRef = useRef();
 
   useEffect(() => {
@@ -72,16 +71,18 @@ const CommentForm = ({
 
   return (
     <form id={formId} className={`comment-form${!parentId ? '--parent' : ''}`}>
-      {
-        profile && profile.profilePicUrl ?
-          <div
-            onClick={() => {}}
-            className={`comment-form__profile-image${!parentId ? '--parent' : ''}`}
-            style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
-          >
-          </div>
-        : <div className='comment-form__no-img'><FontAwesomeIcon icon={faUser} /></div>
-      }
+      <Link to={`/${author.id}`}>
+        {
+          profile && profile.profilePicUrl ?
+            <div
+              onClick={() => {}}
+              className={`comment-form__profile-image${!parentId ? '--parent' : ''}`}
+              style={{ backgroundImage: `url(${window.location.origin + profile.profilePicUrl})` }}
+            >
+            </div>
+          : <div className='comment-form__no-img'><FontAwesomeIcon icon={faUser} /></div>
+        }
+      </Link>
 
       <div
         id={id}

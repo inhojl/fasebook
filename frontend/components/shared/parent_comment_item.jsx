@@ -20,12 +20,13 @@ const ParentCommentItem = ({
   updateComment,
   post,
   createLike,
-  deleteLike
+  deleteLike,
+  users
 }) => {
 
-  
 
-  const [ showEditForm, setShowEditForm] = useState(false)
+
+  const [showEditForm, setShowEditForm] = useState(false)
 
   const commentTimeDiff = (createdAt) => {
 
@@ -77,7 +78,7 @@ const ParentCommentItem = ({
               className='comment-item__profile-image'
             >
             </div>
-          : <div className='comment-item__no-img'><FontAwesomeIcon icon={faUser} /></div>
+            : <div className='comment-item__no-img'><FontAwesomeIcon icon={faUser} /></div>
         }
       </Link>
 
@@ -93,39 +94,45 @@ const ParentCommentItem = ({
           </div>
           {
             comment.likeCount ?
-            <div className='comment-item__like-count'>
+              <div className='comment-item__like-count'>
                 <span className='comment-item__like-count-wrapper'>
                   <span className='comment-item__like-icon-wrapper'><FontAwesomeIcon icon={faThumbsUp} /></span>
                   <span className='comment-item__like-num'>{comment.likeCount}</span>
                 </span>
-            </div>
-            : null
+              </div>
+              : null
           }
           {
             comment.authorId === currentUser.id || post.wallId == currentUser.id ?
-            <div className='comment-item__edit-container'>
-              <CommentEditOptions
-                deleteComment={() => deleteComment(comment.id)}
-                setShowEditForm={setShowEditForm}
-                id={uniqid()}
-                post={post}
-                currentUser={currentUser}
-                comment={comment}
-              />
-            </div>
-            : null
+              <div className='comment-item__edit-container'>
+                <CommentEditOptions
+                  deleteComment={() => deleteComment(comment.id)}
+                  setShowEditForm={setShowEditForm}
+                  id={uniqid()}
+                  post={post}
+                  currentUser={currentUser}
+                  comment={comment}
+                />
+              </div>
+              : null
           }
         </div>
         <div className='comment-item__options'>
-          <span className={`comment-item__like${comment.liked ? '--liked' : ''}`} onClick={onLike}>
-            Like
-      </span>
-      ·
-      <span className='comment-item__reply' onClick={onClickReply}>
-            Reply
-      </span>
-      ·
-      <span className='comment-item__created-at'>
+
+          {
+            (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS')) ?
+              <>
+                <span className={`comment-item__like${comment.liked ? '--liked' : ''}`} onClick={onLike}>
+                  Like
+                </span>
+                ·
+                <span className='comment-item__reply' onClick={onClickReply}>
+                  Reply
+                </span>
+                ·
+              </> : null
+          }
+          <span className='comment-item__created-at'>
             {commentTimeDiff(comment.createdAt)}
           </span>
         </div>
@@ -133,16 +140,16 @@ const ParentCommentItem = ({
 
     </div>
   ) : <CommentForm
-        id={uniqid()}
-        placeholder='Write a reply...'
-        post={post}
-        profile={profiles[currentUser.profileId]}
-        comment={comment}
-        author={currentUser}
-        updateComment={updateComment}
-        setShowEditForm={setShowEditForm}
-        parentId={comment.parentId}
-      />
+    id={uniqid()}
+    placeholder='Write a reply...'
+    post={post}
+    profile={profiles[currentUser.profileId]}
+    comment={comment}
+    author={currentUser}
+    updateComment={updateComment}
+    setShowEditForm={setShowEditForm}
+    parentId={comment.parentId}
+  />
 }
 
 export default ParentCommentItem;

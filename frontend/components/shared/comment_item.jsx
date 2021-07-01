@@ -71,6 +71,7 @@ const CommentItem = ({
         post={post}
         createLike={createLike}
         deleteLike={deleteLike}
+        users={users}
       />
 
       {
@@ -88,6 +89,7 @@ const CommentItem = ({
             post={post}
             createLike={createLike}
             deleteLike={deleteLike}
+            users={users}
             />
         ) 
         : null

@@ -19,7 +19,8 @@ const ChildCommentItem = ({
   deleteComment,
   post,
   deleteLike,
-  createLike
+  createLike,
+  users
 }) => {
   const [ showEditForm, setShowEditForm] = useState(false)
 
@@ -115,6 +116,9 @@ const ChildCommentItem = ({
             }
         </div>
         <div className='comment-item__options'>
+        {
+          (post.authorId && currentUser && (post.authorId === currentUser.id || users[post.authorId].friendshipStatus === 'FRIENDS')) ?
+          <>
           <span className={`comment-item__like${comment.liked ? '--liked' : ''}`} onClick={onLike}>
             Like
     </span>
@@ -123,6 +127,10 @@ const ChildCommentItem = ({
             Reply
     </span>
     ·
+    </>
+    : null
+        }
+
     <span className='comment-item__created-at'>
             {commentTimeDiff(comment.createdAt)}
           </span>
