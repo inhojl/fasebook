@@ -58,6 +58,7 @@ const ProfilePage = ({
       .then(() => (setLoaded(true)))
       .fail(() => {
         console.log('failing')
+        setLoaded(true)
         if (match.path !== '/friends') history.push('/')
       })
       // .always(() => setLoading(false))

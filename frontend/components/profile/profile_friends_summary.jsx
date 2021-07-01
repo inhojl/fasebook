@@ -45,7 +45,7 @@ const ProfileFriendsSummary = ({ users, profiles, loaded, setLoaded, fetchFriend
 
                   const friendProfile = profiles[friend.profileId]
                   return index < 9 ? (
-                    <Link to={`/${friend.id}`} key={`friend-${uniqid()}`}>
+                    <Link to={`/${friend.id}`} key={`friend-${index}`}>
                       <li className='profile-friends-summary__item'>
                         {
                           friendProfile && friendProfile.profilePicUrl ?
