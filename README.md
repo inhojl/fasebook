@@ -70,3 +70,10 @@ Users can see their and their friends' posts through the newsfeed feature, which
 Users can like any of their and their friends' posts/comments on their newsfeed or their or their friends' profile page.
 
 ![likes](https://user-images.githubusercontent.com/74887895/124526912-f8091d80-ddb8-11eb-8f54-8ea5de5487fc.gif)
+
+
+## Maintainers
+[@inhojl](https://www.github.com/inhojl)
+
+## Design Documents
+[Design Documents](https://github.com/inhojl/fasebook/wiki)
