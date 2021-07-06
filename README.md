@@ -6,16 +6,15 @@ Fasebook is a fully-responsive, near pixel-perfect mini-clone of the popular soc
 ![image](https://user-images.githubusercontent.com/74887895/124522723-1d8e2b00-dda9-11eb-9d48-3ffb95c7f04e.png)
 
 # Table of Contents
-- [Technologies Used](https://link-url-here.org)
-- [Key Features](https://link-url-here.org)
-  - [User Profiles](https://link-url-here.org)
-  - [User Friends](https://link-url-here.org)
-  - [User Newsfeed](https://link-url-here.org)
-  - [User Likes](https://link-url-here.org)
-- [Code Snippets](https://link-url-here.org)
-- [Maintainers](https://link-url-here.org)
-- [License](https://link-url-here.org)
-- [Design Documents](https://link-url-here.org)
+- [Technologies Used](#technology)
+- [Key Features](#features)
+  - [User Profiles](#profiles)
+  - [User Friends](#friending)
+  - [User Newsfeed](#newsfeed)
+  - [User Likes](#likess)
+- [Maintainers](#maintainers)
+- [License](#license)
+- [Design Documents](https://github.com/inhojl/fasebook/wiki)
 
 ## Technology
 
@@ -23,10 +22,10 @@ This full stack project utilizes the following technologies: Ruby on Rails, Redu
 
 ## Features
 The hallmark Fasebook features highlighted in this section are:
-  1. User Profiles
-  2. User Friends
-  3. User Newsfeed
-  4. User Likes
+  1. [User Profiles](#profiles)
+  2. [User Friends](#friending)
+  3. [User Newsfeed](#newsfeed)
+  4. [User Likes](#likes)
 
 The following additional functionalities have also been implemented: user authentication and error handling, creation/deletion/modification of posts and comments, user friend search, and user likes.
 
