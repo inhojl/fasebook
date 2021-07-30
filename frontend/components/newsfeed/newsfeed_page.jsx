@@ -109,7 +109,7 @@ const NewsfeedPage = ({
     
         </a>
 
-        <a href='https://duel-arena.herokuapp.com' target='_blank' className='newsfeed-layout__personal-project-item'>
+        <a href='https://avatar-chat.herokuapp.com' target='_blank' className='newsfeed-layout__personal-project-item'>
             <div
               className='newsfeed-layout__chat'
               style={{ backgroundImage: `url(${window.chatPic})` }}
@@ -117,7 +117,7 @@ const NewsfeedPage = ({
             <span className='newsfeed-layout__chat-label'>
               Chat with 3D Avatars!
               <span className='newsfeed-layout__chat-site'>
-                duel-arena.heroku...
+                avatar-chat.heroku...
               </span>
             </span>
         </a>

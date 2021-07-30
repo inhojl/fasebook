@@ -73,7 +73,7 @@ const PostList = ({
   return (
       
         loaded ? 
-        descendingPosts.slice().map((post, index) => (
+        descendingPosts.map((post, index) => (
           <PostListItem
             user={user}
             fetchNewsfeed={fetchNewsfeed}
